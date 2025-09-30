@@ -1,4 +1,4 @@
-package com.testeexemplo.demo;
+package com.financemodel.financepro;
 
 import javafx.application.Application;
 

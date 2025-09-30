@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="457.0" prefWidth="861.0" styleClass="janela1" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.testeexemplo.demo.doLoginController">
+<AnchorPane prefHeight="457.0" prefWidth="861.0" styleClass="janela1" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.financemodel.financepro.doLoginController">
    <children>
       <ImageView fitHeight="447.0" fitWidth="871.0" layoutX="4.0" layoutY="5.0" pickOnBounds="true" smooth="false">
          <image>
