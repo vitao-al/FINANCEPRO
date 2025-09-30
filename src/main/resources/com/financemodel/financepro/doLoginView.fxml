@@ -50,7 +50,7 @@
             </TextField>
             <Button layoutX="14.0" layoutY="195.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="114.0" style="-fx-background-color: linear-gradient(to right, #ff3131, #ff914d)linear-gradient(to right, #ff7e5f99, #feb47b99); -fx-background-radius: 15; color: white;" text="Criar um conta" textFill="WHITE" />
             <Button fx:id="loginButton" layoutX="146.0" layoutY="195.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="97.0" style="-fx-background-color: linear-gradient(to right, #ff3131, #ff914d)linear-gradient(to right, #ff7e5f99, #feb47b99); -fx-background-radius: 15;" text="Login" textFill="#f8f8f8" />
-            <AnchorPane fx:id="registerButton" layoutX="2.0" layoutY="40.0" prefHeight="200.0" prefWidth="196.0" />
+
          </children>
       </Pane>
       <ImageView fitHeight="347.0" fitWidth="658.0" layoutX="294.0" layoutY="41.0" opacity="0.07" pickOnBounds="true" preserveRatio="true">
