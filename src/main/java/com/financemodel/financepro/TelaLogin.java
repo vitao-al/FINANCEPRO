@@ -3,14 +3,16 @@ package com.financemodel.financepro;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+
 import javafx.stage.Stage;
 
-public class HelloApplication extends Application {
+public class TelaLogin extends Application {
+
 
     @Override
     public void start(Stage stage) throws Exception {
         // Carrega o FXML
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/financemodel/financepro/TelaLogin2.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/financemodel/financepro/TelaLogin.fxml"));
 
 
 
@@ -19,6 +21,7 @@ public class HelloApplication extends Application {
 
         // Aplica título e mostra a janela
         stage.setTitle("Meu Projeto JavaFX");
+        stage.setResizable(false);
         stage.setScene(scene);
         stage.show();
     }

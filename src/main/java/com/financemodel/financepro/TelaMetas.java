@@ -21,6 +21,7 @@ public class TelaMetas  extends  Application{
             // Aplica título e mostra a janela
             stage.setTitle("");
             stage.setScene(scene);
+            stage.setResizable(false);
             stage.show();
         }
 
