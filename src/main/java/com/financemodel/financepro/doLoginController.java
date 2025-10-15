@@ -21,7 +21,7 @@ public class doLoginController {
         loginButton.setOnAction(e -> {
             if (camposValidos()) {
                 try {
-                    LauncherPrincipal.iniciartela2("TelaMetas.fxml"); // dashboard ainda não pronto
+                    LauncherPrincipal.iniciartela2(""); // dashboard ainda não pronto
                 } catch (Exception ex) {
                     ex.printStackTrace();
                 }
