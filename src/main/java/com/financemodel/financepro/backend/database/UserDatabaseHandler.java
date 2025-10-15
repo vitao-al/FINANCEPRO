@@ -1,4 +1,4 @@
-package com.financemodel.financepro.backend;
+package com.financemodel.financepro.backend.database;
 
 import java.math.BigDecimal;
 import java.sql.PreparedStatement;
@@ -6,8 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.UUID;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+
 public class UserDatabaseHandler extends DatabaseHandler
 {
     /**
@@ -93,8 +92,7 @@ public class UserDatabaseHandler extends DatabaseHandler
             ResultSet resultadoBusca = pst.executeQuery();
             if(resultadoBusca.next())
             {
-                String uuid = resultadoBusca.getString("UUID");
-                return uuid;
+                return resultadoBusca.getString("UUID");
             }
             else{
                 return null;

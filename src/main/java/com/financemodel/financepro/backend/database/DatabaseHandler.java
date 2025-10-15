@@ -1,40 +1,40 @@
-package com.financemodel.financepro.backend;
+package com.financemodel.financepro.backend.database;
 
-import java.math.BigDecimal;
 import java.sql.*;
 
 public class DatabaseHandler
 {
+    // Usar o super para adicionar o path do DatabaseHandler em classes filhas
     DatabaseHandler(String databasePath) throws SQLException
     {
         this.connectDatabase(databasePath=databasePath);
     }
 
-    // VerifyLogin(Usuario,senha) -> [true,userid]
-    // saldo - global
-    // Metas - handrey -> m1 - 2500, m2 1000 ,m3 500 - MetasHandrey.db - (META,VALOR,DATA INICIAL,DATA FINAL,UUID,MUID)
-    // SaldoHandrey.db -> (VALOR,CATEGORIA,MUID,DATA)
-
-    public Statement getStatement() {
+    public Statement getStatement()
+    {
         return statement;
     }
 
-    public Connection getConnection() {
+    public Connection getConnection()
+    {
         return connection;
     }
 
-    public void setConnection(Connection connection) {
+    public void setConnection(Connection connection)
+    {
         this.connection = connection;
     }
 
-    public void setStatement(Statement statement) {
+    public void setStatement(Statement statement)
+    {
         this.statement = statement;
     }
 
     public Connection connection = null;
     public Statement statement = null;
 
-    public DatabaseHandler() {
+    public DatabaseHandler()
+    {
     }
 
     /**
