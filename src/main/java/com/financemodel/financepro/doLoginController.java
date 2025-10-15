@@ -33,7 +33,7 @@ public class doLoginController {
         registerButton.setOnAction(e -> {
             if (camposValidos()) {
                 try {
-                    LauncherPrincipal.iniciartela2("TelaLogin.fxml");
+                    LauncherPrincipal.iniciartela3("TelaLogin.fxml");
                 } catch (Exception ex) {
                     throw new RuntimeException(ex);
                 }

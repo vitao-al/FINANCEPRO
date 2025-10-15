@@ -26,8 +26,16 @@ public class LauncherPrincipal extends Application{
         Scene novaCena = new Scene(loader.load());
         stagePrincipal.setScene(novaCena);
     }
+
+    public static void iniciartela3(String nometela3) throws Exception{
+        FXMLLoader loader=new FXMLLoader(LauncherPrincipal.class.getResource(nometela3));
+        Scene novaCena=new Scene(loader.load());
+        stagePrincipal.setScene(novaCena);
+    }
     public static void main(String[] args) {
         launch();
 
-}
+
+
+    }
 }

@@ -1,0 +1,58 @@
+.label-titulo {
+    -fx-font-family: "Poppins";
+    -fx-font-size: 30px;
+    -fx-text-fill: #ffffff;
+    -fx-font-weight: bold;
+}
+
+.pane-pane1 {
+    -fx-background-color: linear-gradient(from 0% 0% to 100% 100%, rgba(255,49,49,0.2), rgba(255,145,77,0.5));
+}
+
+.label-subtitulos {
+    -fx-font-family: "Poppins";
+    -fx-font-size: 18px;
+    -fx-text-fill: #ffffff;
+    -fx-font-weight: bold;
+}
+
+.pane-subfundo {
+    -fx-background-color: white;
+}
+
+.pane-pane2 {
+    -fx-background-color: linear-gradient(from 0% 0% to 100% 100%, rgba(255,49,49,0.5), rgba(255,145,77,0.5));
+}
+
+.label-subtitulos2 {
+    -fx-font-family: "Poppins";
+    -fx-font-size: 12px;
+    -fx-text-fill: #ffffff;
+    -fx-font-weight: bold;
+}
+
+.label-subtitulos3 {
+    -fx-font-family: "Poppins";
+    -fx-font-size: 15px;
+    -fx-text-fill: #ffffff;
+    -fx-font-weight: bold;
+}
+
+.menudeslizante {
+    -fx-background-color: linear-gradient(to bottom, #ff7e5f, #feb47b);
+    -fx-padding: 20;
+}
+
+.button-menu {
+    -fx-background-color: transparent;
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 10;
+}
+
+.button-menu:hover {
+    -fx-background-color: rgba(255, 255, 255, 0.2);
+}
+
+
