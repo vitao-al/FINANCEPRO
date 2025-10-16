@@ -11,17 +11,17 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.financemodel.financepro.TelaMetas">
-    <ImageView id="fundometa" fitHeight="419.0" fitWidth="618.0" pickOnBounds="true">
+<AnchorPane prefHeight="460.0" prefWidth="861.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.financemodel.financepro.TelaMetasControler">
+    <ImageView id="fundometa" fitHeight="460.0" fitWidth="861.0" pickOnBounds="true">
         <Image url="@../../../assets/fundoTela2.png" />
     </ImageView>
-    <Label id="titulometa" layoutX="197.0" layoutY="30.0" styleClass="label-titulo" stylesheets="@../../../css/TelaMetas.css" text="DEFINA SUA META">
+    <Label id="titulometa" layoutX="304.0" layoutY="30.0" styleClass="label-titulo" stylesheets="@../../../css/TelaMetas.css" text="DEFINA SUA META">
         <font>
           <Font name="Poppins Regular" size="12.0" />
         </font>
     </Label>
     <Label id="nomedameta" layoutX="37.0" layoutY="82.0" prefHeight="23.0" prefWidth="142.0" styleClass="label-subtitulo" stylesheets="@../../../css/TelaMetas.css" text="nome da meta " />
-    <TextField id="entradameta" layoutX="31.0" layoutY="118.0" prefHeight="34.0" prefWidth="374.0" stylesheets="@../../../css/TelaMetas.css">
+    <TextField id="entradameta" layoutX="31.0" layoutY="118.0" prefHeight="34.0" prefWidth="468.0" stylesheets="@../../../css/TelaMetas.css">
         <styleClass>
           <String fx:value="TextField" />
           <String fx:value="TextField-entrada" />
@@ -35,13 +35,13 @@
         </styleClass>
     </TextArea>
     <DatePicker id="calendariometa" layoutX="218.0" layoutY="197.0" prefHeight="114.0" prefWidth="175.0" stylesheets="@../../../css/TelaMetas.css" />
-    <Label id="textocriarmeta" layoutX="450.0" layoutY="159.0" prefHeight="43.0" prefWidth="131.0" styleClass="label-subtitulo" stylesheets="@../../../css/TelaMetas.css" text="criar meta?">
+    <Label id="textocriarmeta" layoutX="616.0" layoutY="159.0" prefHeight="43.0" prefWidth="185.0" styleClass="label-subtitulo2" stylesheets="@../../../css/TelaMetas.css" text="criar meta?">
         <font>
-          <Font size="24.0" />
+          <Font size="36.0" />
         </font>
     </Label>
-    <ToggleButton id="botaosimmeta" layoutX="442.0" layoutY="211.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="122.0" styleClass="Toggle-Button-nome" stylesheets="@../../../css/TelaMetas.css" text="sim" />
-    <ToggleButton id="botaonaometa" layoutX="442.0" layoutY="270.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="122.0" styleClass="Toggle-Button-nome" stylesheets="@../../../css/TelaMetas.css" text="não,voltar" />
+    <ToggleButton id="botaosimmeta" layoutX="628.0" layoutY="210.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="122.0" styleClass="Toggle-Button-nome" stylesheets="@../../../css/TelaMetas.css" text="sim" />
+    <ToggleButton id="botaonaometa" layoutX="628.0" layoutY="274.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="122.0" styleClass="Toggle-Button-nome" stylesheets="@../../../css/TelaMetas.css" text="não,voltar" />
     <Label id="textovalordameta" layoutX="37.0" layoutY="330.0" prefHeight="23.0" prefWidth="142.0" styleClass="label-subtitulo" stylesheets="@../../../css/TelaMetas.css" text="valor das meta" />
-    <TextField id="entradavalormeta" layoutX="34.0" layoutY="367.0" prefHeight="34.0" prefWidth="374.0" styleClass="TextField-entrada" stylesheets="@../../../css/TelaMetas.css" />
+    <TextField id="entradavalormeta" layoutX="34.0" layoutY="367.0" prefHeight="34.0" prefWidth="468.0" styleClass="TextField-entrada" stylesheets="@../../../css/TelaMetas.css" />
 </AnchorPane>
