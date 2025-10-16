@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="469.0" prefWidth="884.0" styleClass="janela1" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.financemodel.financepro.doLoginController">
+<AnchorPane prefHeight="469.0" prefWidth="884.0" styleClass="janela1" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.financemodel.financepro.TelaInicialControler">
    <padding>
       <Insets left="6.0" />
    </padding>

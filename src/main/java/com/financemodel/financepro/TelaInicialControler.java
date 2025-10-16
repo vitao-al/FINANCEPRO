@@ -6,7 +6,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
-public class doLoginController {
+public class TelaInicialControler {
 
     @FXML
     private TextField usernameField;
@@ -21,7 +21,7 @@ public class doLoginController {
         loginButton.setOnAction(e -> {
             if (camposValidos()) {
                 try {
-                    LauncherPrincipal.iniciartela2(""); // dashboard ainda não pronto
+                    LauncherPrincipal.iniciartela2("Dashbord.fxml"); // dashboard ainda não pronto
                 } catch (Exception ex) {
                     ex.printStackTrace();
                 }
