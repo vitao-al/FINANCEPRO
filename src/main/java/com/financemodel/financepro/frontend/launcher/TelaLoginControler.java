@@ -1,0 +1,74 @@
+package com.financemodel.financepro.frontend.launcher;
+
+import com.financemodel.financepro.LauncherPrincipal;
+import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleButton;
+import javafx.scene.control.ToggleGroup;
+
+public class TelaLoginControler {
+    public TextField txtRenda1;
+    @FXML
+    private TextField txtNome;
+
+    @FXML
+    private ToggleButton bntcriarconta;
+
+    @FXML
+    private ToggleButton bntvoltaratelainicial;
+
+    @FXML
+    private ToggleButton btnhomem;
+
+    @FXML
+    private ToggleButton btnmulher;
+
+    private ToggleGroup grupoGenero;
+
+    @FXML
+    public void initialize() {
+        // Grupo de gênero
+        grupoGenero = new ToggleGroup();
+        btnhomem.setToggleGroup(grupoGenero);
+        btnmulher.setToggleGroup(grupoGenero);
+
+        // Botão de criar conta
+        bntcriarconta.setOnAction(e -> {
+            if (camposValidos()) {
+                try {
+                    LauncherPrincipal.iniciartela3("TelaLogin2.fxml");
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
+            } else {
+                exibirErro("Preencha todos os campos corretamente!");
+            }
+        });
+
+        // Botão de voltar — sem verificação de campos
+        bntvoltaratelainicial.setOnAction(e -> {
+            try {
+                LauncherPrincipal.iniciartela3("TelaInicial.fxml");
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        });
+    }
+
+    private boolean camposValidos() {
+        boolean nomePreenchido = !txtNome.getText().isEmpty();
+        boolean rendaPreenchida = !txtRenda1.getText().isEmpty();
+        boolean generoSelecionado = grupoGenero.getSelectedToggle() != null;
+
+        return nomePreenchido && rendaPreenchida && generoSelecionado;
+    }
+
+    private void exibirErro(String mensagem) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Erro");
+        alert.setHeaderText(null);
+        alert.setContentText(mensagem);
+        alert.showAndWait();
+    }
+}

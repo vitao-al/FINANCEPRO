@@ -53,6 +53,7 @@ public class MetasHandlerDB extends DatabaseHandler
                     " VALOR_META NUMERIC," +
                     " DATA_INICIAL_META TEXT," +
                     " DATA_FINAL_META TEXT," +
+                    " SALDO_ATUAL NUMERIC," +
                     " UUID TEXT," +
                     " MUID TEXT UNIQUE)";
             this.getStatement().executeUpdate(createTableCommand);
@@ -78,9 +79,10 @@ public class MetasHandlerDB extends DatabaseHandler
                 "VALOR_META, " +
                 "DATA_INICIAL_META, " +
                 "DATA_FINAL_META, " +
+                "SALDO_ATUAL," +
                 "UUID, " +
                 "MUID)" +
-                "VALUES (?,?,?,?,?,?)";
+                "VALUES (?,?,?,?,?,?,?)";
         try{
             SimpleDateFormat fmt = new SimpleDateFormat("dd/MM/yyyy");
             UUID newMetaMUID = UUID.randomUUID();
@@ -89,8 +91,9 @@ public class MetasHandlerDB extends DatabaseHandler
             pst.setFloat(2,valorMeta);
             pst.setString(3,fmt.format(dataInicialMeta));
             pst.setString(4,fmt.format(dataFinalMeta));
-            pst.setString(5,uuid.toString());
-            pst.setString(6,newMetaMUID.toString());
+            pst.setFloat(5,0);
+            pst.setString(6,uuid.toString());
+            pst.setString(7,newMetaMUID.toString());
             pst.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -105,8 +108,8 @@ public class MetasHandlerDB extends DatabaseHandler
      */
     public MetasList getMetas(UUID uuid)
     {
+        String sqlInsert = "SELECT * FROM metas WHERE UUID=(?)";
         try{
-            String sqlInsert = "SELECT * FROM metas WHERE UUID=(?)";
             PreparedStatement pst = this.getConnection().prepareStatement(sqlInsert,Statement.RETURN_GENERATED_KEYS);
             pst.setString(1,uuid.toString());
             ResultSet resultadoBusca = pst.executeQuery();
@@ -121,6 +124,7 @@ public class MetasHandlerDB extends DatabaseHandler
                 m.setValor(resultadoBusca.getFloat("VALOR_META"));
                 m.setDataInicial(fmt.parse(resultadoBusca.getString("DATA_INICIAL_META")));
                 m.setDataFinal(fmt.parse(resultadoBusca.getString("DATA_FINAL_META")));
+                m.setSaldoAtual(resultadoBusca.getFloat("SALDO_ATUAL"));
                 m.setUuid(UUID.fromString(resultadoBusca.getString("UUID")));
                 m.setMuid(UUID.fromString(resultadoBusca.getString("MUID")));
                 metas.add(m);
@@ -133,4 +137,64 @@ public class MetasHandlerDB extends DatabaseHandler
             throw new RuntimeException(e);
         }
     }
+    public Meta getMeta(UUID muid)
+    {
+        String sqlInsert = "SELECT * FROM metas WHERE MUID=(?)";
+        SimpleDateFormat fmt = new SimpleDateFormat("dd/MM/yyyy");
+        try{
+            PreparedStatement pst = this.getConnection().prepareStatement(sqlInsert,Statement.RETURN_GENERATED_KEYS);
+            pst.setString(1,muid.toString());
+            ResultSet resultadoBusca = pst.executeQuery();
+            Meta m = new Meta();
+            while(resultadoBusca.next())
+            {
+                m.setNome(resultadoBusca.getString("NOME_META"));
+                m.setValor(resultadoBusca.getFloat("VALOR_META"));
+                m.setDataInicial(fmt.parse(resultadoBusca.getString("DATA_INICIAL_META")));
+                m.setDataFinal(fmt.parse(resultadoBusca.getString("DATA_FINAL_META")));
+                m.setSaldoAtual(resultadoBusca.getFloat("SALDO_ATUAL"));
+                m.setUuid(UUID.fromString(resultadoBusca.getString("UUID")));
+                m.setMuid(UUID.fromString(resultadoBusca.getString("MUID")));
+            }
+            return m;
+        } catch (SQLException | ParseException e) {
+            throw new RuntimeException(e);
+        }catch (Exception e)
+        {
+            return null;
+        }
+    }
+
+    /**
+     * Atualiza as informações da meta com base nos parametros adicionados
+     * @param muid o id da meta para realizar a atualização
+     */
+    public void updateMetaInfo(UUID muid,String nomeMeta, float valorMeta, Date dataInicialMeta, Date dataFinalMeta,float saldoAtual)
+    {
+
+    }
+
+    /**
+     * Atualiza somente o saldo atual da meta
+     * @param muid o id da meta para se mudar
+     * @param saldoAtual o saldo para atualizar
+     */
+    public void updateMetaInfo(UUID muid,float saldoAtual)
+    {
+        String sqlInsert = "UPDATE metas " +
+                "SET SALDO_ATUAL=(?) " +
+                "WHERE MUID=(?) ";
+        try
+        {
+            PreparedStatement pst = this.getConnection().prepareStatement(sqlInsert, Statement.RETURN_GENERATED_KEYS);
+            pst.setFloat(1,saldoAtual);
+            pst.setString(2,muid.toString());
+            pst.executeUpdate();
+        }
+        catch (SQLException e)
+        {
+            throw new RuntimeException(e);
+        }
+    }
+
 }

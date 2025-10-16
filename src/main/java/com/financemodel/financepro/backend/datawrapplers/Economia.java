@@ -10,7 +10,7 @@ public class Economia implements TransacoesI
     Date data;
     String tipo;
     String categoria;
-    UUID tuid;
+    UUID muid;
     public Economia()
     {
 
@@ -31,8 +31,9 @@ public class Economia implements TransacoesI
         this.data = data;
         this.tipo = tipo;
         this.categoria = categoria;
-        this.tuid = muid;
+        this.muid = muid;
     }
+
 
     @Override
     public String getNome() {
@@ -59,8 +60,8 @@ public class Economia implements TransacoesI
         return categoria;
     }
 
-    public UUID getTuid() {
-        return tuid;
+    public UUID getMuid() {
+        return muid;
     }
 
     public void setNome(String nome) {
@@ -83,7 +84,7 @@ public class Economia implements TransacoesI
         this.categoria = categoria;
     }
 
-    public void setTuid(UUID tuid) {
-        this.tuid = tuid;
+    public void setMuid(UUID muid) {
+        this.muid = muid;
     }
 }

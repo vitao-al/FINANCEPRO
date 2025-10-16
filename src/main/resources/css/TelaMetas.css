@@ -90,3 +90,9 @@
 
 
 }
+.label-subtitulo2{
+        -fx-font-family:"Poppins";
+        -fx-font-size:25px;
+        -fx-text-fill:#ff6300;
+        -fx-font-weight:bold;
+        }

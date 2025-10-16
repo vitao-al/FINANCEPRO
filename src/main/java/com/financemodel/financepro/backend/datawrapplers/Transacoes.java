@@ -1,6 +1,7 @@
 package com.financemodel.financepro.backend.datawrapplers;
 
 import com.financemodel.financepro.backend.database.TransacoesHandlerDB;
+import com.financemodel.financepro.backend.database.MetasHandlerDB;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -12,6 +13,7 @@ public class Transacoes
     ArrayList<Economia> economiasList = new ArrayList<>();
     ArrayList<Despesa> despesasList = new ArrayList<>();
     TransacoesHandlerDB tdb = new TransacoesHandlerDB("Database/Transacoes.db");
+    MetasHandlerDB mdb = new MetasHandlerDB("Database/Metas.db");
 
     public Transacoes() throws SQLException {
     }
@@ -32,6 +34,7 @@ public class Transacoes
      */
     public void inserirNovaEconomia(float valor, Date data, UUID muid)
     {
+        Meta m = mdb.getMeta(muid);
         this.tdb.insertNewTransacao(
                 null,
                 valor,
@@ -40,6 +43,7 @@ public class Transacoes
                 null,
                 muid
         );
+        this.mdb.updateMetaInfo(muid,m.saldoAtual + valor);
     }
 
     /**
@@ -52,6 +56,7 @@ public class Transacoes
      */
     public void inserirNovaDespesa(String nome ,float valor, Date data,String categoria, UUID muid)
     {
+        Meta m = mdb.getMeta(muid);
         this.tdb.insertNewTransacao(
                 nome,
                 valor,
@@ -60,6 +65,7 @@ public class Transacoes
                 categoria,
                 muid
         );
+        this.mdb.updateMetaInfo(muid,m.saldoAtual - valor);
     }
     /**
      * Pega todas as despesas relacionadas a uma meta especifica com base no id da mesma
@@ -90,19 +96,12 @@ public class Transacoes
     public void setDespesasList(ArrayList<Despesa> despesasList) {
         this.despesasList = despesasList;
     }
-
-
-    public static void main(String[] args) throws SQLException {
-        Transacoes t = new Transacoes();
-        //t.inserirNovaEconomia(1200,new Date(2025 - 1900,10,15),UUID.fromString("d1b340a7-f362-464d-856b-883414178521"));
-        for(Economia e : t.pegarEconomiasDB(UUID.fromString("d1b340a7-f362-464d-856b-883414178521")))
-        {
-            System.out.println("NOME DA ECONOMIA:" + e.getNome());
-            System.out.println("VALOR DA ECONOMIA:" + e.getValor());
-            System.out.println("TIPO:" + e.getTipo());
-            System.out.println("CATEGORIA:" + e.getCategoria());
-            System.out.println("DATA:" + e.getData());
-            System.out.println("MUID:" + e.getMuid());
-        }
+    public Meta getMeta(UUID muid)
+    {
+        return this.mdb.getMeta(muid);
+    }
+    public void criarNovaMeta(String nome,float valor,Date dataInicial,Date dataFinal,UUID uuid)
+    {
+        this.mdb.insertNewMeta(nome,valor,dataInicial,dataFinal,uuid);
     }
 }

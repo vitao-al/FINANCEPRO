@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.RadialGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="461.0" maxWidth="871.0" stylesheets="@../../../css/Tela2.css" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.financemodel.financepro.frontend.launcher.TelaLoginControler">
+
+   <ImageView fitHeight="461.0" fitWidth="871.0" pickOnBounds="true">
+      <Image url="@../../../assets/fundoTela2.png" />
+   </ImageView>
+
+   <Label layoutX="195.0" layoutY="96.0" prefHeight="32.0" prefWidth="377.0" styleClass="label-nome" text="Como prefere ser chamado(a)?" />
+
+   <TextField fx:id="txtNome" layoutX="195.0" layoutY="128.0" prefHeight="26.0" prefWidth="500.0" styleClass="TextField-nome" />
+
+   <Label layoutX="199.0" layoutY="247.0" styleClass="label-nome" text="Qual a sua renda mensal?" />
+   <TextField fx:id="txtRenda" layoutX="199.0" layoutY="274.0" prefHeight="26.0" prefWidth="500.0" styleClass="TextField-nome" />
+
+   <ToggleButton fx:id="bntcriarconta" layoutX="195.0" layoutY="398.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="237.0" styleClass="Toggle-Button-nome" text="criar nova conta">
+      <font>
+         <Font name="Poppins Regular" size="12.0" />
+      </font>
+   </ToggleButton>
+
+   <ToggleButton fx:id="bntvoltaratelainicial" layoutX="449.0" layoutY="398.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="231.0" styleClass="Toggle-Button-nome" text="voltar a tela inicial" />
+
+   <Label layoutX="199.0" prefHeight="76.0" prefWidth="459.0" style="-fx-font-family: Poppins; -fx-font-weight: bold;" styleClass="label-titulo" text="NOS CONTE MAIS SOBRE ">
+      <font>
+         <Font name="Poppins Regular" size="28.0" />
+      </font>
+      <textFill>
+         <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
+            <stops>
+               <Stop><color><Color /></color></Stop>
+               <Stop offset="1.0"><color><Color red="1.0" green="1.0" blue="1.0" /></color></Stop>
+            </stops>
+         </RadialGradient>
+      </textFill>
+   </Label>
+
+   <Label layoutX="199.0" layoutY="56.0" prefHeight="40.0" prefWidth="416.0" style="-fx-font-size: 16;" styleClass="label-subtitulo" text="precisamos de alguns dados para continuar" textFill="#cf1212">
+      <font>
+         <Font name="Poppins Regular" size="12.0" />
+      </font>
+   </Label>
+
+   <AnchorPane layoutX="270.0" layoutY="478.0" prefHeight="200.0" prefWidth="832.0" />
+   <ToggleButton fx:id="btnhomem" layoutX="195.0" layoutY="196.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="237.0" styleClass="Toggle-Button-genero" text="Homem">
+      <font>
+         <Font name="Poppins Regular" size="12.0" />
+      </font>
+   </ToggleButton>
+   <ToggleButton fx:id="btnmulher" layoutX="458.0" layoutY="196.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="237.0" styleClass="Toggle-Button-genero" text="Mulher" />
+   <Label layoutX="199.0" layoutY="161.0" prefHeight="28.0" prefWidth="283.0" styleClass="label-nome" stylesheets="@../../../css/Tela2.css" text="Qual seu gênero?" />
+   <Label layoutX="195.0" layoutY="311.0" prefHeight="27.0" prefWidth="217.0" styleClass="label-nome" stylesheets="@../../../css/Tela2.css" text="Crie uma senha " />
+   <TextField fx:id="txtRenda1" layoutX="195.0" layoutY="338.0" prefHeight="26.0" prefWidth="500.0" styleClass="TextField-nome" />
+</Pane>
