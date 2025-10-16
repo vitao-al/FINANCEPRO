@@ -3,7 +3,7 @@ package com.financemodel.financepro.backend.datawrapplers;
 import java.util.Date;
 import java.util.UUID;
 
-public class Economia implements TransacoesI
+public class Despesa implements TransacoesI
 {
     String nome;
     float valor;
@@ -11,20 +11,21 @@ public class Economia implements TransacoesI
     String tipo;
     String categoria;
     UUID tuid;
-    public Economia()
+    public Despesa()
     {
 
     }
+
     /**
-     * cria um novo objeto Economia baseado nos seguintes parametros:
-     * @param nome nome da economia
-     * @param valor valor em float da economia
-     * @param data data em Date(java.util.Date) da economia
+     * cria um novo objeto despesa baseado nos seguintes parametros:
+     * @param nome nome da despesa
+     * @param valor valor em float da despesa
+     * @param data data em Date(java.util.Date) da despesa
      * @param tipo tipo da despesa(string) futuramente em enum
      * @param categoria categoria da despesa(string) futuramente em enum
-     * @param muid o id da meta que a economia é pertencente
+     * @param muid o id da meta que a despesa é pertencente
      */
-    public Economia(String nome, float valor, Date data, String tipo, String categoria, UUID muid)
+    public Despesa(String nome, float valor, Date data,String tipo,String categoria,UUID muid)
     {
         this.nome = nome;
         this.valor = valor;
@@ -33,36 +34,6 @@ public class Economia implements TransacoesI
         this.categoria = categoria;
         this.tuid = muid;
     }
-
-    @Override
-    public String getNome() {
-        return nome;
-    }
-
-    @Override
-    public float getValor() {
-        return valor;
-    }
-
-    @Override
-    public Date getData() {
-        return data;
-    }
-
-    @Override
-    public String getTipo() {
-        return tipo;
-    }
-
-    @Override
-    public String getCategoria() {
-        return categoria;
-    }
-
-    public UUID getTuid() {
-        return tuid;
-    }
-
     public void setNome(String nome) {
         this.nome = nome;
     }
@@ -86,4 +57,5 @@ public class Economia implements TransacoesI
     public void setTuid(UUID tuid) {
         this.tuid = tuid;
     }
+
 }

@@ -1,5 +1,7 @@
 package com.financemodel.financepro.backend.database;
 
+import com.financemodel.financepro.backend.datawrapplers.Usuario;
+
 import java.math.BigDecimal;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -7,7 +9,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.UUID;
 
-public class UserDatabaseHandler extends DatabaseHandler
+public class UsuariosHandlerDB extends DatabaseHandler
 {
     /**
      * Cria um Handler para o banco de dados de usuarios, para poder usar as funções do banco de dados
@@ -15,7 +17,7 @@ public class UserDatabaseHandler extends DatabaseHandler
      * @throws SQLException - Caso de algum erro joga o SQLException como valor padrão
      */
 
-    UserDatabaseHandler(String databasePath) throws SQLException
+    public UsuariosHandlerDB(String databasePath) throws SQLException
     {
         super(databasePath);
         this.createUserDBTable();
@@ -37,7 +39,7 @@ public class UserDatabaseHandler extends DatabaseHandler
         try
         {
             String createTableCommand = "" +
-                    "CREATE TABLE IF NOT EXISTS users (USUARIO TEXT UNIQUE," +
+                    "CREATE TABLE IF NOT EXISTS usuarios (USERNAME TEXT UNIQUE," +
                     " SENHA TEXT," +
                     " SEXO TEXT CHECK(length(SEXO) = 1)," +
                     " RENDA NUMERIC," +
@@ -58,16 +60,16 @@ public class UserDatabaseHandler extends DatabaseHandler
      * @param renda - Tipo BigDecimal, serve para representar a quantia de renda(obs: na hora de usar como parameter lembre-se de
      *              converter o valor que o usuário digitou para BigDecimal)
      */
-    public void createNewUserDatabase(String usuario, String senha, char sexo, BigDecimal renda)
+    public void insertNewUsuario(String usuario, String senha, String sexo, float renda)
     {
-        String sqlInsert = "INSERT INTO users (USUARIO, SENHA, SEXO, RENDA, UUID) VALUES (?,?,?,?,?)";
+        String sqlInsert = "INSERT INTO usuarios (USERNAME, SENHA, SEXO, RENDA, UUID) VALUES (?,?,?,?,?)";
         try{
             UUID newUserUUID = UUID.randomUUID();
             PreparedStatement pst = this.getConnection().prepareStatement(sqlInsert, Statement.RETURN_GENERATED_KEYS);
             pst.setString(1,usuario);
             pst.setString(2,senha);
-            pst.setString(3,Character.toString(sexo));
-            pst.setBigDecimal(4,renda);
+            pst.setString(3,sexo);
+            pst.setFloat(4,renda);
             pst.setString(5,newUserUUID.toString());
             pst.executeUpdate();
         } catch (SQLException e) {
@@ -76,23 +78,30 @@ public class UserDatabaseHandler extends DatabaseHandler
     }
 
     /**
-     * Verifica se o usuario existe, com base no usuario digitado e na senha, caso os dois estejam corretos, retorna o UUID(‘String’)
+     * Verifica se o usuario existe, com base no usuario digitado e na senha, caso os dois estejam corretos, retorna o objeto Usuario
      * Caso o contrário retorna NULL
      * @param usuario ‘String’ do nome do usuário
      * @param senha ‘String’ da senha do usuário
      * @return Se o usuário existir retorna uma ‘string’ com UUID do usuário, caso contrario retorna um valor null;
      */
-    public String verifyLoginInUserDatabase(String usuario, String senha)
+    public Usuario getLogin(String usuario, String senha)
     {
-        try{
-            String sqlInsert = "SELECT * FROM users WHERE USUARIO=(?) AND SENHA=(?)";
+        try
+        {
+            Usuario user = new Usuario();
+            String sqlInsert = "SELECT * FROM usuarios WHERE USERNAME=(?) AND SENHA=(?)";
             PreparedStatement pst = this.getConnection().prepareStatement(sqlInsert,Statement.RETURN_GENERATED_KEYS);
             pst.setString(1,usuario);
             pst.setString(2,senha);
             ResultSet resultadoBusca = pst.executeQuery();
             if(resultadoBusca.next())
             {
-                return resultadoBusca.getString("UUID");
+                user.setUsername(resultadoBusca.getString("USERNAME"));
+                user.setPassword(resultadoBusca.getString("SENHA"));
+                user.setSexo(resultadoBusca.getString("SEXO"));
+                user.setRenda(resultadoBusca.getFloat("RENDA"));
+                user.setUuid(UUID.fromString(resultadoBusca.getString("UUID")));
+                return user;
             }
             else{
                 return null;

@@ -12,19 +12,39 @@ import java.util.Date;
 import java.util.UUID;
 import java.util.ArrayList;
 
-public class UserMetasDatabaseHandler extends DatabaseHandler
+public class MetasHandlerDB extends DatabaseHandler
 {
-
-    UserMetasDatabaseHandler()
+    /**
+     * Construtor padrão Do banco de dados das metas
+     */
+    MetasHandlerDB()
     {
 
     }
-    public UserMetasDatabaseHandler(String databasePath) throws SQLException
+
+    /**
+     * Construtor do banco de dados das metas dos usuarios
+     *
+     * @param databasePath Caminho para o arquivo do banco de dados Metas.db
+     * @throws SQLException
+     */
+    public MetasHandlerDB(String databasePath) throws SQLException
     {
         super(databasePath);
-        this.createUserMetasDBTable();
+        this.createNewMetasTable();
     }
-    public void createUserMetasDBTable() throws SQLException
+
+    /**
+     * cria uma nova tabela de metas com os campos :
+     * <p>NOME_META</p>
+     * <p>VALOR_META</p>
+     * <p>DATA_INICIAL_META</p>
+     * <p>DATA_FINAL_META</p>
+     * <p>UUID</p>
+     * <p>MUID</p>
+     * @throws SQLException
+     */
+    public void createNewMetasTable() throws SQLException
     {
         try
         {
@@ -42,7 +62,16 @@ public class UserMetasDatabaseHandler extends DatabaseHandler
             System.err.println("ERRO NO BANCO DE DADOS:" + e);
         }
     }
-    public void createNewMetasDatabase(String nomeMeta, float valorMeta, Date dataInicialMeta, Date dataFinalMeta,UUID uuid)
+
+    /**
+     * função ultilizada para inserir uma nova meta no banco de dados
+     * @param nomeMeta o nome da meta a ser inserido
+     * @param valorMeta o valor em float da meta
+     * @param dataInicialMeta a data inicial de classe Date do java.util.Date
+     * @param dataFinalMeta a data final de classe Date do java.util.Date
+     * @param uuid o uuid do usuario
+     */
+    public void insertNewMeta(String nomeMeta, float valorMeta, Date dataInicialMeta, Date dataFinalMeta, UUID uuid)
     {
         String sqlInsert = "INSERT INTO metas " +
                 "(NOME_META, " +
@@ -74,7 +103,7 @@ public class UserMetasDatabaseHandler extends DatabaseHandler
         @param uuid Valor do uuid do usuario para fazer a busca
         @return um ArrayList<Meta> de todas as metas encontradas do usuario
      */
-    public MetasList queryUserMetasInMetasDatabase(UUID uuid)
+    public MetasList getMetas(UUID uuid)
     {
         try{
             String sqlInsert = "SELECT * FROM metas WHERE UUID=(?)";
@@ -104,15 +133,4 @@ public class UserMetasDatabaseHandler extends DatabaseHandler
             throw new RuntimeException(e);
         }
     }
-    public static void main(String[] args) throws SQLException {
-        var db = new UserMetasDatabaseHandler("Database/userMetasDatabase.db");
-
-        Date dataInicial = new Date(2006,11,13);
-        Date dataFinal = new Date(2025,3,27);
-
-        //db.createNewMetasDatabase("meta2",3560,dataInicial,dataFinal,"TRANSPORTE",UUID.fromString("9d54ee9a-ccbc-458a-b1b3-3db4b98e8c5a"));
-        MetasList metasUser = db.queryUserMetasInMetasDatabase(UUID.fromString("9d54ee9a-ccbc-458a-b1b3-3db4b98e8c5a"));
-        metasUser.printMetas();
-    }
-
 }

@@ -59,23 +59,5 @@ public class DatabaseHandler
         }
 
     }
-    /**
-     *  Verifica se a conexão com o banco de dados foi sucedida e se o atributo statement é diferente de nulo
-     *  Caso seja nulo, lança uma exception RuntimeException
-     *
-     * @throws RuntimeException Caso o atributo statement responsavel por rodar comandos no banco de dados seja nulo;
-     *
-     */
-    void verifyStatement()
-    {
-        // HF : o ideal é rodar isso em todas as funções do banco de dados para verificar se o statement é nulo ou nn
-        if(this.getStatement() == null)
-        {
-            System.err.println("ERROR, STATEMENT TEM QUE TER UM VALOR DIFERENTE DE NULL");
-            throw new RuntimeException("DatabaseHandler statement IGUAL A NULL!");
-        }
-    }
-
-
 
 }
