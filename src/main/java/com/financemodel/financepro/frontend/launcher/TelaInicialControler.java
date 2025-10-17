@@ -32,15 +32,10 @@ public class TelaInicialControler {
         });
 
         registerButton.setOnAction(e -> {
-            if (camposValidos()) {
-                try {
-                    LauncherPrincipal.iniciartela3("TelaLogin.fxml");
-                } catch (Exception ex) {
-                    throw new RuntimeException(ex);
-                }
-
-            } else {
-                exibirErro("Preencha todos os campos corretamente!");
+            try {
+                LauncherPrincipal.iniciartela3("TelaLogin.fxml");
+            } catch (Exception ex) {
+                throw new RuntimeException(ex);
             }
         });
     }
