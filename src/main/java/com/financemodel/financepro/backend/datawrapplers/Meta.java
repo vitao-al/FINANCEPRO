@@ -11,6 +11,7 @@ public class Meta
     Float valor;
     Date dataInicial;
     Date dataFinal;
+    Float saldoAtual;
     UUID uuid;
     UUID muid;
 
@@ -26,6 +27,7 @@ public class Meta
         this.dataFinal = dataFinal;
         this.uuid = uuid;
         this.muid = muid;
+        this.saldoAtual = (float) 0;
     }
 
     public String getNome() {
@@ -60,6 +62,13 @@ public class Meta
         this.dataFinal = dataFinal;
     }
 
+    public Float getSaldoAtual() {
+        return saldoAtual;
+    }
+
+    public void setSaldoAtual(Float saldoAtual) {
+        this.saldoAtual = saldoAtual;
+    }
 
     public UUID getUuid() {
         return uuid;
@@ -82,4 +91,5 @@ public class Meta
         TimeUnit time = TimeUnit.DAYS;
         return time.convert(Duration.ofDays(this.getDataFinal().getTime() - this.getDataInicial().getTime()));
     }
+
 }

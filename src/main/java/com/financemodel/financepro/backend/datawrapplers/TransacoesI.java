@@ -10,7 +10,7 @@ public interface TransacoesI
     Date data = new Date();
     String tipo = "";
     String categoria = "";
-    UUID tuid = null;
+    UUID muid = null;
 
     default String getNome() {
         return nome;
@@ -53,10 +53,10 @@ public interface TransacoesI
     }
 
     default UUID getMuid() {
-        return tuid;
+        return muid;
     }
 
-    default void setTuid(UUID tuid) {
+    default void setMuid(UUID muid) {
 
     }
 }

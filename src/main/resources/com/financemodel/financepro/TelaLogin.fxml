@@ -12,7 +12,7 @@
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="461.0" maxWidth="871.0" stylesheets="@../../../css/Tela2.css" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.financemodel.financepro.TelaLoginControler">
+<Pane maxHeight="461.0" maxWidth="871.0" stylesheets="@../../../css/Tela2.css" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.financemodel.financepro.frontend.launcher.TelaLoginControler">
 
    <ImageView fitHeight="461.0" fitWidth="871.0" pickOnBounds="true">
       <Image url="@../../../assets/fundoTela2.png" />

@@ -1,4 +1,4 @@
-package com.financemodel.financepro;
+package com.financemodel.financepro.frontend.launcher;
 
 import javafx.scene.layout.AnchorPane;
 

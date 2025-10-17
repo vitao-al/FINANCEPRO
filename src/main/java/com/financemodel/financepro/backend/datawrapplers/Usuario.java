@@ -4,6 +4,7 @@ import com.financemodel.financepro.backend.database.UsuariosHandlerDB;
 
 import java.math.BigDecimal;
 import java.sql.SQLException;
+import java.util.Date;
 import java.util.UUID;
 
 
@@ -13,10 +14,11 @@ import java.util.UUID;
 public class Usuario
 {
     static UsuariosHandlerDB udb;
-
+    Transacoes t = new Transacoes();
     static {
         try {
             udb = new UsuariosHandlerDB("Database/Usuarios.db");
+
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -53,7 +55,18 @@ public class Usuario
     {
         return uuid;
     }
-
+    public void criarNovaMeta(String nome, float valor, Date dataFinal)
+    {
+        this.t.criarNovaMeta(nome,valor,new Date(),dataFinal,this.getUuid());
+    }
+    public void criarNovaEconomia(float valor,UUID muid)
+    {
+        this.t.inserirNovaEconomia(valor,new Date(),muid);
+    }
+    public void criarNovaDespesa(String nome,float valor,String categoria,UUID muid)
+    {
+        this.t.inserirNovaDespesa(nome,valor,new Date(),categoria,muid);
+    }
     public void setUuid(UUID uuid)
     {
         this.uuid = uuid;
@@ -88,7 +101,10 @@ public class Usuario
     {
         this.sexo = sexo;
     }
-
+    public Meta PegarMeta(UUID muid)
+    {
+        return this.t.getMeta(muid);
+    }
     public float getRenda() {
         return renda;
     }
@@ -124,5 +140,6 @@ public class Usuario
     {
         //Usuario.criarNovoUsuario("teste","12345","M",new BigDecimal(2500));
         Usuario u = Usuario.PegarLoginUsuario("teste","12345");
+        u.criarNovaDespesa("Passagem de avião",200,"TRANSPORTE",UUID.fromString("047fec83-8fda-4f5d-b374-2550ecae49fe"));
     }
 }

@@ -14,4 +14,6 @@ module com.testeexemplo.demo {
 
     opens com.financemodel.financepro to javafx.fxml;
     exports com.financemodel.financepro;
+    exports com.financemodel.financepro.frontend.launcher;
+    opens com.financemodel.financepro.frontend.launcher to javafx.fxml;
 }

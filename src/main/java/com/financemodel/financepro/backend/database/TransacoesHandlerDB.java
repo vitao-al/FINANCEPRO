@@ -37,9 +37,9 @@ public class TransacoesHandlerDB extends DatabaseHandler
                     "CREATE TABLE IF NOT EXISTS transacoes (NOME_TRANSACAO TEXT ," +
                     " VALOR_TRANSACAO NUMERIC," +
                     " DATA_TRANSACAO TEXT," +
-                    "TIPO_TRANSACAO TEXT,"+
+                    " TIPO_TRANSACAO TEXT,"+
                     " CATEGORIA TEXT," +
-                    " MUID TEXT )";
+                    " MUID TEXT)";
             this.getStatement().executeUpdate(createTableCommand);
         }
         catch (SQLException e)
@@ -107,7 +107,7 @@ public class TransacoesHandlerDB extends DatabaseHandler
                 m.setData(fmt.parse(resultadoBusca.getString("DATA_TRANSACAO")));
                 m.setTipo(resultadoBusca.getString("TIPO_TRANSACAO"));
                 m.setCategoria(resultadoBusca.getString("CATEGORIA"));
-                m.setTuid(UUID.fromString(resultadoBusca.getString("MUID")));
+                m.setMuid(UUID.fromString(resultadoBusca.getString("MUID")));
                 economias.add(m);
             }
             return economias;
@@ -142,7 +142,7 @@ public class TransacoesHandlerDB extends DatabaseHandler
                 d.setData(fmt.parse(resultadoBusca.getString("DATA_TRANSACAO")));
                 d.setTipo(resultadoBusca.getString("TIPO_TRANSACAO"));
                 d.setCategoria(resultadoBusca.getString("CATEGORIA"));
-                d.setTuid(UUID.fromString(resultadoBusca.getString("MUID")));
+                d.setMuid(UUID.fromString(resultadoBusca.getString("MUID")));
                 despesas.add(d);
             }
             return despesas;

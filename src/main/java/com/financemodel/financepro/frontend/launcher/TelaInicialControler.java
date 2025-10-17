@@ -1,5 +1,6 @@
-package com.financemodel.financepro;
+package com.financemodel.financepro.frontend.launcher;
 
+import com.financemodel.financepro.LauncherPrincipal;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;

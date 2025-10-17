@@ -10,7 +10,8 @@ public class Despesa implements TransacoesI
     Date data;
     String tipo;
     String categoria;
-    UUID tuid;
+    UUID muid;
+
     public Despesa()
     {
 
@@ -32,30 +33,63 @@ public class Despesa implements TransacoesI
         this.data = data;
         this.tipo = tipo;
         this.categoria = categoria;
-        this.tuid = muid;
+        this.muid = muid;
     }
+
+    @Override
+    public String getNome() {
+        return TransacoesI.super.getNome();
+    }
+
     public void setNome(String nome) {
         this.nome = nome;
+    }
+
+    @Override
+    public float getValor() {
+        return TransacoesI.super.getValor();
     }
 
     public void setValor(float valor) {
         this.valor = valor;
     }
 
+    @Override
+    public Date getData() {
+        return TransacoesI.super.getData();
+    }
+
     public void setData(Date data) {
         this.data = data;
+    }
+
+    @Override
+    public String getTipo() {
+        return TransacoesI.super.getTipo();
     }
 
     public void setTipo(String tipo) {
         this.tipo = tipo;
     }
 
+    @Override
+    public String getCategoria() {
+        return TransacoesI.super.getCategoria();
+    }
+
     public void setCategoria(String categoria) {
         this.categoria = categoria;
     }
 
-    public void setTuid(UUID tuid) {
-        this.tuid = tuid;
+    @Override
+    public UUID getMuid() {
+        return TransacoesI.super.getMuid();
     }
+
+    public void setMuid(UUID muid) {
+        this.muid = muid;
+    }
+
+
 
 }
