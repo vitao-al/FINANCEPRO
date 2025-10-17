@@ -20,10 +20,10 @@
 
    <Label layoutX="195.0" layoutY="96.0" prefHeight="32.0" prefWidth="377.0" styleClass="label-nome" text="Como prefere ser chamado(a)?" />
 
-   <TextField fx:id="txtNome" layoutX="195.0" layoutY="128.0" prefHeight="26.0" prefWidth="500.0" styleClass="TextField-nome" />
+   <TextField fx:id="txtNome" layoutX="195.0" layoutY="128.0" prefHeight="32.0" prefWidth="500.0" styleClass="TextField-nome" />
 
    <Label layoutX="199.0" layoutY="247.0" styleClass="label-nome" text="Qual a sua renda mensal?" />
-   <TextField fx:id="txtRenda" layoutX="199.0" layoutY="274.0" prefHeight="26.0" prefWidth="500.0" styleClass="TextField-nome" />
+   <TextField fx:id="txtRenda1" layoutX="199.0" layoutY="274.0" prefHeight="32.0" prefWidth="500.0" styleClass="TextField-nome" />
 
    <ToggleButton fx:id="bntcriarconta" layoutX="195.0" layoutY="398.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="237.0" styleClass="Toggle-Button-nome" text="criar nova conta">
       <font>
@@ -62,5 +62,5 @@
    <ToggleButton fx:id="btnmulher" layoutX="458.0" layoutY="196.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="237.0" styleClass="Toggle-Button-genero" text="Mulher" />
    <Label layoutX="199.0" layoutY="161.0" prefHeight="28.0" prefWidth="283.0" styleClass="label-nome" stylesheets="@../../../css/Tela2.css" text="Qual seu gênero?" />
    <Label layoutX="195.0" layoutY="311.0" prefHeight="27.0" prefWidth="217.0" styleClass="label-nome" stylesheets="@../../../css/Tela2.css" text="Crie uma senha " />
-   <TextField fx:id="txtRenda1" layoutX="195.0" layoutY="338.0" prefHeight="26.0" prefWidth="500.0" styleClass="TextField-nome" />
+   <TextField fx:id="txtSenha" layoutX="195.0" layoutY="338.0" prefHeight="32.0" prefWidth="500.0" styleClass="TextField-nome" />
 </Pane>

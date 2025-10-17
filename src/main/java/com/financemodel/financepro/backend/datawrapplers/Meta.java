@@ -1,26 +1,31 @@
 package com.financemodel.financepro.backend.datawrapplers;
 
+import com.financemodel.financepro.backend.database.TransacoesHandlerDB;
+
+import java.sql.SQLException;
 import java.time.Duration;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 
 public class Meta
 {
+    TransacoesHandlerDB tdb = new TransacoesHandlerDB("Database/Transacoes.db");
     String nome;
     Float valor;
+    String descricao;
     Date dataInicial;
     Date dataFinal;
     Float saldoAtual;
     UUID uuid;
     UUID muid;
-
-    public Meta()
-    {
+    ArrayList<Economia> economiasMeta;
+    ArrayList<Despesa> despesasMeta;
+    public Meta() throws SQLException {
 
     }
-    public Meta(String nome,Float valor,Date dataInicial,Date dataFinal ,UUID uuid, UUID muid)
-    {
+    public Meta(String nome,Float valor,String descricao,Date dataInicial,Date dataFinal ,UUID uuid, UUID muid) throws SQLException {
         this.nome = nome;
         this.valor = valor;
         this.dataInicial = dataInicial;
@@ -28,6 +33,7 @@ public class Meta
         this.uuid = uuid;
         this.muid = muid;
         this.saldoAtual = (float) 0;
+        this.descricao = descricao;
     }
 
     public String getNome() {
@@ -66,8 +72,43 @@ public class Meta
         return saldoAtual;
     }
 
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
+
     public void setSaldoAtual(Float saldoAtual) {
         this.saldoAtual = saldoAtual;
+    }
+
+    public ArrayList<Economia> getEconomiasMeta() {
+        return economiasMeta;
+    }
+
+    public void setEconomiasMeta(ArrayList<Economia> economiasMeta) {
+        this.economiasMeta = economiasMeta;
+    }
+
+    public ArrayList<Despesa> getDespesasMeta() {
+        return despesasMeta;
+    }
+
+    public void setDespesasMeta(ArrayList<Despesa> despesasMeta) {
+        this.despesasMeta = despesasMeta;
+    }
+
+    public ArrayList<Economia> pegarTodasEconomias()
+    {
+        this.setEconomiasMeta(this.tdb.getEconomiasOfTransacoes(this.muid));
+        return this.getEconomiasMeta();
+    }
+    public ArrayList<Despesa> pegarTodasDespesas()
+    {
+        this.setDespesasMeta(this.tdb.getDespesasOfTransacoes(this.muid));
+        return this.getDespesasMeta();
     }
 
     public UUID getUuid() {
