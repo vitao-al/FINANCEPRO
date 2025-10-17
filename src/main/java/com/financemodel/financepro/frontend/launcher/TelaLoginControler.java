@@ -8,6 +8,7 @@ import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
 
 public class TelaLoginControler {
+    @FXML
     public TextField txtRenda1;
     @FXML
     private TextField txtNome;
@@ -23,7 +24,9 @@ public class TelaLoginControler {
 
     @FXML
     private ToggleButton btnmulher;
-
+    @FXML
+    private TextField txtSenha;
+    @FXML
     private ToggleGroup grupoGenero;
 
     @FXML
@@ -57,8 +60,10 @@ public class TelaLoginControler {
     }
 
     private boolean camposValidos() {
-        boolean nomePreenchido = !txtNome.getText().isEmpty();
-        boolean rendaPreenchida = !txtRenda1.getText().isEmpty();
+        boolean nomePreenchido = txtNome.getText().matches("[a-zA-Z]+");
+        boolean rendaPreenchida = txtRenda1.getText().matches("[0-9]+");
+        System.out.println("Renda regex:" + rendaPreenchida);
+        System.out.println("Renda:" + txtRenda1.getText());
         boolean generoSelecionado = grupoGenero.getSelectedToggle() != null;
 
         return nomePreenchido && rendaPreenchida && generoSelecionado;
