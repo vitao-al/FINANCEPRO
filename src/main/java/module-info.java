@@ -12,8 +12,18 @@ module com.testeexemplo.demo {
     requires com.almasb.fxgl.all;
     requires java.sql;
 
-    opens com.financemodel.financepro to javafx.fxml;
-    exports com.financemodel.financepro;
-    exports com.financemodel.financepro.frontend.launcher;
-    opens com.financemodel.financepro.frontend.launcher to javafx.fxml;
+    opens com.financepro.model to javafx.fxml;
+    exports com.financepro.model;
+
+    exports com.financepro.model.frontend;
+    opens com.financepro.model.frontend to javafx.fxml;
+
+    exports com.financepro.model.frontend.controllers;
+    opens com.financepro.model.frontend.controllers to javafx.fxml;
+
+    exports com.financepro.model.backend;
+    opens com.financepro.model.backend to javafx.fxml;
+
+    exports com.financepro.model.frontend.launcher;
+    opens com.financepro.model.frontend.launcher to javafx.fxml;
 }
