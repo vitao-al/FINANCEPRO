@@ -51,6 +51,7 @@ public class MetasHandlerDB extends DatabaseHandler
             String createTableCommand = "" +
                     "CREATE TABLE IF NOT EXISTS metas (NOME_META TEXT UNIQUE," +
                     " VALOR_META NUMERIC," +
+                    " DESCRICAO_META TEXT," +
                     " DATA_INICIAL_META TEXT," +
                     " DATA_FINAL_META TEXT," +
                     " SALDO_ATUAL NUMERIC," +
@@ -72,17 +73,18 @@ public class MetasHandlerDB extends DatabaseHandler
      * @param dataFinalMeta a data final de classe Date do java.util.Date
      * @param uuid o uuid do usuario
      */
-    public void insertNewMeta(String nomeMeta, float valorMeta, Date dataInicialMeta, Date dataFinalMeta, UUID uuid)
+    public void insertNewMeta(String nomeMeta, float valorMeta,String descricao,Date dataInicialMeta, Date dataFinalMeta, UUID uuid)
     {
         String sqlInsert = "INSERT INTO metas " +
                 "(NOME_META, " +
                 "VALOR_META, " +
+                "DESCRICAO_META, " +
                 "DATA_INICIAL_META, " +
                 "DATA_FINAL_META, " +
                 "SALDO_ATUAL," +
                 "UUID, " +
                 "MUID)" +
-                "VALUES (?,?,?,?,?,?,?)";
+                "VALUES (?,?,?,?,?,?,?,?)";
         try{
             SimpleDateFormat fmt = new SimpleDateFormat("dd/MM/yyyy");
             UUID newMetaMUID = UUID.randomUUID();
@@ -122,6 +124,7 @@ public class MetasHandlerDB extends DatabaseHandler
                 Meta m = new Meta();
                 m.setNome(resultadoBusca.getString("NOME_META"));
                 m.setValor(resultadoBusca.getFloat("VALOR_META"));
+                m.setDescricao(resultadoBusca.getString("DESCRICAO_META"));
                 m.setDataInicial(fmt.parse(resultadoBusca.getString("DATA_INICIAL_META")));
                 m.setDataFinal(fmt.parse(resultadoBusca.getString("DATA_FINAL_META")));
                 m.setSaldoAtual(resultadoBusca.getFloat("SALDO_ATUAL"));

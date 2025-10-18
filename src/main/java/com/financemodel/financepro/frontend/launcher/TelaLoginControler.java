@@ -62,8 +62,6 @@ public class TelaLoginControler {
     private boolean camposValidos() {
         boolean nomePreenchido = txtNome.getText().matches("[a-zA-Z]+");
         boolean rendaPreenchida = txtRenda1.getText().matches("[0-9]+");
-        System.out.println("Renda regex:" + rendaPreenchida);
-        System.out.println("Renda:" + txtRenda1.getText());
         boolean generoSelecionado = grupoGenero.getSelectedToggle() != null;
 
         return nomePreenchido && rendaPreenchida && generoSelecionado;

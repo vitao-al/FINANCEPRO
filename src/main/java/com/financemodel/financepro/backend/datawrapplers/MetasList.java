@@ -6,6 +6,7 @@ import java.util.ArrayList;
 public class MetasList
 {
     ArrayList<Meta> metasList = new ArrayList<>();
+
     public ArrayList<Meta> getMetasList() {
         return metasList;
     }
@@ -17,6 +18,35 @@ public class MetasList
     public ArrayList<Meta> getMetasFromUUID() throws SQLException
     {
         return this.getMetasList();
+    }
+
+    public ArrayList<Economia> getAllEconomias()
+    {
+        ArrayList<Economia> economias = new ArrayList<>();
+        for(Meta m : metasList)
+        {
+            for(Economia e : m.getEconomiasMeta())
+            {
+                economias.add(e);
+            }
+        }
+        return economias;
+    }
+    public ArrayList<Despesa> getAllDespesas()
+    {
+        ArrayList<Despesa> despesas = new ArrayList<>();
+        for(Meta m : metasList)
+        {
+            for(Despesa d : m.getDespesasMeta())
+            {
+                despesas.add(d);
+            }
+        }
+        return despesas;
+    }
+    public void getMetasListFromDB()
+    {
+
     }
     public void printMetas() throws SQLException {
         for(Meta m : this.getMetasList())

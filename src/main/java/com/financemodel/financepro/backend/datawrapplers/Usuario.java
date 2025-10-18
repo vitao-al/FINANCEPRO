@@ -4,6 +4,7 @@ import com.financemodel.financepro.backend.database.UsuariosHandlerDB;
 
 import java.math.BigDecimal;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.UUID;
 
@@ -29,7 +30,9 @@ public class Usuario
     String sexo;
     float renda;
     UUID uuid;
-
+    MetasList todasAsMetas;
+    ArrayList<Economia> todasAsEconomias;
+    ArrayList<Despesa> todasAsDespesas;
     public Usuario() throws SQLException {
 
     }
@@ -55,9 +58,13 @@ public class Usuario
     {
         return uuid;
     }
-    public void criarNovaMeta(String nome, float valor, Date dataFinal)
+    public void criarNovaMeta(String nome, float valor,String descricao, Date dataFinal)
     {
-        this.t.criarNovaMeta(nome,valor,new Date(),dataFinal,this.getUuid());
+        this.t.criarNovaMeta(nome,valor,descricao,new Date(),dataFinal,this.getUuid());
+    }
+    public void criarNovaMeta(String nome, float valor,String descricao,Date dataInicial,Date dataFinal)
+    {
+        this.t.criarNovaMeta(nome,valor,descricao,dataInicial,dataFinal,this.getUuid());
     }
     public void criarNovaEconomia(float valor,UUID muid)
     {
@@ -107,6 +114,47 @@ public class Usuario
     }
     public float getRenda() {
         return renda;
+    }
+
+    public MetasList getTodasAsMetas() {
+        return todasAsMetas;
+    }
+
+    public void setTodasAsMetas(MetasList todasAsMetas) {
+        this.todasAsMetas = todasAsMetas;
+    }
+
+    public MetasList pegarTodasAsMetas()
+    {
+        this.setTodasAsMetas(this.t.getAllMetas(this.uuid));
+        return this.todasAsMetas;
+    }
+
+    public ArrayList<Economia> getTodasAsEconomias() {
+        return todasAsEconomias;
+    }
+
+    public void setTodasAsEconomias(ArrayList<Economia> todasAsEconomias) {
+        this.todasAsEconomias = todasAsEconomias;
+    }
+
+    public ArrayList<Despesa> getTodasAsDespesas() {
+        return todasAsDespesas;
+    }
+
+    public void setTodasAsDespesas(ArrayList<Despesa> todasAsDespesas) {
+        this.todasAsDespesas = todasAsDespesas;
+    }
+
+    public ArrayList<Economia> pegarTodasEconomias()
+    {
+        this.setTodasAsEconomias(this.todasAsMetas.getAllEconomias());
+        return this.getTodasAsEconomias();
+    }
+    public ArrayList<Despesa> pegarTodasDespesas()
+    {
+        this.setTodasAsDespesas(this.todasAsMetas.getAllDespesas());
+        return this.getTodasAsDespesas();
     }
 
     /**

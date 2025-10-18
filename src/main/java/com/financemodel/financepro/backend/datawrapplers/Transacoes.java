@@ -100,8 +100,12 @@ public class Transacoes
     {
         return this.mdb.getMeta(muid);
     }
-    public void criarNovaMeta(String nome,float valor,Date dataInicial,Date dataFinal,UUID uuid)
+    public MetasList getAllMetas(UUID uuid)
     {
-        this.mdb.insertNewMeta(nome,valor,dataInicial,dataFinal,uuid);
+        return this.mdb.getMetas(uuid);
+    }
+    public void criarNovaMeta(String nome,float valor,String descricao,Date dataInicial,Date dataFinal,UUID uuid)
+    {
+        this.mdb.insertNewMeta(nome,valor,descricao,dataInicial,dataFinal,uuid);
     }
 }
