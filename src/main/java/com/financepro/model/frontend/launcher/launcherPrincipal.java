@@ -31,31 +31,28 @@ public class launcherPrincipal extends Application {
         primeiroStage.show();
     }
 
-    /**
-     * Troca de view com animação suave para a esquerda
-     */
     public static void changeView(String nometela) throws Exception {
         Parent novaView = FXMLLoader.load(launcherPrincipal.class.getResource(nometela));
 
-        // Coloca a nova view à direita do container
+
         novaView.setTranslateX(root.getWidth());
         root.getChildren().add(novaView);
 
-        // Pane atual
+
         Parent atualView = (Parent) root.getChildren().get(0);
 
-        // Animação do atual saindo para a esquerda
+
         TranslateTransition sair = new TranslateTransition(Duration.millis(500), atualView);
         sair.setToX(-root.getWidth());
 
-        // Animação da nova entrando da direita
+
         TranslateTransition entrar = new TranslateTransition(Duration.millis(500), novaView);
         entrar.setToX(0);
 
-        // Remove o antigo depois da animação
+
         entrar.setOnFinished(e -> root.getChildren().remove(atualView));
 
-        // Executa animações
+
         sair.play();
         entrar.play();
     }
