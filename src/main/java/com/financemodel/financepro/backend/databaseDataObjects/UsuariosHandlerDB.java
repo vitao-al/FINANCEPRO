@@ -1,8 +1,7 @@
-package com.financemodel.financepro.backend.database;
+package com.financemodel.financepro.backend.databaseDataObjects;
 
-import com.financemodel.financepro.backend.datawrapplers.Usuario;
+import com.financemodel.financepro.backend.dataTransferObjects.Usuario;
 
-import java.math.BigDecimal;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;

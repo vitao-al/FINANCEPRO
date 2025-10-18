@@ -1,4 +1,4 @@
-package com.financemodel.financepro.backend.datawrapplers;
+package com.financemodel.financepro.backend.dataTransferObjects;
 
 import java.util.Date;
 import java.util.UUID;

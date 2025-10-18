@@ -1,4 +1,4 @@
-package com.financemodel.financepro.backend.datawrapplers;
+package com.financemodel.financepro.backend.dataTransferObjects;
 
 import java.sql.SQLException;
 import java.util.ArrayList;

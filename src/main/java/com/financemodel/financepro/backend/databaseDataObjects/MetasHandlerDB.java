@@ -1,7 +1,7 @@
-package com.financemodel.financepro.backend.database;
+package com.financemodel.financepro.backend.databaseDataObjects;
 
-import com.financemodel.financepro.backend.datawrapplers.Meta;
-import com.financemodel.financepro.backend.datawrapplers.MetasList;
+import com.financemodel.financepro.backend.dataTransferObjects.Meta;
+import com.financemodel.financepro.backend.dataTransferObjects.MetasList;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
