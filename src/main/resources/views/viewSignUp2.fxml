@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.financepro.model.frontend.controllers.SignUp2Controller">
+   <children>
+      <ImageView fitHeight="462.0" fitWidth="873.0" layoutX="-9.0" pickOnBounds="true" smooth="false">
+         <image>
+            <Image url="@../../../assets/fundoTela2.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="189.0" layoutY="67.0" prefHeight="43.0" prefWidth="530.0" styleClass="label-titulo" stylesheets="@../../../css/Tela2.css" text="NOVAS METAS NOVOS SONHOS" />
+      <Label layoutX="189.0" layoutY="110.0" prefHeight="36.0" prefWidth="466.0" styleClass="label-subtitulo-tela2" stylesheets="@../../../css/Tela2.css" text="*comece dizendo o quanto quer economizar" />
+      <Label layoutX="197.0" layoutY="203.0" styleClass="label-nome" stylesheets="@../../../css/Tela2.css" text="Deseja criar uma nova meta?" />
+      <ToggleButton fx:id="bntsimmeta" layoutX="197.0" layoutY="241.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="206.0" styleClass="Toggle-Button-nome" stylesheets="@../../../css/Tela2.css" text="sim" />
+      <ToggleButton fx:id="btnnaometa" layoutX="432.0" layoutY="241.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="191.0" styleClass="Toggle-Button-nome" stylesheets="@../../../css/Tela2.css" text="não" />
+   </children>
+</AnchorPane>
