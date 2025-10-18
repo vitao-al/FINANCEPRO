@@ -7,6 +7,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
+import com.financepro.model.backend.dataTransferObjects.*;
+
 public class PrincipalController {
 
     @FXML
@@ -22,7 +24,7 @@ public class PrincipalController {
         loginButton.setOnAction(e -> {
             if (camposValidos()) {
                 try {
-                    launcherPrincipal.iniciartela2("/views/viewDashbord.fxml"); // dashboard ainda não pronto
+                    launcherPrincipal.changeView("/views/viewDashbord.fxml"); // dashboard ainda não pronto
                 } catch (Exception ex) {
                     ex.printStackTrace();
                 }
@@ -33,7 +35,7 @@ public class PrincipalController {
 
         registerButton.setOnAction(e -> {
             try {
-                launcherPrincipal.iniciartela3("/viewsviewSignUp1.fxml");
+                launcherPrincipal.changeView("/views/viewSignUp1.fxml");
             } catch (Exception ex) {
                 throw new RuntimeException(ex);
             }

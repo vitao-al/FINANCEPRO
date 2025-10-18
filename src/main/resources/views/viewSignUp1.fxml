@@ -1,66 +1,88 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
-<?import javafx.scene.paint.Color?>
-<?import javafx.scene.paint.RadialGradient?>
-<?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="461.0" maxWidth="871.0" stylesheets="@../../../css/Tela2.css" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.financepro.model.frontend.controllers.SignUp1Controller">
+<Pane maxHeight="470.0" maxWidth="969.0" prefHeight="470.0" prefWidth="969.0" stylesheets="@../../../css/Tela2.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.financepro.model.frontend.controllers.SignUp1Controller">
 
-   <ImageView fitHeight="461.0" fitWidth="871.0" pickOnBounds="true">
-      <Image url="@../../../assets/fundoTela2.png" />
+   <ImageView fitHeight="469.0" fitWidth="969.0" pickOnBounds="true">
+      <Image url="@../assets/fundoTela2.png" />
    </ImageView>
 
-   <Label layoutX="195.0" layoutY="96.0" prefHeight="32.0" prefWidth="377.0" styleClass="label-nome" text="Como prefere ser chamado(a)?" />
-
-   <TextField fx:id="txtNome" layoutX="195.0" layoutY="128.0" prefHeight="32.0" prefWidth="500.0" styleClass="TextField-nome" />
-
-   <Label layoutX="199.0" layoutY="247.0" styleClass="label-nome" text="Qual a sua renda mensal?" />
-   <TextField fx:id="txtRenda1" layoutX="199.0" layoutY="274.0" prefHeight="32.0" prefWidth="500.0" styleClass="TextField-nome" />
-
-   <ToggleButton fx:id="bntcriarconta" layoutX="195.0" layoutY="398.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="237.0" styleClass="Toggle-Button-nome" text="criar nova conta">
+   <Label fx:id="labelUsername" layoutX="312.0" layoutY="108.0" prefHeight="17.0" prefWidth="217.0" styleClass="label-nome" text="Como prefere ser chamado(a)?" textFill="#ff6300">
       <font>
-         <Font name="Poppins Regular" size="12.0" />
-      </font>
-   </ToggleButton>
+         <Font name="Segoe UI Bold" size="15.0" />
+      </font></Label>
 
-   <ToggleButton fx:id="bntvoltaratelainicial" layoutX="449.0" layoutY="398.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="231.0" styleClass="Toggle-Button-nome" text="voltar a tela inicial" />
+   <TextField fx:id="username" layoutX="308.0" layoutY="135.0" prefHeight="32.0" prefWidth="344.0" style="-fx-border-radius: 50; -fx-background-radius: 50; -fx-background-color: linear-gradient(to right, #ff3131, #ff914d)linear-gradient(to right, #ff7e5f99, #feb47b99); -fx-prompt-text-fill: white;" styleClass="TextField-nome" />
+   <TextField fx:id="renda" layoutX="308.0" layoutY="271.0" prefHeight="32.0" prefWidth="344.0" style="-fx-background-radius: 50; -fx-background-color: linear-gradient(to right, #ff3131, #ff914d)linear-gradient(to right, #ff7e5f99, #feb47b99);" styleClass="TextField-nome" />
 
-   <Label layoutX="199.0" prefHeight="76.0" prefWidth="459.0" style="-fx-font-family: Poppins; -fx-font-weight: bold;" styleClass="label-titulo" text="NOS CONTE MAIS SOBRE ">
+   <Label fx:id="labelTitle" layoutX="311.0" layoutY="31.0" prefHeight="40.0" prefWidth="344.0" style="-fx-font-family: Poppins; -fx-font-weight: bold;" styleClass="label-titulo" text="NOS CONTE MAIS SOBRE " textFill="#ff6300">
       <font>
-         <Font name="Poppins Regular" size="28.0" />
-      </font>
-      <textFill>
-         <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
-            <stops>
-               <Stop><color><Color /></color></Stop>
-               <Stop offset="1.0"><color><Color red="1.0" green="1.0" blue="1.0" /></color></Stop>
-            </stops>
-         </RadialGradient>
-      </textFill>
-   </Label>
-
-   <Label layoutX="199.0" layoutY="56.0" prefHeight="40.0" prefWidth="416.0" style="-fx-font-size: 16;" styleClass="label-subtitulo" text="precisamos de alguns dados para continuar" textFill="#cf1212">
-      <font>
-         <Font name="Poppins Regular" size="12.0" />
+         <Font name="System Bold" size="28.0" />
       </font>
    </Label>
 
-   <AnchorPane layoutX="270.0" layoutY="478.0" prefHeight="200.0" prefWidth="832.0" />
-   <ToggleButton fx:id="btnhomem" layoutX="195.0" layoutY="196.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="237.0" styleClass="Toggle-Button-genero" text="Homem">
+   <Label fx:id="labelSubTitle" layoutX="312.0" layoutY="71.0" prefHeight="17.0" prefWidth="316.0" style="-fx-font-size: 16;" styleClass="label-subtitulo" text="precisamos de alguns dados para continuar" textFill="#ff751f">
       <font>
-         <Font name="Poppins Regular" size="12.0" />
+         <Font name="System Bold Italic" size="24.0" />
+      </font>
+   </Label>
+   <ToggleButton fx:id="btnHomem" layoutX="308.0" layoutY="200.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="165.0" style="-fx-border-radius: 50; -fx-background-radius: 50; -fx-background-color: linear-gradient(to right, #ff3131, #ff914d)linear-gradient(to right, #ff7e5f99, #feb47b99);" styleClass="Toggle-Button-genero" text="Homem" textFill="WHITE">
+      <font>
+         <Font name="Segoe UI Bold Italic" size="14.0" />
       </font>
    </ToggleButton>
-   <ToggleButton fx:id="btnmulher" layoutX="458.0" layoutY="196.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="237.0" styleClass="Toggle-Button-genero" text="Mulher" />
-   <Label layoutX="199.0" layoutY="161.0" prefHeight="28.0" prefWidth="283.0" styleClass="label-nome" stylesheets="@../../../css/Tela2.css" text="Qual seu gênero?" />
-   <Label layoutX="195.0" layoutY="311.0" prefHeight="27.0" prefWidth="217.0" styleClass="label-nome" stylesheets="@../../../css/Tela2.css" text="Crie uma senha " />
-   <TextField fx:id="txtSenha" layoutX="195.0" layoutY="338.0" prefHeight="32.0" prefWidth="500.0" styleClass="TextField-nome" />
+   <Label fx:id="labelGender" layoutX="308.0" layoutY="176.0" prefHeight="17.0" prefWidth="217.0" styleClass="label-nome" text="Qual é o seu gênero?" textFill="#ff6300">
+      <font>
+         <Font name="Segoe UI Bold" size="15.0" />
+      </font>
+   </Label>
+   <ToggleButton fx:id="btnMulher" layoutX="483.0" layoutY="200.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="165.0" style="-fx-border-radius: 50; -fx-background-radius: 50; -fx-background-color: linear-gradient(to right, #ff3131, #ff914d)linear-gradient(to right, #ff7e5f99, #feb47b99);" styleClass="Toggle-Button-genero" text="Mulher" textFill="WHITE">
+      <font>
+         <Font name="Segoe UI Bold Italic" size="14.0" />
+      </font>
+   </ToggleButton>
+   <Label fx:id="labelRenda" layoutX="312.0" layoutY="248.0" prefHeight="17.0" prefWidth="217.0" styleClass="label-nome" text="Qual é a sua renda mensal?" textFill="#ff6300">
+      <font>
+         <Font name="Segoe UI Bold" size="15.0" />
+      </font>
+   </Label>
+   <TextField fx:id="newPassword" layoutX="308.0" layoutY="338.0" prefHeight="32.0" prefWidth="344.0" style="-fx-background-radius: 50; -fx-background-color: linear-gradient(to right, #ff3131, #ff914d)linear-gradient(to right, #ff7e5f99, #feb47b99);" styleClass="TextField-nome" />
+   <Label layoutX="312.0" layoutY="314.0" prefHeight="19.0" prefWidth="112.0" styleClass="label-nome" text="Crie uma senha" textFill="#ff6300">
+      <font>
+         <Font name="Segoe UI Bold" size="15.0" />
+      </font>
+   </Label>
+   <Label fx:id="txtErroUsername" layoutX="655.0" layoutY="141.0" text="ㅤ" textFill="#e10101">
+      <font>
+         <Font name="System Bold" size="14.0" />
+      </font>
+   </Label>
+   <Label fx:id="txtErroRenda" layoutX="662.0" layoutY="277.0" text="ㅤ" textFill="#e10101">
+      <font>
+         <Font name="System Bold" size="14.0" />
+      </font>
+   </Label>
+   <Label fx:id="txtErroPassword" layoutX="662.0" layoutY="334.0" prefHeight="40.0" prefWidth="267.0" text="ㅤ" textFill="#e10101">
+      <font>
+         <Font name="System Bold" size="14.0" />
+      </font>
+   </Label>
+   <Button fx:id="btnCreateAccount" layoutX="308.0" layoutY="388.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="165.0" style="-fx-background-color: linear-gradient(to right, #ff3131, #ff914d)linear-gradient(to right, #ff7e5f99, #feb47b99); -fx-background-radius: 50; -fx-border-radius: 50;" text="Criar nova conta" textFill="#f8f8f8">
+      <font>
+         <Font name="Segoe UI Bold Italic" size="14.0" />
+      </font>
+   </Button>
+   <Button fx:id="btnBack" layoutX="492.0" layoutY="388.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="159.0" style="-fx-background-color: linear-gradient(to right, #ff3131, #ff914d)linear-gradient(to right, #ff7e5f99, #feb47b99); -fx-background-radius: 50; -fx-border-radius: 50;" text="Voltar para o início" textFill="#f8f8f8">
+      <font>
+         <Font name="Segoe UI Bold Italic" size="14.0" />
+      </font>
+   </Button>
 </Pane>
