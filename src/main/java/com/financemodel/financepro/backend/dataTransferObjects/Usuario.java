@@ -1,8 +1,7 @@
-package com.financemodel.financepro.backend.datawrapplers;
+package com.financemodel.financepro.backend.dataTransferObjects;
 
-import com.financemodel.financepro.backend.database.UsuariosHandlerDB;
+import com.financemodel.financepro.backend.databaseDataObjects.UsuariosHandlerDB;
 
-import java.math.BigDecimal;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
@@ -120,7 +119,7 @@ public class Usuario
         return todasAsMetas;
     }
 
-    public void setTodasAsMetas(MetasList todasAsMetas) {
+    private void setTodasAsMetas(MetasList todasAsMetas) {
         this.todasAsMetas = todasAsMetas;
     }
 
@@ -134,7 +133,7 @@ public class Usuario
         return todasAsEconomias;
     }
 
-    public void setTodasAsEconomias(ArrayList<Economia> todasAsEconomias) {
+    private void setTodasAsEconomias(ArrayList<Economia> todasAsEconomias) {
         this.todasAsEconomias = todasAsEconomias;
     }
 
@@ -142,7 +141,7 @@ public class Usuario
         return todasAsDespesas;
     }
 
-    public void setTodasAsDespesas(ArrayList<Despesa> todasAsDespesas) {
+    private void setTodasAsDespesas(ArrayList<Despesa> todasAsDespesas) {
         this.todasAsDespesas = todasAsDespesas;
     }
 
@@ -186,8 +185,7 @@ public class Usuario
 
     public static void main(String[] args) throws SQLException
     {
-        //Usuario.criarNovoUsuario("teste","12345","M",new BigDecimal(2500));
-        Usuario u = Usuario.PegarLoginUsuario("teste","12345");
-        u.criarNovaDespesa("Passagem de avião",200,"TRANSPORTE",UUID.fromString("047fec83-8fda-4f5d-b374-2550ecae49fe"));
+       // Usuario.criarNovoUsuario("handrey","1234","M",2500f);
+        //Usuario u1 = Usuario.PegarLoginUsuario("handrey","12345");
     }
 }

@@ -1,6 +1,6 @@
-package com.financemodel.financepro.backend.datawrapplers;
+package com.financemodel.financepro.backend.dataTransferObjects;
 
-import com.financemodel.financepro.backend.database.TransacoesHandlerDB;
+import com.financemodel.financepro.backend.databaseDataObjects.TransacoesHandlerDB;
 
 import java.sql.SQLException;
 import java.time.Duration;

@@ -1,7 +1,7 @@
-package com.financemodel.financepro.backend.database;
+package com.financemodel.financepro.backend.databaseDataObjects;
 
-import com.financemodel.financepro.backend.datawrapplers.Despesa;
-import com.financemodel.financepro.backend.datawrapplers.Economia;
+import com.financemodel.financepro.backend.dataTransferObjects.Despesa;
+import com.financemodel.financepro.backend.dataTransferObjects.Economia;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;

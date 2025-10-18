@@ -1,4 +1,4 @@
-package com.financemodel.financepro.backend.database;
+package com.financemodel.financepro.backend.databaseDataObjects;
 
 import java.sql.*;
 
