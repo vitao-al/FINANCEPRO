@@ -11,6 +11,7 @@ module com.testeexemplo.demo {
     requires eu.hansolo.tilesfx;
     requires com.almasb.fxgl.all;
     requires java.sql;
+    requires java.desktop;
 
     opens com.financepro.model to javafx.fxml;
     exports com.financepro.model;
