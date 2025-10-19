@@ -9,11 +9,13 @@ import javafx.scene.text.Text;
 
 public class DashbordController {
     @FXML
-    private static Label mensagemBoasVindas;
+    private Label mensagemBoasVindas;
 
     @FXML
     public void initialize() {
-        mensagemBoasVindas.setText(dadosGlobais.user.getUsername());
+        Usuario user = dadosGlobais.getUser();
+        System.out.println(user.getUsername());
+        this.mensagemBoasVindas.setText(dadosGlobais.user.getUsername());
     }
 }
 

@@ -6,4 +6,7 @@ public class dadosGlobais {
 
     public static Usuario user;
 
+    public static Usuario getUser() {
+        return user;
+    }
 }

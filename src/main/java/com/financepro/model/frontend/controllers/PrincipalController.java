@@ -33,15 +33,20 @@ public class PrincipalController {
     public void initialize() {
         loginButton.setOnAction(e -> {
             if (camposValidos()) {
-                try {
-                    launcherPrincipal.changeView("/views/viewDashbord.fxml");
-                    // dashboard ainda não pronto
-                } catch (Exception ex) {
-                    ex.printStackTrace();
+                if(Usuario.PegarLoginUsuario(usernameField.getText(),passwordField.getText()) != null)
+                {
+                    dadosGlobais.user = Usuario.PegarLoginUsuario(usernameField.getText(),passwordField.getText());
+                    try {
+                        launcherPrincipal.changeView("/views/viewDashbord.fxml");
+                        // dashboard ainda não pronto
+                    } catch (Exception ex) {
+                        ex.printStackTrace();
+                    }
+                } else {
+                    exibirErro("Preencha todos os campos corretamente!");
                 }
-            } else {
-                exibirErro("Preencha todos os campos corretamente!");
-            }
+                }
+
         });
 
         registerButton.setOnAction(e -> {
