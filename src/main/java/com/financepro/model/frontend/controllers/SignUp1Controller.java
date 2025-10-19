@@ -51,10 +51,12 @@ public class SignUp1Controller {
                     return;
                 }
                 Usuario.criarNovoUsuario(username.getText(), newPassword.getText(), setGender(), rendafloat);
+                dadosGlobais.user = Usuario.PegarLoginUsuario(username.getText(), newPassword.getText());
                 try {
                     launcherPrincipal.changeView("/views/viewDashboard.fxml");
                 } catch (Exception ex) {
                     ex.printStackTrace();
+                    return;
                 }
             }
 
@@ -83,7 +85,9 @@ public class SignUp1Controller {
             valido = false;
         } else txtErroRenda.setVisible(false);
 
-        if (!newPassword.getText().matches("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,20}$\n")) {
+        String regex = "^(?=.*[A-Z])(?=.*[a-z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,20}$";
+
+        if (!newPassword.getText().matches(regex)) {
             mostrarErroAnimado(txtErroPassword, "Senha inválida! Digite uma senha com:\nA-Z, a-z, 0-9, Mínimo 8 caracteres!");
             valido = false;
         } else txtErroPassword.setVisible(false);
@@ -108,5 +112,6 @@ public class SignUp1Controller {
         tt.setAutoReverse(true);
         tt.play();
     }
+
 
 }
