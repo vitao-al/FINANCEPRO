@@ -1,5 +1,7 @@
 package com.financepro.model.frontend.launcher;
 
+import com.financepro.model.backend.dataTransferObjects.Usuario;
+import com.financepro.model.frontend.controllers.DashbordController;
 import javafx.animation.TranslateTransition;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -9,8 +11,9 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
-public class launcherPrincipal extends Application {
 
+public class launcherPrincipal extends Application {
+    public static Usuario user;
     private static Stage stagePrincipal;
     private static StackPane root; // Container das views
 
@@ -18,7 +21,6 @@ public class launcherPrincipal extends Application {
     public void start(Stage primeiroStage) throws Exception {
         stagePrincipal = primeiroStage;
 
-        // Inicializa o StackPane
         root = new StackPane();
 
         // Carrega a primeira view
@@ -55,6 +57,10 @@ public class launcherPrincipal extends Application {
 
         sair.play();
         entrar.play();
+    }
+
+    public static void setUser(Usuario user) {
+        user = user;
     }
 
     public static void main(String[] args) {

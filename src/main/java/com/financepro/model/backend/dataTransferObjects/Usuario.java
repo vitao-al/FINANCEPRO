@@ -175,7 +175,7 @@ public class Usuario
      * @param senha senha do usuario
      * @return
      */
-    public Usuario PegarLoginUsuario(String username,String senha)
+    public static Usuario PegarLoginUsuario(String username,String senha)
     {
         return udb.getLogin(username,senha);
     }

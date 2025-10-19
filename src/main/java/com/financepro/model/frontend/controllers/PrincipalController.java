@@ -20,11 +20,22 @@ public class PrincipalController {
     @FXML
     private Button registerButton;
 
+    public Usuario getUser() {
+        return user;
+    }
+
+    public void setUser(Usuario user) {
+        this.user = user;
+    }
+
+    Usuario user = null;
+
     public void initialize() {
         loginButton.setOnAction(e -> {
             if (camposValidos()) {
                 try {
-                    launcherPrincipal.changeView("/views/viewDashbord.fxml"); // dashboard ainda não pronto
+                    launcherPrincipal.changeView("/views/viewDashbord.fxml");
+                    // dashboard ainda não pronto
                 } catch (Exception ex) {
                     ex.printStackTrace();
                 }
