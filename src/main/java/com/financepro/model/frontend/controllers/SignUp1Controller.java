@@ -97,8 +97,8 @@ public class SignUp1Controller {
     }
 
     private String setGender() {
-        if (btnHomem.isSelected()) return "H";
-        if (btnMulher.isSelected()) return "M";
+        if (btnHomem.isSelected()) return "M";
+        if (btnMulher.isSelected()) return "F";
         return "O";
     }
 

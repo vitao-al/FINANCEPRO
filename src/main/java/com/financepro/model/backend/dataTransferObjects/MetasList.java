@@ -38,9 +38,9 @@ public class MetasList
         ArrayList<Despesa> despesas = new ArrayList<>();
         for(Meta m : metasList)
         {
-            if(m.getDespesasMeta() != null)
+            if(m.pegarTodasDespesas() != null)
             {
-                for (Despesa d : m.getDespesasMeta())
+                for (Despesa d : m.pegarTodasDespesas())
                 {
                     despesas.add(d);
                 }

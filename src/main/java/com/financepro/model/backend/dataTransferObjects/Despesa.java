@@ -41,7 +41,7 @@ public class Despesa implements TransacoesI
 
     @Override
     public String getNome() {
-        return TransacoesI.super.getNome();
+        return this.nome;
     }
 
     public void setNome(String nome) {
@@ -50,7 +50,7 @@ public class Despesa implements TransacoesI
 
     @Override
     public float getValor() {
-        return TransacoesI.super.getValor();
+        return this.valor;
     }
 
     public void setValor(float valor) {
@@ -59,7 +59,7 @@ public class Despesa implements TransacoesI
 
     @Override
     public Date getData() {
-        return TransacoesI.super.getData();
+        return this.data;
     }
 
     public void setData(Date data) {
@@ -77,7 +77,7 @@ public class Despesa implements TransacoesI
 
     @Override
     public Categorias getCategoria() {
-        return TransacoesI.super.getCategoria();
+        return this.categoria;
     }
 
     public void setCategoria(Categorias categoria) {

@@ -11,7 +11,7 @@ public class DespesasTable{
     private SimpleIntegerProperty quantidade;
 
     public String getCategoria() {
-        return categoria.get();
+        return categoria.toString();
     }
 
     public SimpleStringProperty categoriaProperty() {
@@ -19,11 +19,11 @@ public class DespesasTable{
     }
 
     public void setCategoria(String categoria) {
-        this.categoria.set(categoria);
+        this.categoria = new SimpleStringProperty(categoria);
     }
 
     public float getValor() {
-        return valor.get();
+        return this.valor.get();
     }
 
     public SimpleFloatProperty valorProperty() {
@@ -31,7 +31,7 @@ public class DespesasTable{
     }
 
     public void setValor(float valor) {
-        this.valor.set(valor);
+        this.valor = new SimpleFloatProperty(valor);
     }
 
     public String getData() {
@@ -43,11 +43,11 @@ public class DespesasTable{
     }
 
     public void setData(String data) {
-        this.data.set(data);
+        this.data = new SimpleStringProperty(data);
     }
 
     public int getQuantidade() {
-        return quantidade.get();
+        return this.quantidade.get();
     }
 
     public SimpleIntegerProperty quantidadeProperty() {
@@ -55,7 +55,7 @@ public class DespesasTable{
     }
 
     public void setQuantidade(int quantidade) {
-        this.quantidade.set(quantidade);
+        this.quantidade = new SimpleIntegerProperty(quantidade);
     }
 
     public DespesasTable()
@@ -64,9 +64,9 @@ public class DespesasTable{
     public void setDespesaTable(Despesa d,int quantidadeCategoria)
     {
         this.categoria = new SimpleStringProperty(d.getCategoria().toString());
-        this.valor = new SimpleFloatProperty(d.getValor());
+        this.valor = new SimpleFloatProperty(0);
         this.data = new SimpleStringProperty(d.getData().toString());
-        this.quantidade = new SimpleIntegerProperty(quantidadeCategoria);
+        this.quantidade = new SimpleIntegerProperty(0);
     }
 
 }

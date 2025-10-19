@@ -48,10 +48,10 @@
                   <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                </columnResizePolicy>
             </TableView>
-            <PieChart layoutX="608.0" layoutY="110.0" prefHeight="140.0" prefWidth="158.0" styleClass="chart-pie" stylesheets="@../css/TelaCategoriasTabela.css" />
+            <PieChart fx:id="graficoDespesas" layoutX="608.0" layoutY="110.0" legendSide="TOP" prefHeight="211.0" prefWidth="242.0" title="Despesa por categoria" />
             <Pane layoutX="608.0" layoutY="380.0" prefHeight="58.0" prefWidth="184.0" styleClass="painelSaldo" stylesheets="@../css/TelaCategoriasTabela.css">
                <children>
-                  <Label layoutX="52.0" layoutY="17.0" prefHeight="24.0" prefWidth="80.0" text="SaldoText">
+                  <Label fx:id="saldoText" alignment="CENTER" contentDisplay="CENTER" layoutX="9.0" layoutY="17.0" prefHeight="24.0" prefWidth="171.0" text="SaldoText" textAlignment="JUSTIFY">
                      <font>
                         <Font size="17.0" />
                      </font>
@@ -60,27 +60,14 @@
             </Pane>
             <Pane layoutX="608.0" layoutY="349.0" prefHeight="31.0" prefWidth="184.0" styleClass="painelTopo" stylesheets="@../css/TelaCategoriasTabela.css">
                <children>
-                  <Label layoutX="15.0" layoutY="4.0" text="Saldo" textFill="WHITE">
+                  <Label layoutX="15.0" layoutY="4.0" text="Despesa total" textFill="WHITE">
                      <font>
                         <Font name="System Italic" size="17.0" />
                      </font>
                   </Label>
                </children>
             </Pane>
-            <Pane layoutX="86.0" layoutY="378.0" prefHeight="58.0" prefWidth="486.0" styleClass="tabelaPane" stylesheets="@../css/TelaCategoriasTabela.css">
-               <children>
-                  <Label layoutX="267.0" layoutY="17.0" text="Total:" textFill="WHITE">
-                     <font>
-                        <Font name="System Italic" size="17.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="totalValueText" layoutX="331.0" layoutY="17.0" text="TotalValueText" textFill="WHITE">
-                     <font>
-                        <Font name="System Italic" size="17.0" />
-                     </font>
-                  </Label>
-               </children>
-            </Pane>
+            <Pane layoutX="86.0" layoutY="378.0" prefHeight="58.0" prefWidth="486.0" styleClass="tabelaPane" stylesheets="@../css/TelaCategoriasTabela.css" />
          </children>
       </AnchorPane>
    </children>
