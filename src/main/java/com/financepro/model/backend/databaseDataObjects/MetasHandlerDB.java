@@ -91,11 +91,12 @@ public class MetasHandlerDB extends DatabaseHandler
             PreparedStatement pst = this.getConnection().prepareStatement(sqlInsert, Statement.RETURN_GENERATED_KEYS);
             pst.setString(1,nomeMeta);
             pst.setFloat(2,valorMeta);
-            pst.setString(3,fmt.format(dataInicialMeta));
-            pst.setString(4,fmt.format(dataFinalMeta));
-            pst.setFloat(5,0);
-            pst.setString(6,uuid.toString());
-            pst.setString(7,newMetaMUID.toString());
+            pst.setString(3,descricao);
+            pst.setString(4,fmt.format(dataInicialMeta));
+            pst.setString(5,fmt.format(dataFinalMeta));
+            pst.setFloat(6,0);
+            pst.setString(7,uuid.toString());
+            pst.setString(8,newMetaMUID.toString());
             pst.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);

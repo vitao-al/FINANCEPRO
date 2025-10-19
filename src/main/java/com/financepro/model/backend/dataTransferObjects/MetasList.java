@@ -34,12 +34,16 @@ public class MetasList
     }
     public ArrayList<Despesa> getAllDespesas()
     {
+
         ArrayList<Despesa> despesas = new ArrayList<>();
         for(Meta m : metasList)
         {
-            for(Despesa d : m.getDespesasMeta())
+            if(m.getDespesasMeta() != null)
             {
-                despesas.add(d);
+                for (Despesa d : m.getDespesasMeta())
+                {
+                    despesas.add(d);
+                }
             }
         }
         return despesas;

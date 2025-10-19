@@ -30,7 +30,7 @@ public class Usuario
     String sexo;
     float renda;
     UUID uuid;
-    MetasList todasAsMetas;
+    MetasList todasAsMetas = new MetasList();
     ArrayList<Economia> todasAsEconomias;
     ArrayList<Despesa> todasAsDespesas;
     public Usuario() throws SQLException {
@@ -53,6 +53,7 @@ public class Usuario
         this.sexo = sexo;
         this.renda = renda;
         this.uuid = uuid;
+        this.todasAsMetas = pegarTodasAsMetas();
     }
     public UUID getUuid()
     {
@@ -168,7 +169,14 @@ public class Usuario
     {
         udb.insertNewUsuario(username,senha,sexo,renda);
     }
-
+    public int contarDespesasCategoria(Categorias categoria)
+    {
+        return this.t.getNumDespesasByCategoria(categoria);
+    }
+    public Despesa pegarUltimaDespesaRecentePorCategoria(Categorias categoria)
+    {
+        return this.t.getDespesaMaisRecenteByCategoria(categoria);
+    }
     /**
      * Faz uma requisição no bando de dados para verificar se o usuario existe
      * se sim, retorna um objeto Usuario se não retorna null

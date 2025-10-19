@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox prefHeight="460.0" prefWidth="861.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.financepro.model.frontend.controllers.TabelaDespesasCategoriaController">
+   <children>
+      <AnchorPane prefHeight="546.0" prefWidth="969.0">
+         <children>
+            <ImageView fitHeight="487.0" fitWidth="868.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/fundoDashbord.jpg" />
+               </image>
+            </ImageView>
+            <ButtonBar layoutX="44.0" layoutY="10.0" prefHeight="40.0" prefWidth="90.0" />
+          <Button fx:id="botaoMenu" graphicTextGap="0.0" layoutX="7.0" layoutY="22.0" minWidth="26.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="32.0" styleClass="botaomenu" stylesheets="@../css/TelaCategoriasTabela.css">
+               <font>
+                  <Font size="6.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <ImageView fitHeight="270.0" fitWidth="397.0" layoutX="-162.0" layoutY="-76.0">
+                <image>
+                    <Image url="@../assets/botaomenu.png" />
+                </image>
+            </ImageView>
+            <TableView fx:id="tabelaDespesas" layoutX="86.0" layoutY="69.0" prefHeight="310.0" prefWidth="486.0" styleClass="tabelaCategorias" stylesheets="@../css/TelaCategoriasTabela.css">
+              <columns>
+                <TableColumn fx:id="colunaCategoria" prefWidth="121.0" styleClass="column-header-background" text="Categoria" />
+                <TableColumn fx:id="colunaQuantidade" prefWidth="121.0" styleClass="column-header-background" text="quantidade" />
+                  <TableColumn fx:id="colunaValor" prefWidth="121.0" styleClass="column-header-background" text="Valor" />
+                  <TableColumn fx:id="colunaUltimaData" prefWidth="121.0" styleClass="column-header-background" text="ultima data" />
+              </columns>
+               <columnResizePolicy>
+                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+               </columnResizePolicy>
+            </TableView>
+            <PieChart layoutX="608.0" layoutY="110.0" prefHeight="140.0" prefWidth="158.0" styleClass="chart-pie" stylesheets="@../css/TelaCategoriasTabela.css" />
+            <Pane layoutX="608.0" layoutY="380.0" prefHeight="58.0" prefWidth="184.0" styleClass="painelSaldo" stylesheets="@../css/TelaCategoriasTabela.css">
+               <children>
+                  <Label layoutX="52.0" layoutY="17.0" prefHeight="24.0" prefWidth="80.0" text="SaldoText">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Pane layoutX="608.0" layoutY="349.0" prefHeight="31.0" prefWidth="184.0" styleClass="painelTopo" stylesheets="@../css/TelaCategoriasTabela.css">
+               <children>
+                  <Label layoutX="15.0" layoutY="4.0" text="Saldo" textFill="WHITE">
+                     <font>
+                        <Font name="System Italic" size="17.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Pane layoutX="86.0" layoutY="378.0" prefHeight="58.0" prefWidth="486.0" styleClass="tabelaPane" stylesheets="@../css/TelaCategoriasTabela.css">
+               <children>
+                  <Label layoutX="267.0" layoutY="17.0" text="Total:" textFill="WHITE">
+                     <font>
+                        <Font name="System Italic" size="17.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="totalValueText" layoutX="331.0" layoutY="17.0" text="TotalValueText" textFill="WHITE">
+                     <font>
+                        <Font name="System Italic" size="17.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+         </children>
+      </AnchorPane>
+   </children>
+</VBox>
