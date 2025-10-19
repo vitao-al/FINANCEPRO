@@ -1,6 +1,7 @@
 package com.financepro.model.backend.dataTransferObjects;
 
 import com.financepro.model.backend.databaseDataObjects.UsuariosHandlerDB;
+import com.financepro.model.backend.model.Categorias;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -69,7 +70,7 @@ public class Usuario
     {
         this.t.inserirNovaEconomia(valor,new Date(),muid);
     }
-    public void criarNovaDespesa(String nome,float valor,String categoria,UUID muid)
+    public void criarNovaDespesa(String nome, float valor, Categorias categoria, UUID muid)
     {
         this.t.inserirNovaDespesa(nome,valor,new Date(),categoria,muid);
     }

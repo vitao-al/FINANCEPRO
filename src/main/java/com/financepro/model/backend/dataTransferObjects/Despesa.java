@@ -1,5 +1,8 @@
 package com.financepro.model.backend.dataTransferObjects;
 
+import com.financepro.model.backend.model.Categorias;
+import com.financepro.model.backend.model.TipoTransacoes;
+
 import java.util.Date;
 import java.util.UUID;
 
@@ -8,8 +11,8 @@ public class Despesa implements TransacoesI
     String nome;
     float valor;
     Date data;
-    String tipo;
-    String categoria;
+    TipoTransacoes tipo;
+    Categorias categoria;
     UUID muid;
 
     public Despesa()
@@ -26,7 +29,7 @@ public class Despesa implements TransacoesI
      * @param categoria categoria da despesa(string) futuramente em enum
      * @param muid o id da meta que a despesa é pertencente
      */
-    public Despesa(String nome, float valor, Date data,String tipo,String categoria,UUID muid)
+    public Despesa(String nome, float valor, Date data, TipoTransacoes tipo, Categorias categoria, UUID muid)
     {
         this.nome = nome;
         this.valor = valor;
@@ -64,20 +67,20 @@ public class Despesa implements TransacoesI
     }
 
     @Override
-    public String getTipo() {
+    public TipoTransacoes getTipo() {
         return TransacoesI.super.getTipo();
     }
 
-    public void setTipo(String tipo) {
+    public void setTipo(TipoTransacoes tipo) {
         this.tipo = tipo;
     }
 
     @Override
-    public String getCategoria() {
+    public Categorias getCategoria() {
         return TransacoesI.super.getCategoria();
     }
 
-    public void setCategoria(String categoria) {
+    public void setCategoria(Categorias categoria) {
         this.categoria = categoria;
     }
 

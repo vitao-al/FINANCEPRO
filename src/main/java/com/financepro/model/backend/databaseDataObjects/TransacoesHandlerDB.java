@@ -2,6 +2,9 @@ package com.financepro.model.backend.databaseDataObjects;
 
 import com.financepro.model.backend.dataTransferObjects.Despesa;
 import com.financepro.model.backend.dataTransferObjects.Economia;
+import com.financepro.model.backend.model.Categorias;
+import com.financepro.model.backend.model.TipoTransacoes;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -57,7 +60,7 @@ public class TransacoesHandlerDB extends DatabaseHandler
      * @param categoria Categoria da transação(String) - futuramente se possivel em enum
      * @param muid muid da transação
      */
-    public void insertNewTransacao(String nomeTransacao, float valorTransacao, Date dataTransacao, String tipoTransacao,String categoria,UUID muid)
+    public void insertNewTransacao(String nomeTransacao, float valorTransacao, Date dataTransacao, TipoTransacoes tipoTransacao, Categorias categoria, UUID muid)
     {
         String sqlInsert = "INSERT INTO transacoes " +
                 "(NOME_TRANSACAO, " +
@@ -73,8 +76,8 @@ public class TransacoesHandlerDB extends DatabaseHandler
             pst.setString(1,nomeTransacao);
             pst.setFloat(2,valorTransacao);
             pst.setString(3,fmt.format(dataTransacao));
-            pst.setString(4,tipoTransacao);
-            pst.setString(5,categoria);
+            pst.setString(4,tipoTransacao.toString());
+            pst.setString(5,categoria.toString());
             pst.setString(6,muid.toString());
             pst.executeUpdate();
         } catch (SQLException e) {
@@ -105,8 +108,8 @@ public class TransacoesHandlerDB extends DatabaseHandler
                 m.setNome(resultadoBusca.getString("NOME_TRANSACAO"));
                 m.setValor(resultadoBusca.getFloat("VALOR_TRANSACAO"));
                 m.setData(fmt.parse(resultadoBusca.getString("DATA_TRANSACAO")));
-                m.setTipo(resultadoBusca.getString("TIPO_TRANSACAO"));
-                m.setCategoria(resultadoBusca.getString("CATEGORIA"));
+                m.setTipo(TipoTransacoes.valueOf(resultadoBusca.getString("TIPO_TRANSACAO")));
+                m.setCategoria(null);
                 m.setMuid(UUID.fromString(resultadoBusca.getString("MUID")));
                 economias.add(m);
             }
@@ -140,8 +143,8 @@ public class TransacoesHandlerDB extends DatabaseHandler
                 d.setNome(resultadoBusca.getString("NOME_TRANSACAO"));
                 d.setValor(resultadoBusca.getFloat("VALOR_TRANSACAO"));
                 d.setData(fmt.parse(resultadoBusca.getString("DATA_TRANSACAO")));
-                d.setTipo(resultadoBusca.getString("TIPO_TRANSACAO"));
-                d.setCategoria(resultadoBusca.getString("CATEGORIA"));
+                d.setTipo(TipoTransacoes.valueOf(resultadoBusca.getString("TIPO_TRANSACAO")));
+                d.setCategoria(Categorias.valueOf(resultadoBusca.getString("CATEGORIA")));
                 d.setMuid(UUID.fromString(resultadoBusca.getString("MUID")));
                 despesas.add(d);
             }

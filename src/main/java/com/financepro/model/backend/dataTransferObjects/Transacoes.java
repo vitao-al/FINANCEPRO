@@ -3,6 +3,7 @@ package com.financepro.model.backend.dataTransferObjects;
 import com.financepro.model.backend.databaseDataObjects.TransacoesHandlerDB;
 import com.financepro.model.backend.databaseDataObjects.MetasHandlerDB;
 import com.financepro.model.backend.model.Categorias;
+import com.financepro.model.backend.model.TipoTransacoes;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -40,7 +41,7 @@ public class Transacoes
                 null,
                 valor,
                 data,
-                "ECONOMIA",
+                TipoTransacoes.ECONOMIA,
                 null,
                 muid
         );
@@ -55,14 +56,14 @@ public class Transacoes
      * @param categoria categoria em string da despesa
      * @param muid id da meta a qual a despesa pertence
      */
-    public void inserirNovaDespesa(String nome ,float valor, Date data,String categoria, UUID muid)
+    public void inserirNovaDespesa(String nome ,float valor, Date data,Categorias categoria, UUID muid)
     {
         Meta m = mdb.getMeta(muid);
         this.tdb.insertNewTransacao(
                 nome,
                 valor,
                 data,
-                "DESPESA",
+                TipoTransacoes.DESPESA,
                 categoria,
                 muid
         );

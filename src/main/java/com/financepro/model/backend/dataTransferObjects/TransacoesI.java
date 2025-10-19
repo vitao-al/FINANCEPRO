@@ -1,5 +1,8 @@
 package com.financepro.model.backend.dataTransferObjects;
 
+import com.financepro.model.backend.model.Categorias;
+import com.financepro.model.backend.model.TipoTransacoes;
+
 import java.util.Date;
 import java.util.UUID;
 
@@ -8,8 +11,8 @@ public interface TransacoesI
     String nome = "";
     float valor = 0;
     Date data = new Date();
-    String tipo = "";
-    String categoria = "";
+    TipoTransacoes tipo = null;
+    Categorias categoria = null;
     UUID muid = null;
 
     default String getNome() {
@@ -36,19 +39,19 @@ public interface TransacoesI
 
     }
 
-    default String getTipo() {
+    default TipoTransacoes getTipo() {
         return tipo;
     }
 
-    default void setTipo(String tipo) {
+    default void setTipo(TipoTransacoes tipo) {
 
     }
 
-    default String getCategoria() {
+    default Categorias getCategoria() {
         return categoria;
     }
 
-    default void setCategoria(String categoria) {
+    default void setCategoria(Categorias categoria) {
 
     }
 
