@@ -1,0 +1,90 @@
+.date-picker {
+    -fx-background-color: transparent;
+    -fx-control-inner-background: transparent;
+    -fx-text-fill: white;
+    -fx-border-color: transparent;
+}
+
+.date-picker > .text-field {
+    -fx-background-color:  linear-gradient(to right, #ff3131, #ff914d)linear-gradient(to right, #ff7e5f99, #feb47b99);
+    -fx-text-fill: white;
+    -fx-prompt-text-fill: #fff5f5; /* cor do texto de dica */
+}
+
+.date-picker > .arrow-button {
+    -fx-background-color: transparent;
+}
+.date-picker > .arrow-button:hover {
+    -fx-background-color: rgba(255, 255, 255, 0.1); /* leve destaque no hover */
+}
+
+/* Campo interno (TextField do DatePicker) */
+.date-picker > .text-field {
+    -fx-background-color: transparente;
+    -fx-text-fill: white;
+}
+
+/* Botão do calendário */
+.date-picker > .arrow-button {
+    -fx-background-color: transparente;
+}
+.date-picker > .arrow-button:hover {
+    -fx-background-color: #edf2f4;
+}
+
+/* Popup (calendário que aparece ao clicar) */
+.date-picker-popup {
+    -fx-background-color: #2b2d42;
+}
+.date-cell:hover {
+    -fx-background-color: #8d99ae;
+}
+.date-cell:selected {
+    -fx-background-color: #ef233c;
+    -fx-text-fill: white;
+}
+.vbox {
+    -fx-background-color:
+            linear-gradient(to right, rgba(255, 49, 49, 0.7), rgba(255, 145, 77, 0.7)),
+            linear-gradient(to right, rgba(255, 126, 95, 0.7), rgba(254, 180, 123, 0.7));
+}
+/* PieChart container */
+.pie-chart {
+    -fx-background-color:
+            linear-gradient(to right, rgba(255, 49, 49, 0.7), rgba(255, 145, 77, 0.7)),
+            linear-gradient(to right, rgba(255, 126, 95, 0.7), rgba(254, 180, 123, 0.7));
+    -fx-padding: 15; /* espaço interno */
+    -fx-border-radius: 10; /* cantos arredondados */
+    -fx-background-radius: 10;
+}
+
+/* Remove legenda padrão se quiser customizar */
+.pie-chart .chart-legend {
+    -fx-background-color: transparent;
+}
+
+/* Cores das fatias */
+.pie-color0 { -fx-pie-color: #ff3131; }
+.pie-color1 { -fx-pie-color: #ff914d; }
+.pie-color2 { -fx-pie-color: #ff7e5f; }
+.pie-color3 { -fx-pie-color: #feb47b; }
+.pie-color4 { -fx-pie-color: #ffb37f; }
+
+/* Título do PieChart */
+.pie-chart .chart-title {
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+}
+
+/* Tooltip das fatias */
+.pie-chart .chart-pie-label {
+    -fx-text-fill: white;
+    -fx-font-size: 12px;
+}
+
+/* Hover nas fatias para efeito leve */
+.pie-chart .chart-pie:hover {
+    -fx-opacity: 0.85;
+}
+
