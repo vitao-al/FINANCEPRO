@@ -12,6 +12,8 @@ module com.testeexemplo.demo {
     requires com.almasb.fxgl.all;
     requires java.sql;
     requires java.desktop;
+    requires javafx.graphics;
+    requires javafx.base;
 
     opens com.financepro.model to javafx.fxml;
     exports com.financepro.model;

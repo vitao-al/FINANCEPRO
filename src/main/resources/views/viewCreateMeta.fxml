@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.financepro.model.frontend.controllers.MetasController">
+   <children>
+      <ImageView fitHeight="469.0" fitWidth="963.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/fundoTela2.png" />
+         </image>
+      </ImageView>
+      <Text fx:id="labelMeta" fill="#ff6300" layoutX="284.0" layoutY="68.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DEFINA SUA META" wrappingWidth="265.060546875">
+         <font>
+            <Font name="Segoe UI Bold" size="29.0" />
+         </font>
+      </Text>
+      <VBox layoutX="62.0" layoutY="86.0" prefHeight="357.0" prefWidth="353.0">
+         <children>
+            <Text fill="#ff6300" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome da meta">
+               <font>
+                  <Font name="System Bold Italic" size="17.0" />
+               </font>
+            </Text>
+            <TextField fx:id="nameMeta" prefHeight="34.0" prefWidth="327.0" style="-fx-background-color: linear-gradient(to right, #ff3131, #ff914d)linear-gradient(to right, #ff7e5f99, #feb47b99); -fx-border-radius: 15; -fx-background-radius: 15; -fx-prompt-text-fill: white;">
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin>
+            </TextField>
+            <HBox prefHeight="139.0" prefWidth="361.0" VBox.vgrow="ALWAYS">
+               <children>
+                  <VBox prefHeight="198.0" prefWidth="170.0">
+                     <children>
+                        <Text fill="#ff6300" strokeType="OUTSIDE" strokeWidth="0.0" text="Descrição da meta">
+                           <font>
+                              <Font name="System Bold Italic" size="17.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets bottom="3.0" />
+                           </VBox.margin>
+                        </Text>
+                        <TextField prefHeight="132.0" prefWidth="178.0" style="-fx-background-color: linear-gradient(to right, #ff3131, #ff914d)linear-gradient(to right, #ff7e5f99, #feb47b99); -fx-border-radius: 15; -fx-background-radius: 15; -fx-prompt-text-fill: white;">
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </TextField>
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="225.0" prefWidth="167.0" translateX="20.0">
+                     <children>
+                        <Text fill="#ff6300" strokeType="OUTSIDE" strokeWidth="0.0" text="Prazo">
+                           <font>
+                              <Font name="System Bold Italic" size="17.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+            <Text fill="#ff6300" strokeType="OUTSIDE" strokeWidth="0.0" text="Valor da meta">
+               <font>
+                  <Font name="System Bold Italic" size="17.0" />
+               </font>
+            </Text>
+            <TextField fx:id="valueMeta" layoutX="10.0" layoutY="36.0" prefHeight="34.0" prefWidth="327.0" style="-fx-background-color: linear-gradient(to right, #ff3131, #ff914d)linear-gradient(to right, #ff7e5f99, #feb47b99); -fx-border-radius: 15; -fx-background-radius: 15; -fx-prompt-text-fill: white;">
+               <VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin>
+            </TextField>
+         </children>
+      </VBox>
+      <VBox layoutX="562.0" layoutY="170.0" prefHeight="143.0" prefWidth="217.0">
+         <children>
+            <Text fill="#ff6300" strokeType="OUTSIDE" strokeWidth="0.0" text="Criar meta?">
+               <font>
+                  <Font name="System Bold Italic" size="17.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="60.0" />
+               </VBox.margin>
+            </Text>
+            <Button fx:id="btnCreateMeta" mnemonicParsing="false" prefHeight="43.0" prefWidth="217.0" style="-fx-background-color: linear-gradient(to right, #ff3131, #ff914d)linear-gradient(to right, #ff7e5f99, #feb47b99); -fx-background-radius: 15; -fx-border-radius: 15;" text="Sim" textFill="#fff5f5">
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin>
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnNoCreateMeta" layoutX="10.0" layoutY="36.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="217.0" style="-fx-background-color: linear-gradient(to right, #ff3131, #ff914d)linear-gradient(to right, #ff7e5f99, #feb47b99); -fx-background-radius: 15; -fx-border-radius: 15;" text="Não" textFill="#fff5f5">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+         </children>
+      </VBox>
+      <Text fill="RED" layoutX="424.0" layoutY="134.0" strokeType="OUTSIDE" strokeWidth="0.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+      <Label fx:id="txtErroNomeMeta" layoutX="431.0" layoutY="120.0" text="ㅤ" textFill="#f20000" />
+      <Label fx:id="txtErroValorMeta" layoutX="425.0" layoutY="420.0" text="ㅤ" textFill="#f20000" />
+   </children>
+</AnchorPane>
