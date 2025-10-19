@@ -75,7 +75,7 @@ public class SignUp1Controller {
         });
     }
 
-    public boolean camposValidos() {
+    private boolean camposValidos() {
         boolean valido = true;
 
         if (!username.getText().matches("[a-zA-Z]+")) {
@@ -88,7 +88,7 @@ public class SignUp1Controller {
             valido = false;
         } else txtErroRenda.setVisible(false);
 
-        if (!newPassword.getText().matches("[a-zA-Z0-9]{8,20}")) {
+        if (!newPassword.getText().matches("[A-Za-z\\d@$!%*?&]{8,20}")) {
             mostrarErroAnimado(txtErroPassword, "Senha inválida! Digite uma senha com:\nA-Z, a-z, 0-9, Mínimo 8 caracteres!");
             valido = false;
         } else txtErroPassword.setVisible(false);
@@ -97,12 +97,12 @@ public class SignUp1Controller {
     }
 
     private String setGender() {
-        if (btnHomem.isSelected()) return "H";
-        if (btnMulher.isSelected()) return "M";
+        if (btnHomem.isSelected()) return "M";
+        if (btnMulher.isSelected()) return "F";
         return "O";
     }
 
-    public static void mostrarErroAnimado(Label label, String mensagem) {
+    private void mostrarErroAnimado(Label label, String mensagem) {
         label.setText(mensagem);
         label.setVisible(true);
 

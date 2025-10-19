@@ -1,20 +1,20 @@
 package com.financepro.model.frontend.controllers;
 
 import com.financepro.model.backend.dataTransferObjects.Usuario;
-import com.financepro.model.frontend.launcher.launcherPrincipal;
 import javafx.animation.TranslateTransition;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.chart.PieChart;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
 import javafx.event.ActionEvent; // Importe ActionEvent
 
 public class DashbordController {
-
     @FXML
     private Text labelUsername;
     @FXML
@@ -30,12 +30,13 @@ public class DashbordController {
     private Button btnCreateMeta;
 
     @FXML
+    private Button bntVerMetasCriardas;
+    @FXML
     private PieChart teste;
 
     private static final double ESPACO_DE_TRANSICAO = 10;
 
     private boolean isMenuOpen = false;
-
 
     public void initialize() {
 
@@ -48,6 +49,8 @@ public class DashbordController {
                 );
 
         teste.setData(pieChartData);
+        teste.setTitle("Saldo Mensal");
+
 
         Usuario user = dadosGlobais.getUser();
         this.labelUsername.setText(dadosGlobais.user.getUsername());
@@ -98,4 +101,11 @@ public class DashbordController {
             isMenuOpen = false;
         }
     }
+    @FXML
+    private void irParaTelaDeMetasCriadas() throws Exception {
+        launcherPrincipal.changeView("/views/viewCategoriasValues.fxml");
+    }
+
 }
+
+

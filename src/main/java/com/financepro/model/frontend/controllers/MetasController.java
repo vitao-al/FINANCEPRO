@@ -44,17 +44,14 @@ public class MetasController {
     private DatePicker dataInicial;
 
     public void initialize() {
+
         // Inicializa as Labels de erro como invisíveis, se necessário
         txtErroNomeMeta.setVisible(false);
         txtErroValorMeta.setVisible(false);
-        // ... inicializar outras labels de erro, como txtErroDescMeta
 
         btnCreateMeta.setOnAction(e -> {
             if (camposValidos()) {
                 float valueMetafloat = 0f;
-                // O bloco try-catch para NumberFormatException deve ficar aqui
-                // A validação de "digitar um valor numérico" já foi feita em camposValidos(),
-                // mas a conversão real pode falhar (embora improvável se o regex for bom).
                 try {
                     valueMetafloat = Float.parseFloat(valueMeta.getText());
                 } catch (NumberFormatException ex) {
@@ -148,6 +145,7 @@ public class MetasController {
         tt.setAutoReverse(true);
         tt.play();
     }
+}
 
     public static Date dataPickerParaUtilDate(DatePicker datePicker) {
         // ... (Correto, não precisa de alterações)
