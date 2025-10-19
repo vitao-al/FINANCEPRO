@@ -14,7 +14,6 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
@@ -23,19 +22,19 @@
 
 <AnchorPane fx:id="anchorDashbioard" prefHeight="528.0" prefWidth="870.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.financepro.model.frontend.controllers.DashbordController">
    <children>
-      <ImageView fitHeight="558.0" fitWidth="987.0" layoutX="-31.0" pickOnBounds="true" smooth="false">
+      <ImageView fitHeight="558.0" fitWidth="959.0" pickOnBounds="true" smooth="false">
          <image>
-            <Image url="@../assets/fundoTela2.png" />
+            <Image url="@../assets/fundoDashbord.jpg" />
          </image>
       </ImageView>
-      <TextFlow layoutX="36.0" layoutY="14.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="61.0" prefWidth="334.0" textAlignment="CENTER">
+      <TextFlow layoutX="35.0" layoutY="38.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="61.0" prefWidth="334.0" textAlignment="CENTER">
          <children>
             <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="OLÁ">
                <font>
                   <Font name="Segoe UI Bold" size="39.0" />
                </font>
             </Text>
-            <Text fx:id="labelUsername" fill="WHITE" layoutX="70.0" layoutY="10.0" strokeType="OUTSIDE" strokeWidth="0.0" text="gabriel" translateX="10.0" wrappingWidth="167.59423828125">
+            <Text fx:id="labelUsername" fill="WHITE" layoutX="70.0" layoutY="10.0" strokeType="OUTSIDE" strokeWidth="0.0" text="USER" translateX="10.0" wrappingWidth="167.59423828125">
                <font>
                   <Font name="Segoe UI Bold" size="39.0" />
                </font>
@@ -47,21 +46,7 @@
             </Text>
          </children>
       </TextFlow>
-      <Pane prefHeight="558.0" prefWidth="56.0" style="-fx-background-color: linear-gradient(to right, #ff3131, #ff914d)linear-gradient(to right, #ff7e5f99, #feb47b99);">
-         <children>
-            <ImageView fitHeight="46.0" fitWidth="50.0" layoutY="499.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../assets/logoPorcoBranco.png" />
-               </image>
-            </ImageView>
-            <Button fx:id="btnMenu" layoutX="-2.0" layoutY="14.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="54.0" style="-fx-background-color: transparent;" styleClass="button-menu" stylesheets="@../../../css/TelaDashbord.css" text="☰" textAlignment="JUSTIFY" textFill="WHITE">
-               <font>
-                  <Font size="13.0" />
-               </font>
-            </Button>
-         </children>
-      </Pane>
-      <VBox alignment="TOP_CENTER" layoutX="90.0" layoutY="76.0" prefHeight="188.0" prefWidth="327.0" style="-fx-background-color: #fff5f5;">
+      <VBox alignment="TOP_CENTER" layoutX="65.0" layoutY="112.0" prefHeight="188.0" prefWidth="327.0" style="-fx-background-color: #fff5f5;">
          <children>
             <Label prefHeight="42.0" prefWidth="328.0" style="-fx-background-color: linear-gradient(to right, #ff3131, #ff914d)linear-gradient(to right, #ff7e5f99, #feb47b99);" text="Evolução mensal despesas vs entradas" textAlignment="JUSTIFY" textFill="WHITE">
                <font>
@@ -90,7 +75,7 @@
             </StackedBarChart>
          </children>
       </VBox>
-      <VBox alignment="TOP_CENTER" layoutX="90.0" layoutY="286.0" prefHeight="130.0" prefWidth="252.0" style="-fx-background-color: #fff5f5;">
+      <VBox alignment="TOP_CENTER" layoutX="65.0" layoutY="317.0" prefHeight="130.0" prefWidth="252.0" style="-fx-background-color: #fff5f5;">
          <children>
             <Label prefHeight="38.0" prefWidth="252.0" style="-fx-background-color: linear-gradient(to right, #ff3131, #ff914d)linear-gradient(to right, #ff7e5f99, #feb47b99);" text="Visão Geral do último mês" textAlignment="JUSTIFY" textFill="WHITE">
                <font>
@@ -159,7 +144,7 @@
             </TextFlow>
          </children>
       </VBox>
-      <VBox alignment="TOP_CENTER" layoutX="90.0" layoutY="429.0" prefHeight="75.0" prefWidth="252.0" style="-fx-background-color: #fff5f5;">
+      <VBox alignment="TOP_CENTER" layoutX="65.0" layoutY="459.0" prefHeight="75.0" prefWidth="252.0" style="-fx-background-color: #fff5f5;">
          <children>
             <Label prefHeight="38.0" prefWidth="252.0" style="-fx-background-color: linear-gradient(to right, #ff3131, #ff914d)linear-gradient(to right, #ff7e5f99, #feb47b99);" text="Saldo" textAlignment="JUSTIFY" textFill="WHITE">
                <font>
@@ -188,7 +173,7 @@
             </TextFlow>
          </children>
       </VBox>
-      <VBox fx:id="painelUser" layoutX="716.0" layoutY="18.0" prefHeight="516.0" prefWidth="216.0" style="-fx-background-color: linear-gradient(to right, #ff3131, #ff914d)linear-gradient(to right, #ff7e5f99, #feb47b99); -fx-background-radius: 20;" stylesheets="@../css/dashboard.css">
+      <VBox fx:id="painelUser" layoutX="694.0" layoutY="21.0" prefHeight="516.0" prefWidth="216.0" style="-fx-background-color: linear-gradient(to right, #ff3131, #ff914d)linear-gradient(to right, #ff7e5f99, #feb47b99); -fx-background-radius: 20;" stylesheets="@../css/dashboard.css">
          <children>
             <ImageView fx:id="userPerfil" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" style="-fx-preserve-ratio: true;" translateX="60.0" translateY="35.0">
                <image>
@@ -277,6 +262,114 @@
                </font>
             </Button>
          </children></VBox>
+      <GridPane layoutX="412.0" layoutY="112.0" prefHeight="188.0" prefWidth="252.0" style="-fx-background-color: linear-gradient(to right, #ff3131, #ff914d)linear-gradient(to right, #ff7e5f99, #feb47b99);">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <ImageView fitHeight="6.0" fitWidth="87.0" pickOnBounds="true" preserveRatio="true" rotate="90.0" scaleX="2.0" translateY="1.0">
+                     <image>
+                        <Image url="@../assets/faixabranca.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets top="40.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <ImageView fitHeight="61.0" fitWidth="57.0" layoutX="10.0" pickOnBounds="true" preserveRatio="true" scaleX="1.5" scaleY="1.5" translateX="-30.0">
+                     <image>
+                        <Image url="@../assets/imagemcasa.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets top="37.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <HBox prefHeight="100.0" prefWidth="200.0" />
+               </children>
+            </HBox>
+            <ImageView fitHeight="6.0" fitWidth="87.0" pickOnBounds="true" preserveRatio="true" rotate="90.0" scaleX="1.5" scaleY="1.5" GridPane.rowIndex="1">
+               <image>
+                  <Image url="@../assets/faixabranca.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="61.0" fitWidth="57.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1">
+               <image>
+                  <Image url="@../assets/imagemcasa.png" />
+               </image>
+            </ImageView>
+         </children>
+      </GridPane>
+      <VBox alignment="TOP_CENTER" layoutX="328.0" layoutY="384.0" prefHeight="107.0" prefWidth="357.0" style="-fx-background-color: #fff5f5;">
+         <children>
+            <HBox prefHeight="150.0" prefWidth="274.0">
+               <children>
+                  <PieChart fx:id="teste" prefHeight="150.0" prefWidth="177.0" />
+                  <VBox prefHeight="150.0" prefWidth="157.0">
+                     <children>
+                        <Label text="Despesas por categoria" textFill="#ff7c5a">
+                           <VBox.margin>
+                              <Insets top="10.0" />
+                           </VBox.margin>
+                           <font>
+                              <Font name="System Bold Italic" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="10.0" layoutY="20.0" text="Categorias" textFill="#ff7c5a">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets top="20.0" />
+                           </VBox.margin>
+                        </Label>
+                        <Label layoutX="10.0" layoutY="60.0" text="Categoria1" textFill="#ff7c5a">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets left="20.0" />
+                           </VBox.margin>
+                        </Label>
+                        <Label layoutX="10.0" layoutY="80.0" text="Categoria2" textFill="#ff7c5a">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets left="20.0" />
+                           </VBox.margin>
+                        </Label>
+                        <Label layoutX="10.0" layoutY="100.0" text="Categorias3" textFill="#ff7c5a">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets left="20.0" />
+                           </VBox.margin>
+                        </Label>
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+      <VBox prefHeight="558.0" prefWidth="56.0" style="-fx-background-color: linear-gradient(to right, #ff3131, #ff914d)linear-gradient(to right, #ff7e5f99, #feb47b99);">
+         <children>
+            <Button fx:id="btnMenu" mnemonicParsing="false" prefHeight="47.0" prefWidth="56.0" style="-fx-graphic: url('..\assets\botaomenu.png'); -fx-background-color: transparente;" text="≡" textFill="WHITE">
+               <font>
+                  <Font size="27.0" />
+               </font>
+               <VBox.margin>
+                  <Insets top="30.0" />
+               </VBox.margin>
+            </Button>
+         </children>
+      </VBox>
       <VBox fx:id="slideMenu" alignment="TOP_CENTER" opacity="0.77" prefHeight="558.0" prefWidth="381.0" style="-fx-background-color: linear-gradient(to right, #ff3131, #ff914d)linear-gradient(to right, #ff7e5f99, #feb47b99);" visible="false">
          <children>
             <Text fill="#f8e9e9" strokeType="OUTSIDE" strokeWidth="0.0" text="Metas" textAlignment="CENTER" translateX="-50.0">
@@ -295,7 +388,7 @@
                   <Font name="Segoe UI" size="18.0" />
                </font>
             </Button>
-            <Button layoutX="88.0" layoutY="112.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="324.0" style="-fx-background-color: transparent;" text="Criar nova meta" textFill="WHITE">
+            <Button fx:id="btnCreateMeta" layoutX="88.0" layoutY="112.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="324.0" style="-fx-background-color: transparent;" text="Criar nova meta" textFill="WHITE">
                <font>
                   <Font name="Segoe UI" size="18.0" />
                </font>
@@ -331,56 +424,6 @@
                   <Font name="Segoe UI Bold Italic" size="18.0" />
                </font>
             </Button>
-         </children>
-      </VBox>
-      <GridPane layoutX="443.0" layoutY="76.0" prefHeight="188.0" prefWidth="252.0" style="-fx-background-color: linear-gradient(to right, #ff3131, #ff914d)linear-gradient(to right, #ff7e5f99, #feb47b99);">
-        <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-        </columnConstraints>
-        <rowConstraints>
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-        </rowConstraints>
-         <children>
-            <HBox prefHeight="100.0" prefWidth="200.0">
-               <children>
-                  <ImageView fitHeight="6.0" fitWidth="87.0" pickOnBounds="true" preserveRatio="true" rotate="90.0" scaleX="2.0" translateY="1.0">
-                     <image>
-                        <Image url="@../assets/faixabranca.png" />
-                     </image>
-                     <HBox.margin>
-                        <Insets top="40.0" />
-                     </HBox.margin>
-                  </ImageView>
-                  <ImageView fitHeight="61.0" fitWidth="57.0" layoutX="10.0" pickOnBounds="true" preserveRatio="true" scaleX="1.5" scaleY="1.5" translateX="-30.0">
-                     <image>
-                        <Image url="@../assets/imagemcasa.png" />
-                     </image>
-                     <HBox.margin>
-                        <Insets top="37.0" />
-                     </HBox.margin>
-                  </ImageView>
-                  <HBox prefHeight="100.0" prefWidth="200.0" />
-               </children>
-            </HBox>
-         </children>
-      </GridPane>
-      <VBox alignment="TOP_CENTER" layoutX="352.0" layoutY="286.0" prefHeight="220.0" prefWidth="345.0" style="-fx-background-color: #fff5f5;">
-         <children>
-            <Label prefHeight="38.0" prefWidth="252.0" style="-fx-background-color: linear-gradient(to right, #ff3131, #ff914d)linear-gradient(to right, #ff7e5f99, #feb47b99);" text="Saldo" textAlignment="JUSTIFY" textFill="WHITE">
-               <font>
-                  <Font name="Segoe UI Bold Italic" size="13.0" />
-               </font>
-               <padding>
-                  <Insets bottom="5.0" left="100.0" top="5.0" />
-               </padding>
-            </Label>
-            <AnchorPane prefHeight="200.0" prefWidth="200.0">
-               <children>
-                  <PieChart fx:id="teste" prefHeight="191.0" prefWidth="345.0" title="teste" />
-               </children>
-            </AnchorPane>
          </children>
       </VBox>
    </children>

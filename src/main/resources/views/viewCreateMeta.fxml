@@ -12,10 +12,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.financepro.model.frontend.controllers.MetasController">
    <children>
-      <ImageView fitHeight="469.0" fitWidth="963.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="painelCreateMeta" fitHeight="558.0" fitWidth="963.0" layoutX="-14.0" layoutY="-14.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets/fundoTela2.png" />
          </image>
@@ -25,7 +24,7 @@
             <Font name="Segoe UI Bold" size="29.0" />
          </font>
       </Text>
-      <VBox layoutX="62.0" layoutY="86.0" prefHeight="357.0" prefWidth="353.0">
+      <VBox layoutX="64.0" layoutY="102.0" prefHeight="357.0" prefWidth="353.0">
          <children>
             <Text fill="#ff6300" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome da meta">
                <font>
@@ -79,7 +78,7 @@
             </TextField>
          </children>
       </VBox>
-      <VBox layoutX="562.0" layoutY="170.0" prefHeight="143.0" prefWidth="217.0">
+      <VBox layoutX="654.0" layoutY="193.0" prefHeight="143.0" prefWidth="217.0">
          <children>
             <Text fill="#ff6300" strokeType="OUTSIDE" strokeWidth="0.0" text="Criar meta?">
                <font>
@@ -104,12 +103,7 @@
             </Button>
          </children>
       </VBox>
-      <Text fill="RED" layoutX="424.0" layoutY="134.0" strokeType="OUTSIDE" strokeWidth="0.0">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Text>
-      <Label fx:id="txtErroNomeMeta" layoutX="431.0" layoutY="120.0" text="ㅤ" textFill="#f20000" />
-      <Label fx:id="txtErroValorMeta" layoutX="425.0" layoutY="420.0" text="ㅤ" textFill="#f20000" />
+      <Label fx:id="txtErroNomeMeta" layoutX="425.0" layoutY="129.0" text="ㅤ" textFill="#f20000" />
+      <Label fx:id="txtErroValorMeta" layoutX="425.0" layoutY="433.0" text="ㅤ" textFill="#f20000" />
    </children>
 </AnchorPane>
