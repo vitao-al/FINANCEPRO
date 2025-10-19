@@ -370,7 +370,7 @@
             </Button>
          </children>
       </VBox>
-      <VBox fx:id="slideMenu" alignment="TOP_CENTER" disable="true" opacity="0.77" prefHeight="558.0" prefWidth="381.0" style="-fx-background-color: linear-gradient(to right, #ff3131, #ff914d)linear-gradient(to right, #ff7e5f99, #feb47b99);">
+      <VBox fx:id="slideMenu" alignment="TOP_CENTER" opacity="0.77" prefHeight="558.0" prefWidth="381.0" style="-fx-background-color: linear-gradient(to right, #ff3131, #ff914d)linear-gradient(to right, #ff7e5f99, #feb47b99);" visible="false">
          <children>
             <Button fx:id="btnMenu1" mnemonicParsing="false" onAction="#handleMenuClick" prefHeight="47.0" prefWidth="56.0" style="-fx-graphic: url('..\assets\botaomenu.png'); -fx-background-color: transparente;" text="X" textFill="WHITE" translateX="-160.0" translateY="30.0">
                <font>
@@ -385,7 +385,7 @@
                   <Insets top="70.0" />
                </VBox.margin>
             </Text>
-            <Button mnemonicParsing="false" prefHeight="35.0" prefWidth="324.0" style="-fx-background-color: transparent;" text="Ver metas criadas" textFill="WHITE">
+            <Button fx:id="showMetas" mnemonicParsing="false" prefHeight="35.0" prefWidth="324.0" style="-fx-background-color: transparent;" text="Ver metas criadas" textFill="WHITE">
                <VBox.margin>
                   <Insets />
                </VBox.margin>

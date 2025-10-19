@@ -25,6 +25,10 @@ public class DashbordController {
     private Button btnMenu;
     @FXML
     private Button showMetas;
+
+    @FXML
+    private Button btnCreateMeta;
+
     @FXML
     private PieChart teste;
 
@@ -55,6 +59,14 @@ public class DashbordController {
             }catch(Exception ex){
                 throw new RuntimeException(ex);
             }
+        });
+
+        btnCreateMeta.setOnAction(event -> {
+           try {
+               launcherPrincipal.changeView("/views/viewCreateMeta.fxml");
+           }catch(Exception ex){
+               throw new RuntimeException(ex);
+           }
         });
 
     }
