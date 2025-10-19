@@ -64,6 +64,7 @@ public class TabelaDespesasCategoriaController {
             // Aqui você liga o texto que quer mostrar no gráfico
             dados.add(fatia);
         }
+
         for(Despesa d : user.pegarDespesasMaisRecentes())
         {
             System.out.println("Data da despesa:" + d.getData().toString());
