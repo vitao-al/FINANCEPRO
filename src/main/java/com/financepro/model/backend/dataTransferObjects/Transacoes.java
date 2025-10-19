@@ -2,6 +2,7 @@ package com.financepro.model.backend.dataTransferObjects;
 
 import com.financepro.model.backend.databaseDataObjects.TransacoesHandlerDB;
 import com.financepro.model.backend.databaseDataObjects.MetasHandlerDB;
+import com.financepro.model.backend.model.Categorias;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -77,7 +78,18 @@ public class Transacoes
         this.setDespesasList(this.tdb.getDespesasOfTransacoes(muid));
         return getDespesasList();
     }
-
+    public int getNumDespesasByCategoria(Categorias c)
+    {
+        int i = 0;
+        for(Despesa d : getDespesasList())
+        {
+            if(d.getCategoria().equals(c.toString()))
+            {
+                i += 1;
+            }
+        }
+        return i;
+    }
     /**
      * Pega todas as economias relacionadas a uma meta especifica com base no id da mesma
      * @param muid o id da meta
