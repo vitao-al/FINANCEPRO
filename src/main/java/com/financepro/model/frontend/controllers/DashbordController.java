@@ -1,6 +1,7 @@
 package com.financepro.model.frontend.controllers;
 
 import com.financepro.model.backend.dataTransferObjects.Usuario;
+import com.financepro.model.frontend.launcher.launcherPrincipal;
 import javafx.animation.TranslateTransition;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -22,10 +23,10 @@ public class DashbordController {
     private VBox slideMenu;
     @FXML
     private Button btnMenu;
-
+    @FXML
+    private Button bntVerMetasCriardas;
     @FXML
     private PieChart teste;
-
 
     private boolean isMenuOpen = false;
 
@@ -66,6 +67,10 @@ public class DashbordController {
         });
 
 
+    }
+    @FXML
+    private void irParaTelaDeMetasCriadas() throws Exception {
+        launcherPrincipal.changeView("/views/viewCategoriasValues.fxml");
     }
 
 }

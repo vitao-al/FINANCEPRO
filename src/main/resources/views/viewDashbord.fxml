@@ -21,7 +21,7 @@
 <?import javafx.scene.text.Text?>
 <?import javafx.scene.text.TextFlow?>
 
-<AnchorPane fx:id="anchorDashbioard" prefHeight="528.0" prefWidth="870.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.financepro.model.frontend.controllers.DashbordController">
+<AnchorPane fx:id="anchorDashbioard" prefHeight="528.0" prefWidth="870.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.financepro.model.frontend.controllers.DashbordController">
    <children>
       <ImageView fitHeight="558.0" fitWidth="987.0" layoutX="-31.0" pickOnBounds="true" smooth="false">
          <image>
@@ -277,7 +277,7 @@
                </font>
             </Button>
          </children></VBox>
-      <VBox fx:id="slideMenu" alignment="TOP_CENTER" opacity="0.77" prefHeight="558.0" prefWidth="381.0" style="-fx-background-color: linear-gradient(to right, #ff3131, #ff914d)linear-gradient(to right, #ff7e5f99, #feb47b99);" visible="false">
+      <VBox fx:id="slideMenu" alignment="TOP_CENTER" opacity="0.77" prefHeight="558.0" prefWidth="381.0" style="-fx-background-color: linear-gradient(to right, #ff3131, #ff914d)linear-gradient(to right, #ff7e5f99, #feb47b99);">
          <children>
             <Text fill="#f8e9e9" strokeType="OUTSIDE" strokeWidth="0.0" text="Metas" textAlignment="CENTER" translateX="-50.0">
                <font>
@@ -287,7 +287,7 @@
                   <Insets top="70.0" />
                </VBox.margin>
             </Text>
-            <Button mnemonicParsing="false" prefHeight="35.0" prefWidth="324.0" style="-fx-background-color: transparent;" text="Ver metas criadas" textFill="WHITE">
+            <Button fx:id="bntVerMetasCriardas" mnemonicParsing="false" onMouseClicked="#irParaTelaDeMetasCriadas" prefHeight="35.0" prefWidth="324.0" style="-fx-background-color: transparent;" text="Ver metas criadas" textFill="WHITE">
                <VBox.margin>
                   <Insets />
                </VBox.margin>

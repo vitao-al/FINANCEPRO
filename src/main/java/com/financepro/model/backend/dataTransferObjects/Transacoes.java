@@ -7,6 +7,7 @@ import com.financepro.model.backend.model.TipoTransacoes;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.UUID;
 
@@ -91,6 +92,18 @@ public class Transacoes
         }
         return i;
     }
+    public ArrayList<Despesa> getDespesasByCategoria(Categorias c)
+    {
+        ArrayList<Despesa> despesasCategoria = new ArrayList<>();
+        for(Despesa d : getDespesasList())
+        {
+            if(d.getCategoria().equals(c.toString()))
+            {
+                despesasCategoria.add(d);
+            }
+        }
+        return despesasCategoria;
+    }
     /**
      * Pega todas as economias relacionadas a uma meta especifica com base no id da mesma
      * @param muid o id da meta
@@ -120,5 +133,10 @@ public class Transacoes
     public void criarNovaMeta(String nome,float valor,String descricao,Date dataInicial,Date dataFinal,UUID uuid)
     {
         this.mdb.insertNewMeta(nome,valor,descricao,dataInicial,dataFinal,uuid);
+    }
+
+    public Despesa getDespesaMaisRecenteByCategoria(Categorias categoria)
+    {
+        return getDespesasByCategoria(categoria).stream().max(Comparator.comparing(Despesa::getCategoria)).orElse(null);
     }
 }
