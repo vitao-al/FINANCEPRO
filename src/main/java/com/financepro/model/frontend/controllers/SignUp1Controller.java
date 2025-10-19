@@ -83,7 +83,7 @@ public class SignUp1Controller {
             valido = false;
         } else txtErroRenda.setVisible(false);
 
-        if (!newPassword.getText().matches("[a-zA-Z0-9]{8,20}")) {
+        if (!newPassword.getText().matches("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,20}$\n")) {
             mostrarErroAnimado(txtErroPassword, "Senha inválida! Digite uma senha com:\nA-Z, a-z, 0-9, Mínimo 8 caracteres!");
             valido = false;
         } else txtErroPassword.setVisible(false);
