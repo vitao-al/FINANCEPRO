@@ -22,7 +22,7 @@
 
 <AnchorPane fx:id="anchorDashbioard" prefHeight="528.0" prefWidth="870.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.financepro.model.frontend.controllers.DashbordController">
    <children>
-      <ImageView fitHeight="558.0" fitWidth="959.0" pickOnBounds="true" smooth="false">
+      <ImageView fitHeight="558.0" fitWidth="959.0" pickOnBounds="true" smooth="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <image>
             <Image url="@../assets/fundoDashbord.jpg" />
          </image>
@@ -360,7 +360,7 @@
       </VBox>
       <VBox prefHeight="558.0" prefWidth="56.0" style="-fx-background-color: linear-gradient(to right, #ff3131, #ff914d)linear-gradient(to right, #ff7e5f99, #feb47b99);">
          <children>
-            <Button fx:id="btnMenu" mnemonicParsing="false" prefHeight="47.0" prefWidth="56.0" style="-fx-graphic: url('..\assets\botaomenu.png'); -fx-background-color: transparente;" text="≡" textFill="WHITE">
+            <Button fx:id="btnMenu" mnemonicParsing="false" onAction="#handleMenuClick" prefHeight="47.0" prefWidth="56.0" style="-fx-graphic: url('..\assets\botaomenu.png'); -fx-background-color: transparente;" text="≡" textFill="WHITE">
                <font>
                   <Font size="27.0" />
                </font>
@@ -370,8 +370,13 @@
             </Button>
          </children>
       </VBox>
-      <VBox fx:id="slideMenu" alignment="TOP_CENTER" opacity="0.77" prefHeight="558.0" prefWidth="381.0" style="-fx-background-color: linear-gradient(to right, #ff3131, #ff914d)linear-gradient(to right, #ff7e5f99, #feb47b99);" visible="false">
+      <VBox fx:id="slideMenu" alignment="TOP_CENTER" disable="true" opacity="0.77" prefHeight="558.0" prefWidth="381.0" style="-fx-background-color: linear-gradient(to right, #ff3131, #ff914d)linear-gradient(to right, #ff7e5f99, #feb47b99);">
          <children>
+            <Button fx:id="btnMenu1" mnemonicParsing="false" onAction="#handleMenuClick" prefHeight="47.0" prefWidth="56.0" style="-fx-graphic: url('..\assets\botaomenu.png'); -fx-background-color: transparente;" text="X" textFill="WHITE" translateX="-160.0" translateY="30.0">
+               <font>
+                  <Font size="27.0" />
+               </font>
+            </Button>
             <Text fill="#f8e9e9" strokeType="OUTSIDE" strokeWidth="0.0" text="Metas" textAlignment="CENTER" translateX="-50.0">
                <font>
                   <Font name="System Bold Italic" size="24.0" />

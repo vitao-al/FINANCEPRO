@@ -12,10 +12,7 @@
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="469.0" prefWidth="884.0" styleClass="janela1" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.financepro.model.frontend.controllers.PrincipalController">
-   <padding>
-      <Insets left="6.0" />
-   </padding>
-   <ImageView fitHeight="558.0" fitWidth="969.0" pickOnBounds="true" smooth="false">
+   <ImageView fitHeight="558.0" fitWidth="975.0" pickOnBounds="true" smooth="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
       <Image url="@../assets/fundo.jpg" />
    </ImageView>
    <ImageView fitHeight="168.0" fitWidth="278.0" layoutX="42.0" layoutY="193.0" pickOnBounds="true" preserveRatio="true">
