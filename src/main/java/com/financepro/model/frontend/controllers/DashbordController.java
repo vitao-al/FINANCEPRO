@@ -47,7 +47,7 @@ public class DashbordController {
         this.labelUsername.setText(dadosGlobais.user.getUsername());
         this.labelSaldo.setText(String.valueOf(user.getRenda()));
 
-        btnMenu.setOnAction(e -> {
+        btnMenu.setOnMouseClicked(e -> {
             TranslateTransition transition = new TranslateTransition(Duration.millis(300), slideMenu);
 
             if (isMenuOpen == false) {

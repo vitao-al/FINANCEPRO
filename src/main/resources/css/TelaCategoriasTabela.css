@@ -1,0 +1,56 @@
+.botaomenu{
+    -fx-background-color: transparent;
+}
+.painelSaldo{
+    -fx-background-color: white;
+}
+.painelTopo{
+    -fx-background-color: linear-gradient(from 0% 0% to 100% 100%, rgba(255,49,49,0.5), rgba(255,145,77,0.5));
+}
+.tabelaPane{
+-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, rgba(255,49,49,0.5), rgba(255,145,77,0.5));
+}
+.tabelaCategorias{
+    -fx-background-color: #f5f5f5; /* fundo da tabela */
+    -fx-border-color: #cccccc;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-table-cell-border-color: #bcbcbc;   /* Cor das linhas entre células */
+    -fx-table-header-border-color: #bcbcbc; /* Cor da borda do cabeçalho */
+    -fx-border-color: #bcbcbc;              /* Borda externa da tabela */
+    -fx-border-width: 1;
+    -fx-table-cell-border-color: black;
+    -fx-table-header-border-color: black;
+}
+.tabelaCategorias .column-header-background {
+    -fx-background-color: linear-gradient(from 0% 0% to 100% 100%, rgba(255,49,49,0.5), rgba(255,145,77,0.5));
+    -fx-border-color: transparent transparent #dcdcdc transparent; /* linha divisória inferior */
+    -fx-border-width: 0 0 1 0;
+
+}
+.table-row-cell:odd {
+    -fx-background-color: #f5f5f5;
+}
+.table-row-cell:even {
+    -fx-background-color: white;
+}
+.table-view {
+    -fx-table-cell-border-color: #bcbcbc;   /* Cor das linhas entre células */
+    -fx-table-header-border-color: #bcbcbc; /* Cor da borda do cabeçalho */
+    -fx-border-color: #bcbcbc;              /* Borda externa da tabela */
+    -fx-border-width: 1;
+}
+.table-row-cell {
+    -fx-border-color: transparent transparent #dcdcdc transparent; /* linha divisória inferior */
+    -fx-border-width: 0 0 1 0;
+}
+.chart-pie {
+    -fx-border-color: white;
+    -fx-border-width: 1;
+}
+
+.chart-legend {
+    -fx-background-color: transparent;
+    -fx-text-fill: #333;
+    -fx-font-size: 13px;
+}
