@@ -34,7 +34,7 @@ public class MetasController {
                 try {
                     valueMetafloat = Float.parseFloat(valueMeta.getText());
                 } catch (NumberFormatException ex) {
-                    SignUp1Controller.mostrarErroAnimado(txtErroValorMeta, "Valor de meta inválida!");
+                    //SignUp1Controller.mostrarErroAnimado(txtErroValorMeta, "Valor de meta inválida!");
                     return;
                 }
                 try {

@@ -29,4 +29,6 @@ module com.testeexemplo.demo {
 
     exports com.financepro.model.frontend.launcher;
     opens com.financepro.model.frontend.launcher to javafx.fxml;
+
+    opens com.financepro.model.backend.dataTransferObjects to javafx.base; // <-- aqui
 }

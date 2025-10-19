@@ -2,12 +2,11 @@ package com.financepro.model.backend.dataTransferObjects;
 
 import com.financepro.model.backend.databaseDataObjects.UsuariosHandlerDB;
 import com.financepro.model.backend.model.Categorias;
+import javafx.collections.ObservableList;
+import javafx.scene.chart.PieChart;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.UUID;
-
+import java.util.*;
 
 
 // ---- Interface de contato principal -----
@@ -157,6 +156,42 @@ public class Usuario
         this.setTodasAsDespesas(this.todasAsMetas.getAllDespesas());
         return this.getTodasAsDespesas();
     }
+    public ArrayList<DespesasTable> pegarQuantidadeDespesaCategoria()
+    {
+        ArrayList<DespesasTable> despesasParaTabela =  new ArrayList<>();
+        Map<Categorias, DespesasTable> mapaCategorias = new HashMap<>();
+        for(Despesa d : this.pegarTodasDespesas())
+        {
+            DespesasTable dt = mapaCategorias.get(d.getCategoria());
+            Categorias c = d.getCategoria();
+
+                if(dt == null)
+                {
+                    dt = new DespesasTable();
+                    dt.setCategoria(c.toString());
+                    dt.setData(d.getData().toString());
+                    dt.setQuantidade(1);
+                    dt.setValor(d.getValor());
+                    mapaCategorias.put(d.getCategoria(), dt);
+                }
+                else{
+                    dt.setQuantidade(dt.getQuantidade() + 1);
+                    dt.setValor(dt.getValor() + d.getValor());
+                }
+
+            }
+        despesasParaTabela.addAll(mapaCategorias.values());
+        return despesasParaTabela;
+
+    }
+    public float somarTodosGastos(ObservableList<PieChart.Data> lista) {
+        float total = 0f;
+        for (PieChart.Data d : lista) {
+            total += d.getPieValue(); // pega o valor da despesa
+        }
+        return total;
+    }
+
 
     /**
      * cria um novo usuario e adiciona no banco de dados baseado nos parametros abaixo:
