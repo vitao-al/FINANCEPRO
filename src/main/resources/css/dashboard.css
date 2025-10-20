@@ -1,5 +1,5 @@
 .date-picker {
-    -fx-background-color: transparent;
+    -fx-background-color:  linear-gradient(to right, #ff3131, #ff914d)linear-gradient(to right, #ff7e5f99, #feb47b99);
     -fx-control-inner-background: transparent;
     -fx-text-fill: white;
     -fx-border-color: transparent;
@@ -20,7 +20,7 @@
 
 /* Campo interno (TextField do DatePicker) */
 .date-picker > .text-field {
-    -fx-background-color: transparente;
+    -fx-background-color:  linear-gradient(to right, #ff3131, #ff914d)linear-gradient(to right, #ff7e5f99, #feb47b99);
     -fx-text-fill: white;
 }
 

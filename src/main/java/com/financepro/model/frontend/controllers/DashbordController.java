@@ -13,6 +13,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
+import javafx.event.ActionEvent; // Importe ActionEvent
 
 public class DashbordController {
     @FXML
@@ -24,9 +25,17 @@ public class DashbordController {
     @FXML
     private Button btnMenu;
     @FXML
+    private Button showMetas;
+
+    @FXML
+    private Button btnCreateMeta;
+
+    @FXML
     private Button bntVerMetasCriardas;
     @FXML
     private PieChart teste;
+
+    private static final double ESPACO_DE_TRANSICAO = 10;
 
     private boolean isMenuOpen = false;
 
@@ -35,38 +44,61 @@ public class DashbordController {
         // Criando dados para o PieChart
         ObservableList<PieChart.Data> pieChartData =
                 FXCollections.observableArrayList(
-                        new PieChart.Data("Entradas", 40),
-                        new PieChart.Data("Despesas", 60)
+                        new PieChart.Data("Categoria1", 40),
+                        new PieChart.Data("Categoria2", 60),
+                        new PieChart.Data("Categoria3", 80)
                 );
 
         teste.setData(pieChartData);
-        teste.setTitle("Saldo Mensal");
-
 
         Usuario user = dadosGlobais.getUser();
         this.labelUsername.setText(dadosGlobais.user.getUsername());
         this.labelSaldo.setText(String.valueOf(user.getRenda()));
 
-        btnMenu.setOnAction(e -> {
-            TranslateTransition transition = new TranslateTransition(Duration.millis(300), slideMenu);
-
-            if (isMenuOpen == false) {
-                // Abrir
-                transition.setToX(250); // desloca o menu 250px para a direita
-                transition.play();
-                isMenuOpen = true;
-
-            } else {
-                // Fechar
-                transition.setToX(0);
-                transition.setOnFinished(event -> slideMenu.setLayoutX(-250)); // volta posição
-                slideMenu.setLayoutX(0);
-                transition.play();
-                isMenuOpen = false;
+        showMetas.setOnAction(event -> {
+            try {
+                launcherPrincipal.changeView("/views/viewMetas.fxml");
+            }catch(Exception ex){
+                throw new RuntimeException(ex);
             }
         });
 
+        btnCreateMeta.setOnAction(event -> {
+           try {
+               launcherPrincipal.changeView("/views/viewCreateMeta.fxml");
+           }catch(Exception ex){
+               throw new RuntimeException(ex);
+           }
+        });
 
+    }
+
+    @FXML
+    private void handleMenuClick(ActionEvent event) {
+
+        TranslateTransition transition = new TranslateTransition(Duration.millis(300), slideMenu);
+
+        if (!isMenuOpen) {
+
+            transition.setToX(ESPACO_DE_TRANSICAO);
+
+
+            slideMenu.setVisible(true);
+
+            transition.play();
+            isMenuOpen = true;
+
+        } else {
+
+            transition.setToX(0);
+
+            transition.setOnFinished(e -> {
+                slideMenu.setVisible(false);
+            });
+
+            transition.play();
+            isMenuOpen = false;
+        }
     }
     @FXML
     private void irParaTelaDeMetasCriadas() throws Exception {
