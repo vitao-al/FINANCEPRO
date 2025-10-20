@@ -4,6 +4,7 @@ import com.financepro.model.backend.databaseDataObjects.UsuariosHandlerDB;
 import com.financepro.model.backend.model.Categorias;
 import javafx.collections.ObservableList;
 import javafx.scene.chart.PieChart;
+import javafx.scene.control.TextField;
 
 import java.sql.SQLException;
 import java.util.*;
