@@ -1,7 +1,5 @@
 package com.financepro.model.frontend.controllers;
-import com.financepro.model.backend.dataTransferObjects.Despesa;
-import com.financepro.model.backend.dataTransferObjects.DespesasTable;
-import com.financepro.model.backend.dataTransferObjects.Usuario;
+import com.financepro.model.backend.dataTransferObjects.*;
 import com.financepro.model.backend.model.Categorias;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -22,16 +20,12 @@ import java.util.UUID;
 public class TabelaDespesasCategoriaController {
     @FXML
     private Label saldoText;
-
     @FXML
     private Label totalValueText;
-
     @FXML
     private Button botaoMenu;
-
     @FXML
     TableView<DespesasTable> tabelaDespesas;
-
     @FXML
     TableColumn<DespesasTable,String> colunaCategoria;
     @FXML
@@ -47,25 +41,41 @@ public class TabelaDespesasCategoriaController {
     public void initialize() {
 
         Usuario user = dadosGlobais.getUser();
-        //user.criarNovaMeta("teste",2500,"descrição",new Date(2025 -1900,10,13));
-        //user.criarNovaDespesa("Teste",250, Categorias.ALIMENTACAO, UUID.fromString("8674ee5c-28c9-491a-b459-f893b7e1b752"));
-        colunaCategoria.setCellValueFactory(new PropertyValueFactory<>("Categoria"));
-        colunaQuantidade.setCellValueFactory(new PropertyValueFactory<>("Quantidade"));
-        colunaValor.setCellValueFactory(new PropertyValueFactory<>("Valor"));
-        colunaUltimaData.setCellValueFactory(new PropertyValueFactory<>("Data"));
-        ObservableList<DespesasTable> lista = tabelaDespesas.getItems();
-
-        lista.clear();
-        for(Despesa d : user.pegarTodasDespesas())
+        System.out.println("Nome do usuario:" + user.getUsername());
+        for(Meta m : user.pegarTodasAsMetas().getMetasList())
         {
-            System.out.println("NOME DA DESPESA:" + d.getNome());
-            DespesasTable dt = new DespesasTable();
-            dt.setDespesaTable(d,user.contarDespesasCategoria(d.getCategoria()));
-            lista.add(dt);
 
         }
-        this.tabelaDespesas.setItems(lista);
+        //user.criarNovaMeta("teste",2500,"descrição",new Date(2025 -1900,10,13));
+        user.criarNovaDespesa("Teste",50, Categorias.TRANSPORTE,new Date(2026 - 1900,6,20) ,UUID.fromString("8674ee5c-28c9-491a-b459-f893b7e1b752"));
+        colunaCategoria.setCellValueFactory(new PropertyValueFactory<>("categoria"));
+        colunaQuantidade.setCellValueFactory(new PropertyValueFactory<>("quantidade"));
+        colunaValor.setCellValueFactory(new PropertyValueFactory<>("valor"));
+        colunaUltimaData.setCellValueFactory(new PropertyValueFactory<>("data"));
+        ObservableList<DespesasTable> lista = tabelaDespesas.getItems();
+        ObservableList<PieChart.Data> dados = FXCollections.observableArrayList();
+        lista.clear();
+        for(DespesasTable dt : user.pegarQuantidadeDespesaCategoria())
+        {
+            lista.add(dt);
+        }
+        for (DespesasTable d : lista) {
+            PieChart.Data fatia = new PieChart.Data(d.getCategoria(), d.getValor());
+            // Aqui você liga o texto que quer mostrar no gráfico
+            dados.add(fatia);
+        }
 
+        for(Despesa d : user.pegarDespesasMaisRecentes())
+        {
+            System.out.println("Data da despesa:" + d.getData().toString());
+        }
+        this.tabelaDespesas.setItems(lista);
+        this.graficoDespesas.setData(dados);
+        this.graficoDespesas.setTitle("Despesas por categoria:");
+        this.graficoDespesas.setLegendVisible(true);
+        this.graficoDespesas.setLabelsVisible(true);
+        float gastoTotal = user.somarTodosGastos(graficoDespesas.getData());
+        this.saldoText.setText("R$: " + String.valueOf(gastoTotal));
 
     }
 }
