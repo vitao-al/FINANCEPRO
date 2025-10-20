@@ -22,6 +22,7 @@ public class Meta
     UUID muid;
     ArrayList<Economia> economiasMeta;
     ArrayList<Despesa> despesasMeta;
+
     public Meta() throws SQLException {
 
     }
@@ -34,6 +35,11 @@ public class Meta
         this.muid = muid;
         this.saldoAtual = (float) 0;
         this.descricao = descricao;
+        this.economiasMeta = new ArrayList<>(); // Inicializa como vazia
+        this.despesasMeta = new ArrayList<>();  // Inicializa como vazia
+        // Chama os métodos para carregar dados do banco (opcional, mas recomendado)
+        this.pegarTodasEconomias();
+        this.pegarTodasDespesas();
     }
 
     public String getNome() {
@@ -102,7 +108,12 @@ public class Meta
 
     public ArrayList<Economia> pegarTodasEconomias()
     {
-        this.setEconomiasMeta(this.tdb.getEconomiasOfTransacoes(this.muid));
+        ArrayList<Economia> economias = tdb.getEconomiasOfTransacoes(this.muid);
+        if (economias != null) {
+            this.setEconomiasMeta(economias); // Só define se não for null
+        } else {
+            this.setEconomiasMeta(new ArrayList<>()); // Garante lista vazia se null
+        }
         return this.getEconomiasMeta();
     }
     public ArrayList<Despesa> pegarTodasDespesas()
@@ -110,6 +121,7 @@ public class Meta
         this.setDespesasMeta(this.tdb.getDespesasOfTransacoes(this.muid));
         return this.getDespesasMeta();
     }
+
 
     public UUID getUuid() {
         return uuid;

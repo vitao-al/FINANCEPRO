@@ -149,8 +149,20 @@ public class Usuario
 
     public ArrayList<Economia> pegarTodasEconomias()
     {
-        this.setTodasAsEconomias(this.todasAsMetas.getAllEconomias());
-        return this.getTodasAsEconomias();
+
+        ArrayList<Economia> economias = new ArrayList<>();
+        if (todasAsMetas != null) {
+            for (Meta m : todasAsMetas.getMetasList()) {
+                if (m.getMuid() != null) { // Verifica se muid é válido
+                    m.pegarTodasEconomias(); // Força a carga do banco
+                    if (m.getEconomiasMeta() != null) {
+                        economias.addAll(m.getEconomiasMeta());
+                    }
+                }
+            }
+            this.setTodasAsEconomias(economias); // Atualiza a lista global
+        }
+        return economias; // Retorna lista inicializada// Retorna lista inicializada, mesmo que vazia
     }
     public ArrayList<Despesa> pegarTodasDespesas()
     {
@@ -212,6 +224,40 @@ public class Usuario
     public Despesa pegarUltimaDespesaRecentePorCategoria(Categorias categoria)
     {
         return this.t.getDespesaMaisRecenteByCategoria(categoria);
+    }
+    public ArrayList<DespesasTable> pegarTop3DespesasPorCategoria() {
+        // Pega todas as despesas agrupadas por categoria
+        ArrayList<DespesasTable> todasDespesas = pegarQuantidadeDespesaCategoria();
+
+        // Ordena pela quantidade de despesas (descendente) e limita a 3
+        todasDespesas.sort((d1, d2) -> Integer.compare(d2.getQuantidade(), d1.getQuantidade()));
+        return new ArrayList<>(todasDespesas.subList(0, Math.min(3, todasDespesas.size())));
+    }
+    public ArrayList<Economia> pegarEconomiasPorPeriodo(Date inicio, Date fim) {
+        ArrayList<Economia> economiasFiltradas = new ArrayList<>();
+        ArrayList<Economia> todasEconomias = pegarTodasEconomias(); // Usa a função ajustada
+
+        if (todasEconomias != null) {
+            for (Economia e : todasEconomias) {
+                if (e != null && e.getData() != null && !e.getData().before(inicio) && !e.getData().after(fim)) {
+                    economiasFiltradas.add(e);
+                }
+            }
+        }
+        return economiasFiltradas;
+    }
+    public ArrayList<Despesa> pegarDespesasPorPeriodo(Date inicio, Date fim) {
+        ArrayList<Despesa> despesasFiltradas = new ArrayList<>();
+        ArrayList<Despesa> todasDespesas = pegarTodasDespesas(); // Ajuste similar
+
+        if (todasDespesas != null) {
+            for (Despesa d : todasDespesas) {
+                if (d != null && d.getData() != null && !d.getData().before(inicio) && !d.getData().after(fim)) {
+                    despesasFiltradas.add(d);
+                }
+            }
+        }
+        return despesasFiltradas;
     }
     /**
      * Faz uma requisição no bando de dados para verificar se o usuario existe

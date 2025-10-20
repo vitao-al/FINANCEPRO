@@ -1,5 +1,6 @@
 package com.financepro.model.frontend.controllers;
 
+import com.financepro.model.backend.dataTransferObjects.Economia;
 import com.financepro.model.backend.dataTransferObjects.Meta;
 import com.financepro.model.backend.dataTransferObjects.Usuario;
 import com.financepro.model.frontend.launcher.launcherPrincipal;
@@ -32,8 +33,12 @@ public class EconomiaController {
     // private Map<String, UUID> metaMap = new HashMap<>();
 
     // Objeto fictício para a opção "Nenhuma Meta Associada"
-    private final Meta META_NULA = new Meta("Nenhuma Meta Associada", 0f, null, null, null, null, null);
-
+    private final Meta META_NULA = new Meta("Nenhuma Meta Associada", 0f, null, null, null, null, UUID.randomUUID()) {
+        @Override
+        public ArrayList<Economia> pegarTodasEconomias() {
+            return new ArrayList<>(); // Sobrescreve para retornar lista vazia sem acessar o banco
+        }
+    };
     public EconomiaController() throws SQLException {
     }
 
@@ -61,10 +66,12 @@ public class EconomiaController {
                 UUID muid;
 
                 Meta metaSelecionada = listaMetas.getValue(); // Pegando o objeto Meta selecionado
-                muid = (metaSelecionada != null && metaSelecionada != META_NULA)
-                        ? metaSelecionada.getMuid()
-                        : dadosGlobais.user.getUuid();
-                // --- 1. CAPTURA DO VALOR E CONVERSÃO ---
+                if (metaSelecionada != null && metaSelecionada != META_NULA && metaSelecionada.getMuid() != null) {
+                    muid = metaSelecionada.getMuid();
+                } else {
+                    muid = dadosGlobais.user.getUuid(); // Fallback para o UUID do usuário
+                    mostrarErroAnimado(txtErroMeta, "Atenção: Usando UUID do usuário como MUID (meta inválida).");
+                }
                 try {
                     valueEconomiafloat = Float.parseFloat(valueEconomia.getText());
                 } catch (NumberFormatException ex) {

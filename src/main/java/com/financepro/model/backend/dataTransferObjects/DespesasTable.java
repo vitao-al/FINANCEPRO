@@ -11,7 +11,8 @@ public class DespesasTable{
     private SimpleIntegerProperty quantidade;
 
     public String getCategoria() {
-        return categoria.toString();
+
+        return categoria.get();
     }
 
     public SimpleStringProperty categoriaProperty() {
@@ -19,6 +20,7 @@ public class DespesasTable{
     }
 
     public void setCategoria(String categoria) {
+
         this.categoria = new SimpleStringProperty(categoria);
     }
 
@@ -67,6 +69,10 @@ public class DespesasTable{
         this.valor = new SimpleFloatProperty(0);
         this.data = new SimpleStringProperty(d.getData().toString());
         this.quantidade = new SimpleIntegerProperty(0);
+    }
+    @Override
+    public String toString() {
+        return "Categoria: " + getCategoria() + ", Quantidade: " + getQuantidade() + ", Valor: " + getValor();
     }
 
 }
