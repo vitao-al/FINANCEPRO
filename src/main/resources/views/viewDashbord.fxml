@@ -368,6 +368,11 @@
                   <Insets top="30.0" />
                </VBox.margin>
             </Button>
+            <ImageView fitHeight="51.0" fitWidth="55.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true" translateY="400.0">
+               <image>
+                  <Image url="@../assets/logoporcobranco.png" />
+               </image>
+            </ImageView>
          </children>
       </VBox>
       <VBox fx:id="slideMenu" alignment="TOP_CENTER" opacity="0.77" prefHeight="558.0" prefWidth="381.0" style="-fx-background-color: linear-gradient(to right, #ff3131, #ff914d)linear-gradient(to right, #ff7e5f99, #feb47b99);" visible="false">

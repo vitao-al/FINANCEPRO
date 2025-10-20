@@ -1,6 +1,7 @@
 package com.financepro.model.frontend.controllers;
 
 import com.financepro.model.backend.dataTransferObjects.Usuario;
+import com.financepro.model.frontend.launcher.launcherPrincipal;
 import javafx.animation.TranslateTransition;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -49,8 +50,6 @@ public class DashbordController {
                 );
 
         teste.setData(pieChartData);
-        teste.setTitle("Saldo Mensal");
-
 
         Usuario user = dadosGlobais.getUser();
         this.labelUsername.setText(dadosGlobais.user.getUsername());

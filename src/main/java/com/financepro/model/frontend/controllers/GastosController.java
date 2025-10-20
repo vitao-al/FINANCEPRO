@@ -15,7 +15,7 @@ import java.util.Date;
 
 // A classe 'dadosGlobais' não foi fornecida, mas o código presume sua existência.
 
-public class MetasController {
+public class GastosController {
 
     @FXML
     private Button btnCreateMeta;
