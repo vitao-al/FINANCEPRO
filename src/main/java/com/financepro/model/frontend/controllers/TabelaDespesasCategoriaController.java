@@ -1,8 +1,11 @@
 package com.financepro.model.frontend.controllers;
 import com.financepro.model.backend.dataTransferObjects.*;
 import com.financepro.model.backend.model.Categorias;
+import com.financepro.model.frontend.launcher.launcherPrincipal;
+import javafx.animation.TranslateTransition;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.chart.PieChart;
 import javafx.scene.control.Button;
@@ -11,7 +14,9 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import javafx.util.Duration;
 
 import java.util.Date;
 import java.util.UUID;
@@ -20,10 +25,34 @@ import java.util.UUID;
 public class TabelaDespesasCategoriaController {
     @FXML
     private Label saldoText;
-
+    @FXML
+    private Text labelUsername;
+    @FXML
+    private Text labelSaldo;
+    @FXML
+    private Text labelValorMeta1;
+    @FXML
+    private Text labelValorMeta2;
+    @FXML
+    private VBox slideMenu;
+    @FXML
+    private Button btnMenu;
+    @FXML
+    private Button showMetas;
+    @FXML
+    private Button btnCreateMeta;
+    @FXML
+    private Button definirGasto;
+    @FXML
+    private Button definirEconomia;
+    @FXML
+    private Button analiseDeDespesas;
+    @FXML
+    private Button bntVerMetasCriardas;
     @FXML
     private Label totalValueText;
-
+    @FXML
+    private Button dashBoardbnt;
     @FXML
     private Button botaoMenu;
 
@@ -39,11 +68,80 @@ public class TabelaDespesasCategoriaController {
     @FXML
     TableColumn<DespesasTable,String> colunaUltimaData;
     @FXML
+    private Button btnLogout;
+    @FXML
     private PieChart graficoDespesas;
-
+    private static final double ESPACO_DE_TRANSICAO = 10;
+    private boolean isMenuOpen = false;
     @FXML
     public void initialize() {
+        if (showMetas != null) {
+            showMetas.setOnAction(event -> {
+                try {
+                    launcherPrincipal.changeView("/views/viewMetas.fxml");
+                } catch (Exception ex) {
+                    throw new RuntimeException(ex);
+                }
+            });
+        }
 
+        if (btnCreateMeta != null) {
+            btnCreateMeta.setOnAction(event -> {
+                try {
+                    launcherPrincipal.changeView("/views/viewCreateMeta.fxml");
+                } catch (Exception ex) {
+                    throw new RuntimeException(ex);
+                }
+            });
+        }
+        if (dashBoardbnt != null) {
+            dashBoardbnt.setOnAction(event -> {
+                try {
+                    launcherPrincipal.changeView("/views/viewDashbord.fxml");
+                } catch (Exception ex) {
+                    throw new RuntimeException(ex);
+                }
+            });
+        }
+
+        if (definirGasto != null) {
+            definirGasto.setOnAction(event -> {
+                try {
+                    launcherPrincipal.changeView("/views/viewAddGastos.fxml");
+                } catch (Exception ex) {
+                    throw new RuntimeException(ex);
+                }
+            });
+        }
+
+        if (definirEconomia != null) {
+            definirEconomia.setOnAction(event -> {
+                try {
+                    launcherPrincipal.changeView("/views/viewAddEconomia.fxml");
+                } catch (Exception ex) {
+                    throw new RuntimeException(ex);
+                }
+            });
+        }
+        if (analiseDeDespesas != null) {
+            analiseDeDespesas.setOnAction(event -> {
+                try {
+                    launcherPrincipal.changeView("/views/viewCategoriasValues.fxml");
+                } catch (Exception ex) {
+                    throw new RuntimeException(ex);
+                }
+            });
+        }
+
+        if (btnLogout != null) {
+            btnLogout.setOnAction(event -> {
+                try {
+                    launcherPrincipal.changeView("/views/viewPrincipal.fxml");
+                } catch (Exception ex) {
+                    throw new RuntimeException(ex);
+                }
+            });
+        }
         Usuario user = dadosGlobais.getUser();
         System.out.println("Nome do usuario:" + user.getUsername());
         for(Meta m : user.pegarTodasAsMetas().getMetasList())
@@ -86,5 +184,26 @@ public class TabelaDespesasCategoriaController {
         this.saldoText.setText("R$: " + String.valueOf(gastoTotal));
 
     }
+    @FXML
+    private void handleMenuClick(ActionEvent event) {
+        // ... (Seu código de transição de menu)
+        TranslateTransition transition = new TranslateTransition(Duration.millis(300), slideMenu);
+
+        if (!isMenuOpen) {
+            transition.setToX(ESPACO_DE_TRANSICAO);
+            slideMenu.setVisible(true);
+            transition.play();
+            isMenuOpen = true;
+
+        } else {
+            transition.setToX(0);
+            transition.setOnFinished(e -> {
+                slideMenu.setVisible(false);
+            });
+            transition.play();
+            isMenuOpen = false;
+        }
+    }
+
 }
 

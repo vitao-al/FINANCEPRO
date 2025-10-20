@@ -53,7 +53,11 @@ public class DashbordController {
     @FXML
     private Button definirEconomia;
     @FXML
+    private Button analiseDeDespesas;
+    @FXML
     private Button bntVerMetasCriardas;
+    @FXML
+    private Button dashBoardbnt;
     @FXML
     private PieChart graficoCategoria;
     @FXML
@@ -194,7 +198,15 @@ public class DashbordController {
                 }
             });
         }
-
+        if (dashBoardbnt != null) {
+            dashBoardbnt.setOnAction(event -> {
+                try {
+                    launcherPrincipal.changeView("/views/viewDashbord.fxml");
+                } catch (Exception ex) {
+                    throw new RuntimeException(ex);
+                }
+            });
+        }
         if (btnCreateMeta != null) {
             btnCreateMeta.setOnAction(event -> {
                 try {
@@ -219,6 +231,15 @@ public class DashbordController {
             definirEconomia.setOnAction(event -> {
                 try {
                     launcherPrincipal.changeView("/views/viewAddEconomia.fxml");
+                } catch (Exception ex) {
+                    throw new RuntimeException(ex);
+                }
+            });
+        }
+        if (analiseDeDespesas != null) {
+            analiseDeDespesas.setOnAction(event -> {
+                try {
+                    launcherPrincipal.changeView("/views/viewCategoriasValues.fxml");
                 } catch (Exception ex) {
                     throw new RuntimeException(ex);
                 }

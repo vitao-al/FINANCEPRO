@@ -356,7 +356,7 @@
         </VBox>
         <VBox prefHeight="558.0" prefWidth="56.0" style="-fx-background-color: linear-gradient(to right, #ff3131, #ff914d)linear-gradient(to right, #ff7e5f99, #feb47b99);">
             <children>
-                <Button fx:id="btnMenu" mnemonicParsing="false" onAction="#handleMenuClick" prefHeight="47.0" prefWidth="56.0" style="-fx-graphic: url('..\assets\botaomenu.png'); -fx-background-color: transparente;" text="≡" textFill="WHITE">
+                <Button fx:id="btnMenu" mnemonicParsing="false" onAction="#handleMenuClick" prefHeight="56.0" prefWidth="58.0" style="-fx-graphic: url('..\assets\botaomenu.png'); -fx-background-color: transparente;" text="≡" textFill="WHITE">
                     <font>
                         <Font size="27.0" />
                     </font>
@@ -425,7 +425,12 @@
                         <Insets top="30.0" />
                     </VBox.margin>
                 </Button>
-                <Button layoutX="117.0" layoutY="384.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="265.0" style="-fx-background-color: transparent;" text="Ver análise financeira" textFill="WHITE">
+            <Button fx:id="dashBoardbnt" mnemonicParsing="false" prefHeight="35.0" prefWidth="324.0" style="-fx-background-color: transparent;" text="Dashboard" textFill="WHITE">
+               <font>
+                  <Font name="Segoe UI" size="18.0" />
+               </font>
+            </Button>
+                <Button fx:id="analiseDeDespesas" layoutX="117.0" layoutY="384.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="265.0" style="-fx-background-color: transparent;" text="Ver análise financeira" textFill="WHITE">
                     <font>
                         <Font name="Segoe UI Bold Italic" size="18.0" />
                     </font>
