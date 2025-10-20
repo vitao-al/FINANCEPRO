@@ -1,149 +1,183 @@
 package com.financepro.model.frontend.controllers;
 
+import com.financepro.model.backend.dataTransferObjects.Meta;
+import com.financepro.model.backend.dataTransferObjects.Usuario;
 import com.financepro.model.frontend.launcher.launcherPrincipal;
 import javafx.animation.TranslateTransition;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.util.Duration;
+import com.financepro.model.backend.model.Categorias;
 
-import java.time.LocalDate;
-import java.time.ZoneId;
 import java.util.Date;
+import java.util.List;
+import java.util.stream.Collectors;
 
-// A classe 'dadosGlobais' não foi fornecida, mas o código presume sua existência.
+// Assumindo a existência de 'dadosGlobais'
 
-public class GastosController {
+public class GastosController{
 
     @FXML
-    private Button btnCreateMeta;
+    private TextField nomeGasto;
     @FXML
-    private Button btnNoCreateMeta;
+    private TextField valueGasto;
+    @FXML
+    Label txtErroNomeGasto;
+    @FXML
+    Label txtErroValorGasto;
+    @FXML
+    Label txtErroCategoriaOuMeta;
 
-    // --- LABELS DE ERRO ---
     @FXML
-    private Label txtErroNomeMeta;
+    private Button btnBack;
     @FXML
-    private Label txtErroValorMeta;
-    @FXML
-    private Label txtErroDescMeta; // Para a descrição
-    @FXML
-    private Label txtErroDataFinal; // Para a data
+    private Button btnCreateGasto; // O ELEMENTO QUE ESTAVA NULO
 
-    // --- CAMPOS DE ENTRADA ---
     @FXML
-    private TextField nameMeta;
+    private ChoiceBox<String> listaCategorias;
     @FXML
-    private TextField valueMeta;
-    @FXML
-    private TextField descricaoMeta; // Nome CORRETO da variável
+    private ChoiceBox<String> listaMetas;
 
-    // --- DATAPICKERS ---
-    @FXML
-    private DatePicker dataFinal;
-    @FXML
-    private DatePicker dataInicial;
 
     public void initialize() {
-        // Inicializa as Labels de erro como invisíveis (com verificação de segurança)
-        // Isso previne o NullPointerException se uma Label não for injetada.
-        if (txtErroNomeMeta != null) txtErroNomeMeta.setVisible(false);
-        if (txtErroValorMeta != null) txtErroValorMeta.setVisible(false);
-        if (txtErroDescMeta != null) txtErroDescMeta.setVisible(false);
-        if (txtErroDataFinal != null) txtErroDataFinal.setVisible(false);
+        // --- 2. CONFIGURAÇÃO DAS CHOICEBOXES ---
+
+        // 2.1. Configuração da listaCategorias (usando strings que batem com o enum)
+        if (listaCategorias != null) {
+            ObservableList<String> categorias = FXCollections.observableArrayList(
+                    // Estes nomes devem ser IDÊNTICOS aos do enum Categorias
+                    "TRANSPORTE", "ALIMENTACAO", "MORADIA", "LAZER",
+                    "ENTRETENIMENTO", "EDUCACAO", "EMPRESTIMOS", "FINANCIAMENTO",
+                    "MULTAS", "TAXAS", "MENSALIDADE", "VEICULOS",
+                    "SEGURO", "VIAGEM", "ROUPAS", "ACESSORIOS",
+                    "INVESTIMENTO", "HOSPEDAGEM", "DOACAO", "IMPOSTO", "OUTROS"
+            );
+            listaCategorias.setItems(categorias);
+            listaCategorias.getSelectionModel().selectFirst();
+        }
+
+        // 2.2. Configuração da listaMetas
+        if (listaMetas != null) {
+            // Checagem extra de nulo para dadosGlobais.user
+            Usuario currentUser = dadosGlobais.user;
+            List<Meta> listaDeObjetosMeta = (currentUser != null) ?
+                    currentUser.pegarTodasAsMetas().getMetasList() :
+                    new java.util.ArrayList<>();
+
+            List<String> nomesList = listaDeObjetosMeta.stream()
+                    .map(Meta::getNome)
+                    .collect(Collectors.toList());
+
+            ObservableList<String> nomesDasMetas = FXCollections.observableList(nomesList);
+
+            nomesDasMetas.add(0, "Nenhuma Meta Associada");
+            listaMetas.setItems(nomesDasMetas);
+            listaMetas.getSelectionModel().selectFirst();
+        }
 
 
-        btnCreateMeta.setOnAction(e -> {
-            if (camposValidos()) {
-                float valueMetafloat = 0f;
-                // A conversão float só é tentada se camposValidos() for true
-                try {
-                    valueMetafloat = Float.parseFloat(valueMeta.getText());
-                } catch (NumberFormatException ex) {
-                    // Esta exceção é improvável se o regex for bom, mas a mantemos.
-                    mostrarErroAnimado(txtErroValorMeta, "Erro de conversão de valor.");
-                    return;
+        // --- 3. CONFIGURAÇÃO DO USUÁRIO E EVENTOS ---
+
+        // CORREÇÃO: Adiciona checagem nula para btnCreateGasto para evitar NullPointerException
+        if (btnCreateGasto != null) {
+            btnCreateGasto.setOnAction(event -> {
+                // 1. Valida campos de texto e seleção (incluindo a Label de erro agora funcional)
+                if (camposValidos()){
+                    float valueGastofloat = 0f;
+                    String categoriaSelecionada = listaCategorias.getValue();
+
+                    // Checagem de nulo para dadosGlobais.user antes de usar
+                    if (dadosGlobais.user == null) {
+                        System.err.println("Erro: Usuário global não está logado ou é nulo.");
+                        mostrarErroAnimado(txtErroCategoriaOuMeta, "Erro: Usuário não logado.");
+                        return; // Sai do lambda se o usuário for nulo
+                    }
+
+                    try {
+                        // 2. Tenta converter a string da categoria para o tipo enum
+                        Categorias categoriaEnum = Categorias.valueOf(categoriaSelecionada.trim().toUpperCase());
+
+                        // 3. Converte o valor do gasto (já validado)
+                        valueGastofloat = Float.parseFloat(valueGasto.getText());
+
+                        // 4. Cria a despesa usando o enum
+                        dadosGlobais.user.criarNovaDespesa(nomeGasto.getText(),valueGastofloat,categoriaEnum,new Date(),dadosGlobais.user.getUuid());
+
+                        launcherPrincipal.changeView("/views/viewDashbord.fxml");
+
+                    } catch (IllegalArgumentException e) {
+                        mostrarErroAnimado(txtErroCategoriaOuMeta, "Erro interno: Categoria selecionada inválida.");
+                        e.printStackTrace();
+                    } catch (Exception e){
+                        e.printStackTrace();
+                        mostrarErroAnimado(txtErroCategoriaOuMeta, "Erro ao criar despesa: " + e.getMessage());
+                    }
                 }
+            });
+        } else {
+            // Log de erro útil para o desenvolvedor
+            System.err.println("Erro FXML: btnCreateGasto não foi injetado (NULL). Verifique o fx:id.");
+        }
 
-                // Tentativa de criar a meta
+        // CORREÇÃO: Adiciona checagem nula para btnBack
+        if (btnBack != null) {
+            btnBack.setOnAction(event -> {
                 try {
-                    dadosGlobais.user.criarNovaMeta(
-                            nameMeta.getText(),
-                            valueMetafloat,
-                            descricaoMeta.getText(), // Agora usando a variável CORRETA
-                            dataPickerParaUtilDate(dataInicial),
-                            dataPickerParaUtilDate(dataFinal)
-                    );
                     launcherPrincipal.changeView("/views/viewDashbord.fxml");
-                } catch (Exception ex) {
-                    ex.printStackTrace();
-                    // Lidar com falhas na criação de meta (ex: erro de DB)
+                }catch (Exception e){
+                    e.printStackTrace();
                 }
-            }
-        });
-
-        // Adicionar a ação para o botão "Não criar meta"
-        btnNoCreateMeta.setOnAction(e -> {
-            try {
-                launcherPrincipal.changeView("/views/viewDashbord.fxml");
-            } catch (Exception ex) {
-                ex.printStackTrace();
-            }
-        });
+            });
+        } else {
+            System.err.println("Erro FXML: btnBack não foi injetado (NULL). Verifique o fx:id.");
+        }
     }
 
     public boolean camposValidos() {
         boolean valido = true;
+        // Assume que listaCategorias foi verificada em initialize
+        String categoriaselecionada = (listaCategorias != null && listaCategorias.getValue() != null) ? listaCategorias.getValue() : null;
 
         // --- VALIDAÇÃO DE NOME ---
-        if (nameMeta.getText().trim().isEmpty()) {
-            mostrarErroAnimado(txtErroNomeMeta, "O nome não pode ser vazio!");
+        if (nomeGasto == null) { System.err.println("ERRO CRÍTICO: nomeGasto é nulo. Verifique o FXML."); return false; }
+        if (nomeGasto.getText().trim().isEmpty()) {
+            mostrarErroAnimado(txtErroNomeGasto, "O nome não pode ser vazio!");
             valido = false;
         }
-        else if (!nameMeta.getText().matches("[a-zA-Z\\s]+")) {
-            mostrarErroAnimado(txtErroNomeMeta, "Nome inválido (apenas letras e espaços)!");
+        else if (!nomeGasto.getText().matches("[a-zA-Z\\s]+")) {
+            mostrarErroAnimado(txtErroNomeGasto, "Nome inválido (apenas letras e espaços)!");
             valido = false;
-        } else if (txtErroNomeMeta != null) txtErroNomeMeta.setVisible(false); // Segurança
+        } else if (txtErroNomeGasto != null) txtErroNomeGasto.setVisible(false);
 
 
         // --- VALIDAÇÃO DE VALOR ---
-        if (valueMeta.getText().trim().isEmpty()) {
-            mostrarErroAnimado(txtErroValorMeta, "O valor não pode ser vazio!");
+        if (valueGasto == null) { System.err.println("ERRO CRÍTICO: valueGasto é nulo. Verifique o FXML."); return false; }
+        if (valueGasto.getText().trim().isEmpty()) {
+            mostrarErroAnimado(txtErroValorGasto, "O valor não pode ser vazio!");
             valido = false;
         }
-        else if (!valueMeta.getText().matches("[-+]?[0-9]*\\.?[0-9]+")) {
-            mostrarErroAnimado(txtErroValorMeta, "Digite um valor numérico válido!");
+        else if (!valueGasto.getText().matches("[-+]?[0-9]*\\.?[0-9]+")) {
+            mostrarErroAnimado(txtErroValorGasto, "Digite um valor numérico válido!");
             valido = false;
-        } else if (txtErroValorMeta != null) txtErroValorMeta.setVisible(false); // Segurança
+        } else if (txtErroValorGasto != null) txtErroValorGasto.setVisible(false);
 
 
-        // --- VALIDAÇÃO DE DESCRIÇÃO ---
-        if (descricaoMeta == null) {
-            // Se esta mensagem aparecer, é um ERRO GRAVE no FXML.
-            System.err.println("ERRO CRÍTICO DE INJEÇÃO: descricaoMeta está nulo. Verifique o fx:id no FXML.");
+        // --- VALIDAÇÃO DE CATEGORIA E META (Unificado) ---
+        if (listaCategorias == null) { System.err.println("ERRO CRÍTICO: listaCategorias é nulo."); return false; }
+
+        if (categoriaselecionada == null || categoriaselecionada.isEmpty()) {
+            mostrarErroAnimado(txtErroCategoriaOuMeta, "A categória não pode ser vazia!");
+            valido = false;
         }
-        if (descricaoMeta != null && descricaoMeta.getText().trim().isEmpty()) {
-            // Você pode ou não exigir descrição. Se sim:
-            // mostrarErroAnimado(txtErroDescMeta, "A descrição não pode ser vazia!");
-            // valido = false;
-        }
-
-
-        // --- VALIDAÇÃO DE DATAS (COMPLETA) ---
-        if (txtErroDataFinal != null) { // Somente tenta usar se a Label de erro foi injetada
-            if (dataInicial.getValue() == null) {
-                mostrarErroAnimado(txtErroDataFinal, "Selecione a Data Inicial!");
-                valido = false;
-            } else if (dataFinal.getValue() == null) {
-                mostrarErroAnimado(txtErroDataFinal, "Selecione a Data Final!");
-                valido = false;
-            } else if (dataFinal.getValue().isBefore(dataInicial.getValue())) {
-                mostrarErroAnimado(txtErroDataFinal, "Data Final não pode ser anterior à Data Inicial!");
-                valido = false;
-            } else {
-                txtErroDataFinal.setVisible(false);
+        // Verifica se listaMetas não é nulo antes de chamar getValue()
+        else if (listaMetas != null && listaMetas.getValue() == null) {
+            mostrarErroAnimado(txtErroCategoriaOuMeta, "Selecione uma meta ou 'Nenhuma Meta Associada'");
+            valido = false;
+        } else {
+            if (txtErroCategoriaOuMeta != null) {
+                txtErroCategoriaOuMeta.setVisible(false);
             }
         }
 
@@ -152,7 +186,6 @@ public class GastosController {
 
     public void mostrarErroAnimado(Label label, String mensagem) {
         if (label == null) {
-            // Evita NullPointerException se a Label não for injetada pelo FXML
             System.err.println("A Label de erro está nula. Mensagem não exibida: " + mensagem);
             return;
         }
@@ -166,14 +199,5 @@ public class GastosController {
         tt.setCycleCount(6);
         tt.setAutoReverse(true);
         tt.play();
-    }
-
-    // O método foi movido para dentro da classe (Correção de Sintaxe #1)
-    public static Date dataPickerParaUtilDate(DatePicker datePicker) {
-        LocalDate localDate = datePicker.getValue();
-        if (localDate == null) {
-            return null;
-        }
-        return Date.from(localDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
     }
 }

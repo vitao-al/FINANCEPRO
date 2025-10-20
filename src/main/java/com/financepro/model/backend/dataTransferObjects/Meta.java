@@ -13,11 +13,11 @@ public class Meta
 {
     TransacoesHandlerDB tdb = new TransacoesHandlerDB("Database/Transacoes.db");
     String nome;
-    Float valor;
+    float valor;
     String descricao;
     Date dataInicial;
     Date dataFinal;
-    Float saldoAtual;
+    float saldoAtual;
     UUID uuid;
     UUID muid;
     ArrayList<Economia> economiasMeta;

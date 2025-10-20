@@ -4,6 +4,7 @@ import com.financepro.model.backend.databaseDataObjects.UsuariosHandlerDB;
 import com.financepro.model.backend.model.Categorias;
 import javafx.collections.ObservableList;
 import javafx.scene.chart.PieChart;
+import javafx.scene.control.TextField;
 
 import java.sql.SQLException;
 import java.util.*;
@@ -71,13 +72,10 @@ public class Usuario
     {
         this.t.inserirNovaEconomia(valor,new Date(),muid);
     }
-    public void criarNovaDespesa(String nome, float valor, Categorias categoria, UUID muid)
-    {
-        this.t.inserirNovaDespesa(nome,valor,new Date(),categoria,muid);
-    }
+
     public void criarNovaDespesa(String nome, float valor, Categorias categoria,Date data ,UUID muid)
     {
-        this.t.inserirNovaDespesa(nome,valor,data,categoria,muid);
+        this.t.inserirNovaDespesa(nome,valor,new Date(),categoria,muid);
     }
     public void setUuid(UUID uuid)
     {
