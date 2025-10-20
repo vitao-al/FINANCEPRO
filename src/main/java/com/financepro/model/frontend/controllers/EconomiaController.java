@@ -10,6 +10,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.util.Duration;
 
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.*;
@@ -33,6 +34,9 @@ public class EconomiaController {
     // Objeto fictício para a opção "Nenhuma Meta Associada"
     private final Meta META_NULA = new Meta("Nenhuma Meta Associada", 0f, null, null, null, null, null);
 
+    public EconomiaController() throws SQLException {
+    }
+
 
     public void initialize() {
         if (txtErroValorEconomia != null) txtErroValorEconomia.setVisible(false);
@@ -55,8 +59,11 @@ public class EconomiaController {
 
                 float valueEconomiafloat;
                 UUID muid;
-                Meta metaSelecionada = listaMetas.getValue(); // Pegando o objeto Meta selecionado
 
+                Meta metaSelecionada = listaMetas.getValue(); // Pegando o objeto Meta selecionado
+                muid = (metaSelecionada != null && metaSelecionada != META_NULA)
+                        ? metaSelecionada.getMuid()
+                        : dadosGlobais.user.getUuid();
                 // --- 1. CAPTURA DO VALOR E CONVERSÃO ---
                 try {
                     valueEconomiafloat = Float.parseFloat(valueEconomia.getText());
@@ -69,9 +76,6 @@ public class EconomiaController {
                 if (metaSelecionada != null && metaSelecionada != META_NULA) {
                     // PEGAMOS O MUID DIRETAMENTE DO OBJETO
                     muid = metaSelecionada.getMuid();
-                } else {
-                    // Fallback para o UUID do Usuário se a opção nula for selecionada
-                    muid = dadosGlobais.user.getUuid();
                 }
 
                 // --- 3. EXECUÇÃO DA FUNÇÃO CRÍTICA ---
@@ -124,6 +128,13 @@ public class EconomiaController {
 
         listaMetas.setItems(metas);
         listaMetas.getSelectionModel().selectFirst();
+        // ✅ MOSTRA NOME NO DROPDOWN!
+        listaMetas.setCellFactory(lv -> new ListCell<Meta>() {
+            @Override protected void updateItem(Meta meta, boolean empty) {
+                super.updateItem(meta, empty);
+                setText(empty || meta == null ? "" : meta.getNome());
+            }
+        });
     }
 
 

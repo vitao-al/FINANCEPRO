@@ -132,5 +132,8 @@ public class Meta
         TimeUnit time = TimeUnit.DAYS;
         return time.convert(Duration.ofDays(this.getDataFinal().getTime() - this.getDataInicial().getTime()));
     }
-
+    @Override
+    public String toString() {
+        return getNome(); // Mostra o nome da meta no ComboBox
+    }
 }

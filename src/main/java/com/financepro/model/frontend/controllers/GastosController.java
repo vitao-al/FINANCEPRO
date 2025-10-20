@@ -4,6 +4,7 @@ import com.financepro.model.backend.dataTransferObjects.Meta;
 import com.financepro.model.backend.dataTransferObjects.Usuario;
 import com.financepro.model.frontend.launcher.launcherPrincipal;
 import javafx.animation.TranslateTransition;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -11,9 +12,8 @@ import javafx.scene.control.*;
 import javafx.util.Duration;
 import com.financepro.model.backend.model.Categorias;
 
-import java.util.Date;
-import java.util.List;
-import java.util.stream.Collectors;
+import java.sql.SQLException;
+import java.util.*;
 
 // Assumindo a existência de 'dadosGlobais'
 
@@ -39,9 +39,9 @@ public class GastosController{
     private ChoiceBox<String> listaCategorias;
     @FXML
     private ChoiceBox<String> listaMetas;
+    Usuario currentUser = dadosGlobais.user;
 
-
-    public void initialize() {
+    public void initialize() throws SQLException {
         // --- 2. CONFIGURAÇÃO DAS CHOICEBOXES ---
 
         // 2.1. Configuração da listaCategorias (usando strings que batem com o enum)
@@ -66,14 +66,11 @@ public class GastosController{
                     currentUser.pegarTodasAsMetas().getMetasList() :
                     new java.util.ArrayList<>();
 
-            List<String> nomesList = listaDeObjetosMeta.stream()
-                    .map(Meta::getNome)
-                    .collect(Collectors.toList());
 
-            ObservableList<String> nomesDasMetas = FXCollections.observableList(nomesList);
-
-            nomesDasMetas.add(0, "Nenhuma Meta Associada");
-            listaMetas.setItems(nomesDasMetas);
+            ObservableList<Meta> objetosMeta = FXCollections.observableList(listaDeObjetosMeta);
+            ObservableList<String> nomeDasMetas = FXCollections.observableArrayList(listaDeObjetosMeta.stream().map(Meta::getNome).toList());
+            nomeDasMetas.add(0, "Nenhuma meta associada");
+            listaMetas.setItems((nomeDasMetas));
             listaMetas.getSelectionModel().selectFirst();
         }
 
@@ -87,7 +84,10 @@ public class GastosController{
                 if (camposValidos()){
                     float valueGastofloat = 0f;
                     String categoriaSelecionada = listaCategorias.getValue();
-
+                    List<Meta> todasMetas = currentUser.pegarTodasAsMetas().getMetasList();
+                    Optional<Meta> meta = todasMetas.stream()
+                            .filter(m -> m.getNome().equals(listaMetas.getValue()))
+                            .findFirst();
                     // Checagem de nulo para dadosGlobais.user antes de usar
                     if (dadosGlobais.user == null) {
                         System.err.println("Erro: Usuário global não está logado ou é nulo.");
@@ -103,7 +103,10 @@ public class GastosController{
                         valueGastofloat = Float.parseFloat(valueGasto.getText());
 
                         // 4. Cria a despesa usando o enum
-                        dadosGlobais.user.criarNovaDespesa(nomeGasto.getText(),valueGastofloat,categoriaEnum,new Date(),dadosGlobais.user.getUuid());
+                        dadosGlobais.user.criarNovaDespesa(nomeGasto.getText(),
+                                valueGastofloat
+                                ,categoriaEnum,
+                                meta.map(Meta::getMuid).orElse(null));
 
                         launcherPrincipal.changeView("/views/viewDashbord.fxml");
 

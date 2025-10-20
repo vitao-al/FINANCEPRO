@@ -2,7 +2,7 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
@@ -14,7 +14,7 @@
 <?import javafx.scene.text.Text?>
 <?import javafx.scene.text.TextFlow?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.financepro.model.frontend.controllers.GastosController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.financepro.model.frontend.controllers.EconomiaController">
    <children>
       <ImageView fx:id="painelCreateMeta" fitHeight="558.0" fitWidth="963.0" layoutX="-14.0" layoutY="-14.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <image>
@@ -40,11 +40,7 @@
                               <Insets top="100.0" />
                            </VBox.margin>
                         </Text>
-                        <ChoiceBox fx:id="listaMetas" layoutX="10.0" layoutY="36.0" prefHeight="33.0" prefWidth="214.0" style="-fx-background-color: #fff5f5;">
-                           <VBox.margin>
-                              <Insets />
-                           </VBox.margin>
-                        </ChoiceBox>
+                        <ComboBox fx:id="listaMetas" prefHeight="34.0" prefWidth="271.0" style="-fx-background-color: #FFFFFF;" />
                         <Text fill="#ff6300" strokeType="OUTSIDE" strokeWidth="0.0" text="Valor da economia">
                            <font>
                               <Font name="System Bold Italic" size="17.0" />
