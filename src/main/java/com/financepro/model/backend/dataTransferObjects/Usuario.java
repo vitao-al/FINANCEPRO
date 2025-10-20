@@ -274,9 +274,4 @@ public class Usuario
         this.renda = renda;
     }
 
-    public static void main(String[] args) throws SQLException
-    {
-       // Usuario.criarNovoUsuario("handrey","1234","M",2500f);
-        //Usuario u1 = Usuario.PegarLoginUsuario("handrey","12345");
-    }
 }

@@ -51,6 +51,7 @@ public class SignUp1Controller {
                     return;
                 }
                 Usuario.criarNovoUsuario(username.getText(), newPassword.getText(), setGender(), rendafloat);
+                dadosGlobais.user = Usuario.PegarLoginUsuario(username.getText(),newPassword.getText());
                 try {
                     launcherPrincipal.changeView("/views/viewCreateMeta.fxml");
                 } catch (Exception ex) {
