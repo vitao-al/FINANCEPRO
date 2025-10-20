@@ -14,11 +14,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="460.0" prefWidth="861.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.financepro.model.frontend.controllers.TabelaDespesasCategoriaController">
+<VBox prefHeight="460.0" prefWidth="884.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.financepro.model.frontend.controllers.TabelaDespesasCategoriaController">
    <children>
       <AnchorPane prefHeight="546.0" prefWidth="969.0">
          <children>
-            <ImageView fitHeight="487.0" fitWidth="868.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="524.0" fitWidth="932.0" layoutY="-18.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assets/fundoDashbord.jpg" />
                </image>
@@ -37,7 +37,7 @@
                     <Image url="@../assets/botaomenu.png" />
                 </image>
             </ImageView>
-            <TableView fx:id="tabelaDespesas" layoutX="86.0" layoutY="69.0" prefHeight="310.0" prefWidth="486.0" styleClass="tabelaCategorias" stylesheets="@../css/TelaCategoriasTabela.css">
+            <TableView fx:id="tabelaDespesas" layoutX="86.0" layoutY="69.0" prefHeight="344.0" prefWidth="486.0" styleClass="tabelaCategorias" stylesheets="@../css/TelaCategoriasTabela.css">
               <columns>
                 <TableColumn fx:id="colunaCategoria" prefWidth="121.0" styleClass="column-header-background" text="Categoria" />
                 <TableColumn fx:id="colunaQuantidade" prefWidth="121.0" styleClass="column-header-background" text="quantidade" />
@@ -48,17 +48,17 @@
                   <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                </columnResizePolicy>
             </TableView>
-            <PieChart fx:id="graficoDespesas" layoutX="608.0" layoutY="110.0" legendSide="TOP" prefHeight="211.0" prefWidth="242.0" title="Despesa por categoria" />
-            <Pane layoutX="608.0" layoutY="380.0" prefHeight="58.0" prefWidth="184.0" styleClass="painelSaldo" stylesheets="@../css/TelaCategoriasTabela.css">
+            <PieChart fx:id="graficoDespesas" layoutX="574.0" layoutY="48.0" legendSide="TOP" prefHeight="329.0" prefWidth="357.0" title="Despesa por categoria" />
+            <Pane layoutX="655.0" layoutY="410.0" prefHeight="58.0" prefWidth="231.0" styleClass="painelSaldo" stylesheets="@../css/TelaCategoriasTabela.css">
                <children>
-                  <Label fx:id="saldoText" alignment="CENTER" contentDisplay="CENTER" layoutX="9.0" layoutY="17.0" prefHeight="24.0" prefWidth="171.0" text="SaldoText" textAlignment="JUSTIFY">
+                  <Label fx:id="saldoText" alignment="CENTER" contentDisplay="CENTER" layoutX="30.0" layoutY="17.0" prefHeight="24.0" prefWidth="171.0" text="SaldoText" textAlignment="JUSTIFY">
                      <font>
                         <Font size="17.0" />
                      </font>
                   </Label>
                </children>
             </Pane>
-            <Pane layoutX="608.0" layoutY="349.0" prefHeight="31.0" prefWidth="184.0" styleClass="painelTopo" stylesheets="@../css/TelaCategoriasTabela.css">
+            <Pane layoutX="655.0" layoutY="379.0" prefHeight="31.0" prefWidth="231.0" styleClass="painelTopo" stylesheets="@../css/TelaCategoriasTabela.css">
                <children>
                   <Label layoutX="15.0" layoutY="4.0" text="Despesa total" textFill="WHITE">
                      <font>
@@ -67,7 +67,7 @@
                   </Label>
                </children>
             </Pane>
-            <Pane layoutX="86.0" layoutY="378.0" prefHeight="58.0" prefWidth="486.0" styleClass="tabelaPane" stylesheets="@../css/TelaCategoriasTabela.css" />
+            <Pane layoutX="86.0" layoutY="408.0" prefHeight="58.0" prefWidth="486.0" styleClass="tabelaPane" stylesheets="@../css/TelaCategoriasTabela.css" />
          </children>
       </AnchorPane>
    </children>

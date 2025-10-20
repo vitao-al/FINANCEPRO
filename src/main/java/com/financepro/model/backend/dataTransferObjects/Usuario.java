@@ -7,6 +7,7 @@ import javafx.scene.chart.PieChart;
 
 import java.sql.SQLException;
 import java.util.*;
+import java.util.stream.Collectors;
 
 
 // ---- Interface de contato principal -----
@@ -73,6 +74,10 @@ public class Usuario
     public void criarNovaDespesa(String nome, float valor, Categorias categoria, UUID muid)
     {
         this.t.inserirNovaDespesa(nome,valor,new Date(),categoria,muid);
+    }
+    public void criarNovaDespesa(String nome, float valor, Categorias categoria,Date data ,UUID muid)
+    {
+        this.t.inserirNovaDespesa(nome,valor,data,categoria,muid);
     }
     public void setUuid(UUID uuid)
     {
@@ -169,7 +174,7 @@ public class Usuario
                 {
                     dt = new DespesasTable();
                     dt.setCategoria(c.toString());
-                    dt.setData(d.getData().toString());
+                    dt.setData(d.getData());
                     dt.setQuantidade(1);
                     dt.setValor(d.getValor());
                     mapaCategorias.put(d.getCategoria(), dt);
@@ -191,8 +196,17 @@ public class Usuario
         }
         return total;
     }
-
-
+    public List<Despesa> pegarDespesasPorPeriodo(Date dataInicial, Date dataFinal) {
+        return this.pegarTodasDespesas().stream()
+                .filter(d -> !d.getData().before(dataInicial) && !d.getData().after(dataFinal))
+                .collect(Collectors.toList());
+    }
+    public List<Despesa> pegarDespesasMaisRecentes()
+    {
+        ArrayList<Despesa> todasAsDespesas = this.pegarTodasDespesas();
+        todasAsDespesas.sort((d1,d2) -> d2.getData().compareTo(d1.getData()));
+        return todasAsDespesas.subList(0,Math.min(3,todasAsDespesas.size()));
+    }
     /**
      * cria um novo usuario e adiciona no banco de dados baseado nos parametros abaixo:
      * @param username nome do usuario

@@ -4,12 +4,15 @@ import javafx.beans.property.SimpleFloatProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class DespesasTable{
     private SimpleStringProperty categoria;
     private SimpleFloatProperty valor;
     private SimpleStringProperty data;// atributo extra que você não quer mostrar
     private SimpleIntegerProperty quantidade;
-
+    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
     public String getCategoria() {
         return categoria.toString();
     }
@@ -42,8 +45,8 @@ public class DespesasTable{
         return data;
     }
 
-    public void setData(String data) {
-        this.data = new SimpleStringProperty(data);
+    public void setData(Date data) {
+        this.data = new SimpleStringProperty(sdf.format(data));
     }
 
     public int getQuantidade() {
@@ -63,9 +66,10 @@ public class DespesasTable{
     }
     public void setDespesaTable(Despesa d,int quantidadeCategoria)
     {
+
         this.categoria = new SimpleStringProperty(d.getCategoria().toString());
         this.valor = new SimpleFloatProperty(0);
-        this.data = new SimpleStringProperty(d.getData().toString());
+        this.data = new SimpleStringProperty(sdf.format(d.getData()));
         this.quantidade = new SimpleIntegerProperty(0);
     }
 
